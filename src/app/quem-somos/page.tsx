@@ -21,15 +21,6 @@ const historyImages = [
     { src: "https://placehold.co/600x400.png", alt: "Fachada da nova igreja", dataAiHint: "modern church building" },
 ];
 
-const galleryImages = [
-  { src: "https://placehold.co/600x400.png", alt: "Culto de Domingo", dataAiHint: "church service" },
-  { src: "https://placehold.co/600x400.png", alt: "Grupo de jovens", dataAiHint: "youth group" },
-  { src: "https://placehold.co/600x400.png", alt: "Ação social", dataAiHint: "community outreach" },
-  { src: "https://placehold.co/600x400.png", alt: "Batismo nas águas", dataAiHint: "baptism ceremony" },
-  { src: "https://placehold.co/600x400.png", alt: "Vigília de Oração", dataAiHint: "prayer vigil" },
-  { src: "https://placehold.co/600x400.png", alt: "Conferência de Mulheres", dataAiHint: "women conference" },
-];
-
 export default function QuemSomosPage() {
   const autoplayPlugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
@@ -136,33 +127,6 @@ export default function QuemSomosPage() {
               </div>
             ))}
           </div>
-        </section>
-        
-        <Separator className="my-12" />
-
-        <section className="text-center">
-            <h2 className="text-3xl font-headline font-bold mb-8">Galeria de Momentos</h2>
-            <Carousel
-              plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
-              className="w-full max-w-4xl mx-auto"
-               opts={{
-                align: "start",
-                loop: true,
-              }}
-            >
-              <CarouselContent>
-                {galleryImages.map((image, index) => (
-                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                     <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
-                        <Image src={image.src} alt={image.alt} data-ai-hint={image.dataAiHint} layout="fill" objectFit="cover" className="transition-transform duration-300 group-hover:scale-105" />
-                         <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <p className="text-white font-bold">{image.alt}</p>
-                        </div>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
         </section>
       </div>
     </div>
