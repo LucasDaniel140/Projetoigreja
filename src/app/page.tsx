@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Calendar, Heart, Users } from "lucide-react";
+import { ArrowRight, Heart, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
@@ -8,7 +8,7 @@ import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background text-foreground">
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex items-center justify-center">
         <Image
           src="https://placehold.co/1920x1080.png"
           alt="Hero Background"
@@ -18,8 +18,8 @@ export default function Home() {
         />
         <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center space-y-4 text-center">
+            <AnimatedWelcome />
             <div className="space-y-2">
-              <AnimatedWelcome />
               <p className="max-w-[600px] text-foreground/80 md:text-xl">
                 Você não está aqui por acaso! Você está aqui porque o próprio Deus te atraiu a este lugar. E uma das nossas maiores alegrias é receber você em nossa família e tê-lo como um irmão em Cristo!
               </p>
