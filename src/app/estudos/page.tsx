@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Badge } from "@/components/ui/badge";
@@ -75,7 +76,7 @@ const studies = [
                 <li>Apologética: Defendendo a fé cristã.</li>
             </ul>
              <Button asChild>
-                <Link href="#">
+                <Link href="https://wa.me/77998372291" target="_blank">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Falar com Responsável
                 </Link>
