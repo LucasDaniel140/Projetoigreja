@@ -103,7 +103,7 @@ export function Footer() {
               </Tooltip>
             </div>
           </TooltipProvider>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-muted-foreground font-sans">
             Desenvolvido por{' '}
             <Link href="https://www.instagram.com/candeeiromidias" target="_blank" rel="noopener noreferrer" className="text-chart-2 hover:underline">
               Candeeiro Mídias
