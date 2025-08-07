@@ -19,7 +19,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
               <h1 className="font-headline text-4xl font-bold uppercase tracking-tighter sm:text-5xl xl:text-7xl/none text-primary">
-                Welcome to the new
+                bem vindo
               </h1>
               <p className="max-w-[600px] text-foreground/80 md:text-xl">
                 Bem-vindo a um lugar de fé, comunidade e propósito. Descubra nossos ministérios, eventos e como você pode fazer parte da nossa família.
