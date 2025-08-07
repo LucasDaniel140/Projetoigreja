@@ -1,16 +1,25 @@
 "use client";
 
+import * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Church, Target, Eye, Heart } from "lucide-react";
 import Image from "next/image";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const leadership = [
   { name: "Pr. Samuel Souza", role: "Pastor Sênior", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
   { name: "Pra. Rafaelle Souza", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
   { name: "Pr. Suzano Selmo", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
   { name: "Pra. Angela Pacheco", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+];
+
+const historyImages = [
+  { src: "https://placehold.co/600x400.png", alt: "Igreja antiga em uma garagem", dataAiHint: "garage church" },
+  { src: "https://placehold.co/600x400.png", alt: "Construção do novo templo", dataAiHint: "church construction" },
+  { src: "https://placehold.co/600x400.png", alt: "Fachada da nova igreja", dataAiHint: "modern church building" },
 ];
 
 const galleryImages = [
@@ -21,6 +30,10 @@ const galleryImages = [
 ];
 
 export default function QuemSomosPage() {
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
+
   return (
     <div className="bg-background">
       <div className="container mx-auto px-4 py-12 md:px-6">
@@ -45,19 +58,31 @@ export default function QuemSomosPage() {
               </p>
             </div>
           </div>
-          <div className="space-y-6">
-            <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
-                <Image src="https://placehold.co/600x400.png" alt="Igreja antiga em uma garagem" data-ai-hint="garage church" layout="fill" objectFit="cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-                    <p className="text-white font-semibold text-sm">O Início</p>
-                </div>
-            </div>
-             <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
-                <Image src="https://placehold.co/600x400.png" alt="Fachada da nova igreja" data-ai-hint="modern church building" layout="fill" objectFit="cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
-                    <p className="text-white font-semibold text-sm">Dias Atuais</p>
-                </div>
-            </div>
+          <div>
+            <Carousel
+              plugins={[plugin.current]}
+              className="w-full"
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+            >
+              <CarouselContent>
+                {historyImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        data-ai-hint={image.dataAiHint}
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </section>
 
