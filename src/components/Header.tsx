@@ -28,7 +28,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Image src="https://i.imgur.com/N7aG33c.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-8 w-auto" />
+            <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-8 w-auto" />
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {navLinks.slice(1).map((link) => (
@@ -58,7 +58,7 @@ export function Header() {
                 </SheetTrigger>
                 <SheetContent side="left" className="bg-background">
                     <Link href="/" className="flex items-center">
-                      <Image src="https://i.imgur.com/N7aG33c.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-8 w-auto" />
+                      <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-8 w-auto" />
                     </Link>
                     <div className="flex flex-col space-y-4 mt-6">
                     {navLinks.map((link) => (
