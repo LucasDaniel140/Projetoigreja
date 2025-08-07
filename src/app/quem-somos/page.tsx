@@ -36,7 +36,7 @@ export default function QuemSomosPage() {
         <section className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-headline">Nossa Identidade</h1>
           <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
-            Uma família unida pela fé, com o propósito de amar a Deus, amar as pessoas e servir ao mundo.
+            Somos uma igreja apaixonada por Cristo, sendo continuamente direcionados pelo Espírito Santo. Acreditamos no propósito de Deus para cada pessoa e desejamos que todos vivam a plenitude do Evangelho.
           </p>
         </section>
 
