@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const studies = [
   {
-    title: "Estudo de Romanos",
+    title: "Estudo de Romanos 122",
     description: "Uma análise profunda da carta de Paulo aos Romanos, explorando temas como justificação pela fé, a soberania de Deus e a vida no Espírito.",
     type: "text",
     icon: <Book className="h-6 w-6 text-primary" />,
