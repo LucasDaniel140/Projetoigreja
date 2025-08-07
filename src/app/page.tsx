@@ -52,7 +52,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:max-w-none mt-12">
+          <div className="mx-auto grid max-w-5xl items-center justify-items-center gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:max-w-none mt-12">
             <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors">
               <CardHeader>
                 <Heart className="h-8 w-8 text-primary mb-2" />
