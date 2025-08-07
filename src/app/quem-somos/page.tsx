@@ -5,7 +5,7 @@ import * as React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Church, Target, Eye, Heart } from "lucide-react";
+import { Church, Target, Heart } from "lucide-react";
 import Image from "next/image";
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -15,6 +15,8 @@ const leadership = [
   { name: "Pra. Rafaelle Souza", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
   { name: "Pr. Everton Araújo", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
   { name: "Pra. Leticia Araújo", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pr. Welliton Moraes", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pra. Calliiny Moraes", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
 ];
 
 const historyImages = [
