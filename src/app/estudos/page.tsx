@@ -67,20 +67,19 @@ const studies = [
     paid: true,
     details: (
         <div className="space-y-4 text-sm text-muted-foreground">
-            <p>Ideal para líderes, professores e todos que desejam solidificar sua base teológica.</p>
-            <p><strong>Áreas de estudo:</strong></p>
-            <ul className="list-disc pl-5 space-y-1">
-                <li>Teologia Sistemática: As grandes doutrinas da fé.</li>
-                <li>Hermenêutica: A arte de interpretar as Escrituras.</li>
-                <li>História da Igreja: Dos apóstolos aos dias de hoje.</li>
-                <li>Apologética: Defendendo a fé cristã.</li>
-            </ul>
-             <Button asChild>
-                <Link href="https://wa.me/5577999795558" target="_blank">
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    Falar com Responsável
-                </Link>
-            </Button>
+          <p>O IFC (Instituto de Formação Cristã) é um curso bíblico que se destaca pelo ensino da Palavra revelada, um ensino prático que fortalece os alicerces em Cristo e leva o cristão à maturidade espiritual.</p>
+          <p>Com conteúdos que transformam a vida pessoal e ministerial, o curso é oferecido em duas modalidades:</p>
+          <ul className="list-disc pl-5 space-y-1">
+              <li>EAD (100% online)</li>
+              <li>Presencial no polo Vivendo a Palavra, com encontros no último sábado do mês.</li>
+          </ul>
+          <p>Disponível para iniciantes ou para quem já tem base teológica, o IFC é uma jornada profunda e prática no conhecimento de Deus e do Seu propósito para cada cristão.</p>
+           <Button asChild>
+              <Link href="https://wa.me/5577999795558" target="_blank">
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  Falar com Responsável
+              </Link>
+          </Button>
         </div>
     )
   },
