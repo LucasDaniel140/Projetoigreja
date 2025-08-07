@@ -136,7 +136,6 @@ export default function Home() {
                     alt="Aplicativo da Igreja"
                     width={300}
                     height={600}
-                    className="rounded-[3rem] shadow-2xl border-4 border-black"
                     />
                 </div>
             </div>
