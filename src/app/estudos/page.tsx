@@ -11,7 +11,6 @@ import Link from "next/link";
 const studies = [
   {
     title: "Estudo de Romanos 122",
-    description: "Uma análise profunda da carta de Paulo aos Romanos, explorando temas como justificação pela fé, a soberania de Deus e a vida no Espírito.",
     type: "text",
     icon: <Book className="h-6 w-6 text-primary" />,
     paid: false,
@@ -30,7 +29,6 @@ const studies = [
   },
   {
     title: "Curso de Libras",
-    description: "Aprenda a Língua Brasileira de Sinais e ajude a tornar nossa comunidade mais inclusiva e acessível.",
     type: "video",
     icon: <Hand className="h-6 w-6 text-primary" />,
     paid: true,
@@ -55,7 +53,6 @@ const studies = [
   },
   {
     title: "Teologia",
-    description: "Aprofunde seu conhecimento teológico com nosso curso abrangente sobre as doutrinas fundamentais da fé cristã.",
     type: "text",
     icon: <GraduationCap className="h-6 w-6 text-primary" />,
     paid: true,
@@ -79,7 +76,6 @@ const studies = [
   },
     {
     title: "Curso de Casais",
-    description: "Fortaleça seu relacionamento e construa um casamento saudável com base nos princípios bíblicos.",
     type: "video",
     icon: <Heart className="h-6 w-6 text-primary" />,
     paid: false,
@@ -124,7 +120,6 @@ export default function EstudosPage() {
                             {study.icon}
                             <div className="flex-1 text-left">
                                 <CardTitle className="font-headline text-xl">{study.title}</CardTitle>
-                                <CardDescription className="mt-1">{study.description}</CardDescription>
                             </div>
                             <CardFooter className="p-0 pl-4">
                                 {study.paid && <Badge variant="secondary">Pago</Badge>}
