@@ -41,7 +41,7 @@ export default function QuemSomosPage() {
         <section className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-headline">Nossa Identidade</h1>
           <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
-            Somos uma igreja apaixonada por Cristo, sendo continuamente direcionados pelo Espírito Santo. Acreditamos no propósito de Deus para cada pessoa e desejamos que todos vivam a plenitude do Evangelho.
+          Somos uma igreja apaixonada por Cristo, sendo continuamente direcionados pelo Espírito Santo. Acreditamos no propósito de Deus para cada pessoa e desejamos que todos vivam a plenitude do Evangelho.
           </p>
         </section>
 
@@ -61,7 +61,7 @@ export default function QuemSomosPage() {
           </div>
           <Carousel
             plugins={[autoplayPlugin.current]}
-            className="w-full max-w-md mx-auto"
+            className="w-full max-w-lg mx-auto"
             opts={{ align: "start", loop: true }}
             onMouseEnter={autoplayPlugin.current.stop}
             onMouseLeave={autoplayPlugin.current.reset}
@@ -78,7 +78,7 @@ export default function QuemSomosPage() {
                       objectFit="cover"
                       className="transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <p className="text-white font-bold">{image.alt}</p>
                     </div>
                   </div>
