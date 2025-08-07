@@ -8,7 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Smartphone, Apple, Play } from "lucide-react";
+import { Apple, Play } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -68,7 +68,7 @@ export function Footer() {
                    <Dialog>
                     <DialogTrigger asChild>
                         <button aria-label="Baixe nosso App">
-                            <Smartphone className="h-6 w-6 hover:text-primary transition-colors" />
+                            <Image src="https://i.imgur.com/rvjo6I3.png" alt="App da Igreja" width={24} height={24} className="hover:opacity-80 transition-opacity" />
                         </button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
@@ -81,7 +81,7 @@ export function Footer() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4">
                             <Button asChild>
                                 <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank" className="flex items-center gap-2">
-                                    <Apple />
+                                    <Image src="https://www.logowik.com/models/apple-developer-2015.svg" alt="App Store" width={24} height={24} className="dark:invert"/>
                                     <div>
                                         <p className="text-xs">Baixar na</p>
                                         <p className="text-lg font-semibold -mt-1">App Store</p>
@@ -90,7 +90,7 @@ export function Footer() {
                             </Button>
                              <Button asChild>
                                 <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank" className="flex items-center gap-2">
-                                    <Play />
+                                    <Image src="https://www.clker.com/cliparts/J/J/B/Y/A/M/google-play-logo-md.png" alt="Google Play" width={24} height={24} />
                                      <div>
                                         <p className="text-xs">Disponível na</p>
                                         <p className="text-lg font-semibold -mt-1">Google Play</p>
