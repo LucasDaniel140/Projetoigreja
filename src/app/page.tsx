@@ -41,7 +41,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-stretch justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+          <div className="mx-auto mt-12 grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
               <CardHeader>
                 <Globe className="h-8 w-8 text-primary mb-2" />
