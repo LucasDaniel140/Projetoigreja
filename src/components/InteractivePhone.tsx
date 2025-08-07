@@ -42,6 +42,7 @@ export function InteractivePhone() {
         height={600}
         className="object-contain"
         data-ai-hint="church app phone"
+        unoptimized
         style={{
           transition: 'transform 0.2s ease-out',
         }}
