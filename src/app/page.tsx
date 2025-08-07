@@ -132,7 +132,7 @@ export default function Home() {
              <div className="perspective-container">
                 <div className="phone-3d-container">
                     <Image
-                    src="https://i.imgur.com/BUK63Dw.png"
+                    src="https://i.imgur.com/8Ipq9Na.png"
                     alt="Aplicativo da Igreja"
                     width={300}
                     height={600}
