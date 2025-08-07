@@ -19,6 +19,9 @@ export default function Home() {
         <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center space-y-4 text-center">
             <AnimatedWelcome />
+             <p className="max-w-[600px] text-muted-foreground md:text-xl">
+                Você não está aqui por acaso! Você está aqui porque o próprio Deus te atraiu a este lugar. E uma das nossas maiores alegrias é receber você em nossa família e tê-lo como um irmão em Cristo!
+            </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link href="/quem-somos">
                 <Button size="lg">
