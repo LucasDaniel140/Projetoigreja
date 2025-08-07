@@ -34,8 +34,7 @@ const studies = [
     paid: true,
     details: (
         <div className="space-y-4 text-sm text-muted-foreground">
-            <p>Todas as terças-feiras, oferecemos duas turmas presenciais: nível iniciante e nível intermediário. Nosso maior desejo é que a comunidade surda possa conhecer e viver a Palavra de Deus de coração aberto.</p>
-            <p>Queremos levar o evangelho para todos, com amor e cuidado, construindo uma igreja onde ninguém fique de fora.</p>
+            <p>Todas as terças-feiras, oferecemos duas turmas presenciais: nível iniciante e nível intermediário. Nosso maior desejo é que a comunidade surda possa conhecer e viver a Palavra de Deus de coração aberto. Queremos levar o evangelho para todos, com amor e cuidado, construindo uma igreja onde ninguém fique de fora.</p>
             <p><strong>As matrículas estão abertas! Venha fazer parte dessa linda missão conosco.</strong></p>
              <Button asChild>
                 <Link href="https://wa.me/5577999709717" target="_blank">
@@ -76,14 +75,9 @@ const studies = [
     paid: false,
     details: (
         <div className="space-y-4 text-sm text-muted-foreground">
-            <p>Ferramentas práticas e ensinamentos bíblicos para todos os estágios do casamento.</p>
-            <p><strong>Temas abordados:</strong></p>
-            <ul className="list-disc pl-5 space-y-1">
-                <li>Comunicação e Resolução de Conflitos.</li>
-                <li>Finanças à Luz da Bíblia.</li>
-                <li>Intimidade e Companheirismo.</li>
-                <li>Criando Filhos nos Caminhos do Senhor.</li>
-            </ul>
+            <p>O Curso de Casais, exclusivo para membros da igreja que desejam se preparar para o casamento, é um momento para aprender a construir relacionamentos firmes, tendo Jesus como alicerce.</p>
+            <p>A primeira decisão mais importante da nossa vida é aceitar Jesus no coração, e a segunda é escolher com quem vamos compartilhar nossa vida. Casar-se é um passo sério, que deve ser feito com responsabilidade, intencionalidade e, acima de tudo, guiado por Deus.</p>
+            <p>Neste curso, caminhamos juntos fortalecendo o amor, o respeito e a fé, preparando cada casal para uma vida a dois.</p>
              <Button asChild>
                 <Link href="https://wa.me/5577998128008" target="_blank">
                     <MessageSquare className="mr-2 h-4 w-4" />
