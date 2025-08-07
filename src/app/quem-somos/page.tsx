@@ -165,7 +165,6 @@ export default function QuemSomosPage() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              
             </Carousel>
         </section>
       </div>
