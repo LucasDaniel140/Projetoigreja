@@ -102,7 +102,7 @@ export function Footer() {
                     </Dialog>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>Nosso App</p>
+                  <p>Igreja Vivendo a Palavra</p>
                 </TooltipContent>
               </Tooltip>
             </div>
