@@ -14,10 +14,10 @@ export function Footer() {
           </div>
           <div className="flex flex-wrap justify-center items-center gap-4">
             <Link href="https://www.instagram.com/ministeriovivendoapalavra/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <Image src="https://i.imgur.com/a4wJ94Y.png" alt="Instagram" width={24} height={24} className="hover:opacity-80 transition-opacity" />
+              <Image src="https://i.imgur.com/RxhFKEh.png" alt="Instagram" width={24} height={24} className="hover:opacity-80 transition-opacity" />
             </Link>
             <Link href="https://www.youtube.com/@VivendoaPalavra" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                <Image src="https://i.imgur.com/O9h3YcW.png" alt="YouTube" width={28} height={28} className="hover:opacity-80 transition-opacity" />
+                <Image src="https://i.imgur.com/NLlGcqp.png" alt="YouTube" width={28} height={28} className="hover:opacity-80 transition-opacity" />
             </Link>
              <Link href="https://open.spotify.com/show/0Yw2x1a4XdV0VL76Qt53Bp?si=972a7d87e24b45f9" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
                 <Image src="https://i.imgur.com/D4Fisnj.png" alt="Spotify" width={24} height={24} className="hover:opacity-80 transition-opacity" />
