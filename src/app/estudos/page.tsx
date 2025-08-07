@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Book, Heart, Hand, GraduationCap } from "lucide-react";
-import Link from "next/link";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const studies = [
   {
@@ -11,32 +11,76 @@ const studies = [
     description: "Uma análise profunda da carta de Paulo aos Romanos, explorando temas como justificação pela fé, a soberania de Deus e a vida no Espírito.",
     type: "text",
     icon: <Book className="h-6 w-6 text-primary" />,
-    link: "#",
     paid: false,
+    details: (
+      <div className="space-y-2 text-sm text-muted-foreground">
+        <p>Este estudo aprofundado oferece uma jornada versículo por versículo através de um dos livros mais transformadores da Bíblia.</p>
+        <p><strong>Tópicos abordados:</strong></p>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>A Doutrina da Justificação pela Fé.</li>
+          <li>A Vida no Espírito Santo.</li>
+          <li>O Papel de Israel no Plano de Deus.</li>
+          <li>Aplicações práticas para a vida cristã diária.</li>
+        </ul>
+      </div>
+    )
   },
   {
     title: "Curso de Libras",
     description: "Aprenda a Língua Brasileira de Sinais e ajude a tornar nossa comunidade mais inclusiva e acessível.",
     type: "video",
     icon: <Hand className="h-6 w-6 text-primary" />,
-    link: "#",
     paid: true,
+    details: (
+        <div className="space-y-2 text-sm text-muted-foreground">
+            <p>Um curso completo para quem deseja se comunicar em Libras e servir à comunidade surda. Não é necessário conhecimento prévio.</p>
+            <p><strong>Módulos do curso:</strong></p>
+            <ul className="list-disc pl-5 space-y-1">
+                <li>Módulo 1: Alfabeto e Saudações Básicas.</li>
+                <li>Módulo 2: Vocabulário Essencial do Cotidiano.</li>
+                <li>Módulo 3: Estrutura Gramatical da Libras.</li>
+                <li>Módulo 4: Louvor e Termos Bíblicos em Libras.</li>
+            </ul>
+        </div>
+    )
   },
   {
     title: "Teologia",
     description: "Aprofunde seu conhecimento teológico com nosso curso abrangente sobre as doutrinas fundamentais da fé cristã.",
     type: "text",
     icon: <GraduationCap className="h-6 w-6 text-primary" />,
-    link: "#",
     paid: true,
+    details: (
+        <div className="space-y-2 text-sm text-muted-foreground">
+            <p>Ideal para líderes, professores e todos que desejam solidificar sua base teológica.</p>
+            <p><strong>Áreas de estudo:</strong></p>
+            <ul className="list-disc pl-5 space-y-1">
+                <li>Teologia Sistemática: As grandes doutrinas da fé.</li>
+                <li>Hermenêutica: A arte de interpretar as Escrituras.</li>
+                <li>História da Igreja: Dos apóstolos aos dias de hoje.</li>
+                <li>Apologética: Defendendo a fé cristã.</li>
+            </ul>
+        </div>
+    )
   },
     {
     title: "Curso de Casais",
     description: "Fortaleça seu relacionamento e construa um casamento saudável com base nos princípios bíblicos.",
     type: "video",
     icon: <Heart className="h-6 w-6 text-primary" />,
-    link: "#",
     paid: false,
+    details: (
+        <div className="space-y-2 text-sm text-muted-foreground">
+            <p>Ferramentas práticas e ensinamentos bíblicos para todos os estágios do casamento.</p>
+            <p><strong>Temas abordados:</strong></p>
+            <ul className="list-disc pl-5 space-y-1">
+                <li>Comunicação e Resolução de Conflitos.</li>
+                <li>Finanças à Luz da Bíblia.</li>
+                <li>Intimidade e Companheirismo.</li>
+                <li>Criando Filhos nos Caminhos do Senhor.</li>
+            </ul>
+        </div>
+    )
   },
 ];
 
@@ -50,25 +94,32 @@ export default function EstudosPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {studies.map((study, index) => (
-          <Link href={study.link} key={index} className="flex">
-            <Card className="h-full flex flex-col hover:bg-secondary/80 transition-colors cursor-pointer w-full">
-              <CardHeader className="flex flex-row items-center gap-4">
-                {study.icon}
-                <div className="flex-1">
-                  <CardTitle className="font-headline text-xl">{study.title}</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <CardDescription>{study.description}</CardDescription>
-              </CardContent>
-              <CardFooter>
-                {study.paid && <Badge variant="secondary">Pago</Badge>}
-              </CardFooter>
-            </Card>
-          </Link>
-        ))}
+      <div className="max-w-4xl mx-auto">
+        <Accordion type="single" collapsible className="w-full space-y-4">
+            {studies.map((study, index) => (
+            <AccordionItem value={`item-${index}`} key={index} className="border-b-0">
+                <Card className="h-full flex flex-col hover:bg-secondary/80 transition-colors w-full overflow-hidden">
+                    <AccordionTrigger className="p-0 hover:no-underline">
+                        <CardHeader className="flex flex-row items-center gap-4 w-full">
+                            {study.icon}
+                            <div className="flex-1 text-left">
+                                <CardTitle className="font-headline text-xl">{study.title}</CardTitle>
+                                <CardDescription className="mt-1">{study.description}</CardDescription>
+                            </div>
+                            <CardFooter className="p-0">
+                                {study.paid && <Badge variant="secondary">Pago</Badge>}
+                            </CardFooter>
+                        </CardHeader>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                        <CardContent className="pt-0">
+                         {study.details}
+                        </CardContent>
+                    </AccordionContent>
+                </Card>
+            </AccordionItem>
+            ))}
+        </Accordion>
       </div>
     </div>
   );
