@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
 
-const WelcomeText = ({ text, isVisible }: { text: string; isVisible: boolean }) => {
+const WelcomeText = ({ text, isVisible, className }: { text: string; isVisible: boolean; className?: string }) => {
     const textRef = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
@@ -16,18 +16,16 @@ const WelcomeText = ({ text, isVisible }: { text: string; isVisible: boolean }) 
     }, [text]);
 
     return (
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '100%', textAlign: 'center' }}>
-            <h1
-                ref={textRef}
-                className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap"
-                style={{
-                    opacity: isVisible ? 1 : 0,
-                    position: 'relative',
-                }}
-            >
-                {text}
-            </h1>
-        </div>
+        <h1
+            ref={textRef}
+            className={className}
+            style={{
+                opacity: isVisible ? 1 : 0,
+                position: 'relative',
+            }}
+        >
+            {text}
+        </h1>
     );
 };
   
@@ -37,12 +35,11 @@ type AnimatedWelcomeProps = {
 
 export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
     const timeline = useRef<anime.AnimeTimelineInstance | null>(null);
+    const welcomeContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // Use a more specific selector to avoid conflicts
-        const selectorSuffix = position === 'top' ? '-top' : position === 'bottom' ? '-bottom' : '';
-        const welcomeEl = document.querySelector(`.welcome-el${selectorSuffix}`);
-        const homeEl = document.querySelector(`.home-el${selectorSuffix}`);
+        const welcomeEl = welcomeContainerRef.current?.querySelector(`.welcome-el`);
+        const homeEl = welcomeContainerRef.current?.querySelector(`.home-el`);
 
         if (welcomeEl && homeEl) {
             timeline.current = anime.timeline({ 
@@ -83,15 +80,23 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
                 offset: '+=1000'
             });
         }
-    }, [position]);
+
+        return () => {
+            timeline.current?.pause();
+        };
+    }, []);
 
   return (
-    <div style={{ position: 'relative', height: '90px', width: '100%' }}>
-      <div className={`welcome-el-${position}`}>
-        <WelcomeText text="Bem vindo" isVisible={true} />
+    <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px' }}>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="welcome-el" style={{display: 'inline-block'}}>
+            <WelcomeText text="Bem vindo" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
+        </div>
       </div>
-      <div className={`home-el-${position}`}>
-        <WelcomeText text="esta é a sua casa" isVisible={true} />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="home-el" style={{display: 'inline-block'}}>
+            <WelcomeText text="esta é a sua casa" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
+        </div>
       </div>
     </div>
   );

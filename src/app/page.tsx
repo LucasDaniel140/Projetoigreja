@@ -16,11 +16,9 @@ export default function Home() {
           className="object-cover opacity-30"
           data-ai-hint="church concert stage"
         />
-        <div className="container px-4 md:px-6 relative flex flex-col justify-between h-full flex-grow w-full">
-          <div className="w-full">
-             <AnimatedWelcome position="top" />
-          </div>
-          <div className="flex flex-col items-center space-y-4 text-center my-8">
+        <div className="container px-4 md:px-6 relative flex flex-col justify-center items-center h-full flex-grow w-full">
+          <AnimatedWelcome />
+          <div className="flex flex-col items-center space-y-4 text-center mt-8">
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link href="/quem-somos">
                 <Button size="lg">
@@ -29,9 +27,6 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-          </div>
-           <div className="w-full">
-            <AnimatedWelcome position="bottom" />
           </div>
         </div>
       </section>
