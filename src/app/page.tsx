@@ -1,10 +1,9 @@
-
 "use client";
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket, Smartphone, MapPin, Youtube } from "lucide-react";
+import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
@@ -13,26 +12,20 @@ import { InteractivePhone } from "@/components/InteractivePhone";
 const youtubeVideos = [
   {
     title: "Culto de Domingo",
-    description: "Mensagem sobre esperança e fé.",
     embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=XT-2GFDTaMBVsrZk&amp;controls=0"
   },
   {
     title: "Estudo Bíblico",
-    description: "Aprofundando em Romanos.",
-    imageUrl: "https://placehold.co/600x400.png",
-    dataAiHint: "bible study",
-    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+    embedUrl: "https://www.youtube.com/embed/ZkK-YIfmoz0?si=libM6vCTieK_yus3&amp;controls=0"
   },
    {
     title: "Série Especial",
-    description: "Relacionamentos segundo o coração de Deus.",
     imageUrl: "https://placehold.co/600x400.png",
     dataAiHint: "christian relationships",
     videoUrl: "https://www.youtube.com/@VivendoaPalavra"
   },
   {
     title: "Momentos de Adoração",
-    description: "Nossos melhores momentos de louvor.",
     imageUrl: "https://placehold.co/600x400.png",
     dataAiHint: "church worship",
     videoUrl: "https://www.youtube.com/@VivendoaPalavra"
