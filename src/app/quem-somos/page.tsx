@@ -135,7 +135,7 @@ export default function QuemSomosPage() {
             <Card>
               <CardHeader>
                  <div className="mx-auto bg-accent rounded-full p-4 w-fit">
-                    <Eye className="h-8 w-8 text-accent-foreground" />
+                    <Heart className="h-8 w-8 text-accent-foreground" />
                 </div>
                 <CardTitle className="font-headline">Nossa Visão</CardTitle>
               </CardHeader>
