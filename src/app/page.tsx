@@ -209,6 +209,31 @@ export default function Home() {
             </div>
         </div>
       </section>
+
+      <section className="w-full py-12">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Nossos Momentos</h2>
+            <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Alguns registros especiais da nossa caminhada.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div className="overflow-hidden rounded-lg group">
+              <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="church event" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+            </div>
+            <div className="overflow-hidden rounded-lg group">
+              <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="worship service" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+            </div>
+            <div className="overflow-hidden rounded-lg group">
+              <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="community gathering" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+            </div>
+            <div className="overflow-hidden rounded-lg group">
+              <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="prayer meeting" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
