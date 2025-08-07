@@ -2,7 +2,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Book, Heart, Hand, GraduationCap, MessageSquare } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -93,10 +93,7 @@ export default function EstudosPage() {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline">Estudos Bíblicos</h1>
-        <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
-          Recursos para aprofundar seu conhecimento na Palavra de Deus e fortalecer sua fé.
-        </p>
+        <h1 className="text-4xl md:text-5xl font-bold font-headline">Estudos</h1>
       </div>
 
       <div className="max-w-4xl mx-auto">
