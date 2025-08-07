@@ -102,36 +102,36 @@ export default function Home() {
           </div>
           <div className="mx-auto mt-12 grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
             <InteractiveCard>
-                <Globe className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-headline text-2xl uppercase">Missão Africa</h3>
-                <p className="flex-grow text-muted-foreground mt-2">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</p>
-                <Link href="/missoes" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
-                </Link>
+              <Globe className="h-8 w-8 text-primary mb-2" />
+              <h3 className="font-headline text-2xl uppercase">Missão Africa</h3>
+              <p className="flex-grow text-muted-foreground mt-2">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</p>
+              <Link href="/missoes" className="mt-4 inline-block">
+                <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              </Link>
             </InteractiveCard>
             <InteractiveCard>
-                <HeartHandshake className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-headline text-2xl uppercase">Reação</h3>
-                <p className="flex-grow text-muted-foreground mt-2">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</p>
-                <Link href="/acoes-sociais" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
-                </Link>
+              <HeartHandshake className="h-8 w-8 text-primary mb-2" />
+              <h3 className="font-headline text-2xl uppercase">Reação</h3>
+              <p className="flex-grow text-muted-foreground mt-2">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</p>
+              <Link href="/acoes-sociais" className="mt-4 inline-block">
+                <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              </Link>
             </InteractiveCard>
             <InteractiveCard>
-                <Rocket className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-headline text-2xl uppercase">Visionários</h3>
-                <p className="flex-grow text-muted-foreground mt-2">Uma plataforma para visionários que querem expandir o Reino.</p>
-                 <Link href="#" target="_blank" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
-                </Link>
+              <Rocket className="h-8 w-8 text-primary mb-2" />
+              <h3 className="font-headline text-2xl uppercase">Visionários</h3>
+              <p className="flex-grow text-muted-foreground mt-2">Uma plataforma para visionários que querem expandir o Reino.</p>
+               <Link href="#" target="_blank" className="mt-4 inline-block">
+                <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              </Link>
             </InteractiveCard>
             <InteractiveCard>
-                <BookOpen className="h-8 w-8 text-primary mb-2" />
-                <h3 className="font-headline text-2xl uppercase">Estudos</h3>
-                <p className="flex-grow text-muted-foreground mt-2">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</p>
-                <Link href="/estudos" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
-                </Link>
+              <BookOpen className="h-8 w-8 text-primary mb-2" />
+              <h3 className="font-headline text-2xl uppercase">Estudos</h3>
+              <p className="flex-grow text-muted-foreground mt-2">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</p>
+              <Link href="/estudos" className="mt-4 inline-block">
+                <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              </Link>
             </InteractiveCard>
           </div>
         </div>

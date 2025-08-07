@@ -84,12 +84,10 @@ export function InteractiveCard({ children, className }: { children: React.React
 
   return (
     <div ref={cardRef} className={cn("g-card", className)}>
+        <div className="glow"></div>
         <div className="g-card-content p-6 flex flex-col">
             {children}
         </div>
-        <div className="glow"></div>
     </div>
   );
 }
-
-    
