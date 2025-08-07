@@ -41,48 +41,48 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-start justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-12">
-            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+          <div className="mx-auto grid max-w-5xl items-stretch justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
               <CardHeader>
                 <Globe className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Missão Africa</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription>Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</CardDescription>
+              <CardContent className="flex flex-col flex-grow">
+                <CardDescription className="flex-grow">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</CardDescription>
                 <Link href="/missoes" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
-            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
               <CardHeader>
                 <HeartHandshake className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Reação</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription>Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</CardDescription>
+              <CardContent className="flex flex-col flex-grow">
+                <CardDescription className="flex-grow">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</CardDescription>
                 <Link href="/acoes-sociais" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
-            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
               <CardHeader>
                 <Rocket className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Visionários</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription>Uma plataforma para visionários que querem expandir o Reino. (Site externo)</CardDescription>
+              <CardContent className="flex flex-col flex-grow">
+                <CardDescription className="flex-grow">Uma plataforma para visionários que querem expandir o Reino. (Site externo)</CardDescription>
                 <Button variant="link" className="px-0 text-primary mt-4 cursor-not-allowed">Em Breve <ArrowRight className="ml-2 h-4 w-4" /></Button>
               </CardContent>
             </Card>
-            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
               <CardHeader>
                 <BookOpen className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Estudos</CardTitle>
               </CardHeader>
-              <CardContent>
-                <CardDescription>Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</CardDescription>
+              <CardContent className="flex flex-col flex-grow">
+                <CardDescription className="flex-grow">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</CardDescription>
                 <Link href="/estudos" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
