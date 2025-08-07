@@ -171,10 +171,10 @@ export default function Home() {
       
       <section className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
-            <div className="text-center">
+            <div className="text-center md:text-left">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Visite-nos</h2>
-                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
+                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl">
                     Estamos ansiosos para receber você em nossa casa.
                 </p>
                 <div className="h-full w-full rounded-lg overflow-hidden">
@@ -188,7 +188,7 @@ export default function Home() {
                         referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            <div className="text-center">
+            <div className="flex flex-col items-center text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Assista Nossas Mensagens</h2>
                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
@@ -237,4 +237,5 @@ export default function Home() {
     
 
     
+
 
