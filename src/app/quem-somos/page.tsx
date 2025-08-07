@@ -64,6 +64,10 @@ export default function QuemSomosPage() {
             <Carousel
               plugins={[autoplayPlugin.current]}
               className="w-full"
+              opts={{
+                align: "start",
+                loop: true,
+              }}
               onMouseEnter={autoplayPlugin.current.stop}
               onMouseLeave={autoplayPlugin.current.reset}
             >
