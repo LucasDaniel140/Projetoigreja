@@ -187,6 +187,17 @@ export default function Home() {
       </section>
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
+            <div className="h-full w-full rounded-lg overflow-hidden min-h-[400px] md:min-h-full">
+                <iframe
+                    src="https://maps.google.com/maps?q=R.%20Rui%20Barbosa%2C%201296%20-%20Lot.%20Mimoso%20Doeste%20I%2C%20Lu%C3%ADs%20Eduardo%20Magalh%C3%A3es%20-%20BA%2C%2047850-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+            </div>
             <div>
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Assista Nossas Mensagens</h2>
@@ -217,17 +228,6 @@ export default function Home() {
                         </Link>
                     ))}
                 </div>
-            </div>
-            <div className="h-full w-full rounded-lg overflow-hidden min-h-[400px] md:min-h-full">
-                <iframe
-                    src="https://maps.google.com/maps?q=R.%20Rui%20Barbosa%2C%201296%20-%20Lot.%20Mimoso%20Doeste%20I%2C%20Lu%C3%ADs%20Eduardo%20Magalh%C3%A3es%20-%20BA%2C%2047850-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen={false}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
             </div>
         </div>
       </section>
