@@ -3,12 +3,12 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
+import { InteractiveCard } from '@/components/InteractiveCard';
 
 const youtubeVideos = [
   {
@@ -101,54 +101,38 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto mt-12 grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <Card className="flex flex-col feature-card">
-              <CardHeader>
+            <InteractiveCard>
                 <Globe className="h-8 w-8 text-primary mb-2" />
-                <CardTitle className="font-headline text-2xl uppercase">Missão Africa</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col flex-grow">
-                <p className="flex-grow text-muted-foreground">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</p>
+                <h3 className="font-headline text-2xl uppercase">Missão Africa</h3>
+                <p className="flex-grow text-muted-foreground mt-2">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</p>
                 <Link href="/missoes" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
-              </CardContent>
-            </Card>
-            <Card className="flex flex-col feature-card">
-              <CardHeader>
+            </InteractiveCard>
+            <InteractiveCard>
                 <HeartHandshake className="h-8 w-8 text-primary mb-2" />
-                <CardTitle className="font-headline text-2xl uppercase">Reação</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col flex-grow">
-                <p className="flex-grow text-muted-foreground">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</p>
+                <h3 className="font-headline text-2xl uppercase">Reação</h3>
+                <p className="flex-grow text-muted-foreground mt-2">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</p>
                 <Link href="/acoes-sociais" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
-              </CardContent>
-            </Card>
-            <Card className="flex flex-col feature-card">
-              <CardHeader>
+            </InteractiveCard>
+            <InteractiveCard>
                 <Rocket className="h-8 w-8 text-primary mb-2" />
-                <CardTitle className="font-headline text-2xl uppercase">Visionários</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col flex-grow">
-                <p className="flex-grow text-muted-foreground">Uma plataforma para visionários que querem expandir o Reino.</p>
+                <h3 className="font-headline text-2xl uppercase">Visionários</h3>
+                <p className="flex-grow text-muted-foreground mt-2">Uma plataforma para visionários que querem expandir o Reino.</p>
                  <Link href="#" target="_blank" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
-              </CardContent>
-            </Card>
-            <Card className="flex flex-col feature-card">
-              <CardHeader>
+            </InteractiveCard>
+            <InteractiveCard>
                 <BookOpen className="h-8 w-8 text-primary mb-2" />
-                <CardTitle className="font-headline text-2xl uppercase">Estudos</CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col flex-grow">
-                <p className="flex-grow text-muted-foreground">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</p>
+                <h3 className="font-headline text-2xl uppercase">Estudos</h3>
+                <p className="flex-grow text-muted-foreground mt-2">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</p>
                 <Link href="/estudos" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
-              </CardContent>
-            </Card>
+            </InteractiveCard>
           </div>
         </div>
       </section>
@@ -205,7 +189,7 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {youtubeVideos.map((video, index) => (
-                        <Card key={index} className="overflow-hidden hover:scale-105 transition-transform duration-300 group">
+                        <div key={index} className="overflow-hidden hover:scale-105 transition-transform duration-300 group rounded-lg">
                            {video.embedUrl && (
                                 <div className="relative aspect-video">
                                     <iframe
@@ -219,7 +203,7 @@ export default function Home() {
                                     ></iframe>
                                 </div>
                             )}
-                        </Card>
+                        </div>
                     ))}
                 </div>
             </div>

@@ -41,6 +41,13 @@ body {
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border: 0 0% 20%;
     --sidebar-ring: 45 96% 51%;
+
+    /* Glow Card Vars */
+    --glow-sens: 30;
+    --card-bg: linear-gradient(8deg, var(--dark, #1a1a1a) 75%, color-mix(in hsl, var(--dark, #1a1a1a), white 2.5%) 75.5%);
+    --blend: soft-light;
+    --glow-blend: plus-lighter;
+    --glow-color: 40deg 80% 80%;
   }
   .dark {
     --background: 0 0% 2%;
@@ -107,3 +114,117 @@ body {
     opacity: 1;
   }
 }
+
+
+/* Glow Card */
+.g-card {
+  --pads: 24px;
+  --color-sens: calc(var(--glow-sens) + 20);
+  position: relative;
+  border-radius: 1.768em;
+  isolation: isolate;
+  transform: translate3d(0, 0, 0.01px);
+  border: 1px solid rgb(255 255 255 / 25%);
+  background: var(--card-bg);
+  background-repeat: no-repeat;
+  display: flex; /* Added for content alignment */
+  flex-direction: column; /* Added for content alignment */
+}
+
+.g-card::before,
+.g-card::after,
+.g-card > .glow {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  transition: opacity 0.25s ease-out;
+  z-index: -1;
+}
+
+.g-card:not(:hover):not(.animating)::before,
+.g-card:not(:hover):not(.animating)::after,
+.g-card:not(:hover):not(.animating) > .glow {
+    opacity: 0;
+    transition: opacity 0.75s ease-in-out;
+}
+
+.g-card::before {
+  border: 1px solid transparent;
+  background:
+      linear-gradient(var(--card-bg) 0 100%) padding-box,
+      linear-gradient(rgb(255 255 255 / 0%) 0% 100%) border-box,
+      radial-gradient(at 80% 55%, hsla(268,100%,76%,1) 0px, transparent 50%) border-box,
+      radial-gradient(at 69% 34%, hsla(349,100%,74%,1) 0px, transparent 50%) border-box,
+      radial-gradient(at 8% 6%, hsla(136,100%,78%,1) 0px, transparent 50%) border-box,
+      radial-gradient(at 41% 38%, hsla(192,100%,64%,1) 0px, transparent 50%) border-box,
+      radial-gradient(at 86% 85%, hsla(186,100%,74%,1) 0px, transparent 50%) border-box,
+      radial-gradient(at 82% 18%, hsla(52,100%,65%,1) 0px, transparent 50%) border-box,
+      radial-gradient(at 51% 4%, hsla(12,100%,72%,1) 0px, transparent 50%) border-box,
+      linear-gradient(#c299ff 0 100%) border-box;
+  opacity: calc((var(--pointer-d) - var(--color-sens)) / (100 - var(--color-sens)));
+  mask-image: conic-gradient(from var(--pointer-deg) at center, black 25%, transparent 40%, transparent 60%, black 75%);
+}
+
+.g-card::after {
+  border: 1px solid transparent;
+  background:
+      radial-gradient(at 80% 55%, hsla(268,100%,76%,1) 0px, transparent 50%) padding-box,
+      radial-gradient(at 69% 34%, hsla(349,100%,74%,1) 0px, transparent 50%) padding-box,
+      radial-gradient(at 8% 6%, hsla(136,100%,78%,1) 0px, transparent 50%) padding-box,
+      radial-gradient(at 41% 38%, hsla(192,100%,64%,1) 0px, transparent 50%) padding-box,
+      radial-gradient(at 86% 85%, hsla(186,100%,74%,1) 0px, transparent 50%) padding-box,
+      radial-gradient(at 82% 18%, hsla(52,100%,65%,1) 0px, transparent 50%) padding-box,
+      radial-gradient(at 51% 4%, hsla(12,100%,72%,1) 0px, transparent 50%) padding-box,
+      linear-gradient(#c299ff 0 100%) padding-box;
+  mask-image:
+      linear-gradient( to bottom, black, black ),
+      radial-gradient( ellipse at 50% 50%, black 40%, transparent 65% ),
+      radial-gradient( ellipse at 66% 66%, black 5%, transparent 40% ),
+      radial-gradient( ellipse at 33% 33%, black 5%, transparent 40% ),
+      radial-gradient( ellipse at 66% 33%, black 5%, transparent 40% ),
+      radial-gradient( ellipse at 33% 66%, black 5%, transparent 40% ),
+      conic-gradient( from var(--pointer-deg) at center, transparent 5%, black 15%, black 85%, transparent 95% );
+  mask-composite: subtract,add,add,add,add,add;
+  opacity: calc((var(--pointer-d) - var(--color-sens)) / (100 - var(--color-sens)));
+  mix-blend-mode: var(--blend);
+}
+
+.g-card > .glow {
+  --outset: var(--pads);
+  inset: calc(var(--outset) * -1);
+  pointer-events: none;
+  z-index: 1;
+  mask-image: conic-gradient(from var(--pointer-deg) at center, black 2.5%, transparent 10%, transparent 90%, black 97.5%);
+  opacity: calc((var(--pointer-d) - var(--glow-sens)) / (100 - var(--glow-sens)));
+  mix-blend-mode: var(--glow-blend);
+}
+
+.g-card > .glow::before {
+  content: "";
+  position: absolute;
+  inset: var(--outset);
+  border-radius: inherit;
+  box-shadow:
+       inset 0 0 0 1px hsl( var(--glow-color) / 100%),
+       inset 0 0 2px 2px hsl( var(--glow-color) / 90%),
+       inset 0 0 5px 1px hsl( var(--glow-color) / 75%),
+       inset 0 0 8px 1px hsl( var(--glow-color) / 66%),
+       inset 0 0 15px 0 hsl( var(--glow-color) / 50%),
+       inset 0 0 25px 2px hsl( var(--glow-color) / 30%),
+       inset 0 0 50px 2px hsl( var(--glow-color) / 10%),
+        0 0 2px 2px hsl( var(--glow-color) / 90%),
+       0 0 5px 1px hsl( var(--glow-color) / 75%),
+       0 0 8px 1px hsl( var(--glow-color) / 66%),
+       0 0 15px 0 hsl( var(--glow-color) / 50%),
+       0 0 25px 2px hsl( var(--glow-color) / 30%),
+       0 0 50px 2px hsl( var(--glow-color) / 10%);
+}
+
+.g-card-content {
+    z-index: 2; /* Ensure content is above the glow effects */
+    flex-grow: 1; /* Make content fill the card */
+}
+
+
+    
