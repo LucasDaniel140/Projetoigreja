@@ -14,9 +14,7 @@ const youtubeVideos = [
   {
     title: "Culto de Domingo",
     description: "Mensagem sobre esperança e fé.",
-    imageUrl: "https://placehold.co/600x400.png",
-    dataAiHint: "church sermon",
-    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=XT-2GFDTaMBVsrZk&amp;controls=0"
   },
   {
     title: "Estudo Bíblico",
@@ -206,26 +204,40 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {youtubeVideos.map((video, index) => (
-                        <Link key={index} href={video.videoUrl} target="_blank">
-                            <Card className="overflow-hidden hover:scale-105 transition-transform duration-300 group">
+                        <Card key={index} className="overflow-hidden hover:scale-105 transition-transform duration-300 group">
+                           {video.embedUrl ? (
                                 <div className="relative aspect-video">
-                                    <Image 
-                                        src={video.imageUrl} 
-                                        alt={video.title} 
-                                        data-ai-hint={video.dataAiHint}
-                                        fill
-                                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <Youtube className="w-12 h-12 text-white" />
-                                    </div>
+                                    <iframe
+                                        src={video.embedUrl}
+                                        title={video.title}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerPolicy="strict-origin-when-cross-origin"
+                                        allowFullScreen
+                                        className="absolute top-0 left-0 w-full h-full"
+                                    ></iframe>
                                 </div>
-                                <CardHeader>
-                                    <CardTitle className="text-lg font-headline truncate">{video.title}</CardTitle>
-                                    <CardDescription className="text-sm truncate">{video.description}</CardDescription>
-                                </CardHeader>
-                            </Card>
-                        </Link>
+                            ) : (
+                                <Link href={video.videoUrl!} target="_blank">
+                                    <div className="relative aspect-video">
+                                        <Image 
+                                            src={video.imageUrl!} 
+                                            alt={video.title} 
+                                            data-ai-hint={video.dataAiHint}
+                                            fill
+                                            className="object-cover transition-transform duration-300 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <Youtube className="w-12 h-12 text-white" />
+                                        </div>
+                                    </div>
+                                </Link>
+                            )}
+                            <CardHeader>
+                                <CardTitle className="text-lg font-headline truncate">{video.title}</CardTitle>
+                                <CardDescription className="text-sm truncate">{video.description}</CardDescription>
+                            </CardHeader>
+                        </Card>
                     ))}
                 </div>
             </div>
