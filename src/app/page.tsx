@@ -172,7 +172,7 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-            <div className="mt-8 pt-8 border-t border-border">
+             <div className="mt-8 pt-8 border-t border-border">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Visite-nos</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Nosso Endereço</h2>
                 <p className="text-muted-foreground mt-2">
@@ -189,7 +189,7 @@ export default function Home() {
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
             <div className="h-full w-full rounded-lg overflow-hidden min-h-[400px] md:min-h-full">
                 <iframe
-                    src="https://maps.google.com/maps?q=R.%20Rui%20Barbosa%2C%201296%20-%20Lot.%20Mimoso%20Doeste%20I%2C%20Lu%C3%ADs%20Eduardo%20Magalh%C3%A3es%20-%20BA%2C%2047850-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.864698184542!2d-45.80732838887968!3d-12.09600379133968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93b05421c13d8a7b%3A0x6d15a45b73678486!2sIgreja%20Vivendo%20a%20Palavra!5e0!3m2!1spt-BR!2sbr!4v1716309831333!5m2!1spt-BR!2sbr"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -234,5 +234,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
