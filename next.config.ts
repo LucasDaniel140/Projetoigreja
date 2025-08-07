@@ -22,12 +22,6 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'www.logowik.com',
-        port: '',
-        pathname: '/**',
-      },
        {
         protocol: 'https',
         hostname: 'www.clker.com',

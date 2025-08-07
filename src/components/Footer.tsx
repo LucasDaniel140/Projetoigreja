@@ -81,7 +81,7 @@ export function Footer() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4">
                             <Button asChild>
                                 <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank" className="flex items-center gap-2">
-                                    <Image src="https://www.logowik.com/models/apple-developer-2015.svg" alt="App Store" width={24} height={24} className="dark:invert"/>
+                                    <Image src="https://i.imgur.com/wyj5M5q.png" alt="App Store" width={24} height={24} className="dark:invert"/>
                                     <div>
                                         <p className="text-xs">Baixar na</p>
                                         <p className="text-lg font-semibold -mt-1">App Store</p>
