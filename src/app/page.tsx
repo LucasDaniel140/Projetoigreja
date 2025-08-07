@@ -53,7 +53,7 @@ export default function Home() {
               <CardContent className="flex flex-col flex-grow">
                 <CardDescription className="flex-grow">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</CardDescription>
                 <Link href="/missoes" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
@@ -65,7 +65,7 @@ export default function Home() {
               <CardContent className="flex flex-col flex-grow">
                 <CardDescription className="flex-grow">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</CardDescription>
                 <Link href="/acoes-sociais" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
@@ -77,7 +77,7 @@ export default function Home() {
               <CardContent className="flex flex-col flex-grow">
                 <CardDescription className="flex-grow">Uma plataforma para visionários que querem expandir o Reino.</CardDescription>
                  <Link href="#" target="_blank" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
@@ -89,7 +89,7 @@ export default function Home() {
               <CardContent className="flex flex-col flex-grow">
                 <CardDescription className="flex-grow">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</CardDescription>
                 <Link href="/estudos" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
