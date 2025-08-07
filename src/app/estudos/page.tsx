@@ -34,14 +34,9 @@ const studies = [
     paid: true,
     details: (
         <div className="space-y-4 text-sm text-muted-foreground">
-            <p>Um curso completo para quem deseja se comunicar em Libras e servir à comunidade surda. Não é necessário conhecimento prévio.</p>
-            <p><strong>Módulos do curso:</strong></p>
-            <ul className="list-disc pl-5 space-y-1">
-                <li>Módulo 1: Alfabeto e Saudações Básicas.</li>
-                <li>Módulo 2: Vocabulário Essencial do Cotidiano.</li>
-                <li>Módulo 3: Estrutura Gramatical da Libras.</li>
-                <li>Módulo 4: Louvor e Termos Bíblicos em Libras.</li>
-            </ul>
+            <p>Todas as terças-feiras, oferecemos duas turmas presenciais: nível iniciante e nível intermediário. Nosso maior desejo é que a comunidade surda possa conhecer e viver a Palavra de Deus de coração aberto.</p>
+            <p>Queremos levar o evangelho para todos, com amor e cuidado, construindo uma igreja onde ninguém fique de fora.</p>
+            <p><strong>As matrículas estão abertas! Venha fazer parte dessa linda missão conosco.</strong></p>
              <Button asChild>
                 <Link href="https://wa.me/5577999709717" target="_blank">
                     <MessageSquare className="mr-2 h-4 w-4" />
