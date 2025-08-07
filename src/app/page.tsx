@@ -152,7 +152,7 @@ export default function Home() {
                         <Image src="https://i.imgur.com/juZArY5.png" alt="Download on the App Store" width={160} height={53} />
                     </Link>
                     <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank">
-                       <Image src="https://i.imgur.com/Qpz1saX.png" alt="Get it on Google Play" width={180} height={53} />
+                       <Image src="https://i.imgur.com/Qpz1saX.png" alt="Get it on Google Play" width={160} height={53} />
                     </Link>
                     </div>
                 </div>
@@ -231,6 +231,7 @@ export default function Home() {
     
 
     
+
 
 
 
