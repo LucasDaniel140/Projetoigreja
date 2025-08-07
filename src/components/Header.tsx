@@ -22,15 +22,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
+      <div className="container flex h-16 items-center justify-between">
+        <div className="flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Church className="h-6 w-6 text-primary" />
+            <Church className="h-6 w-6 text-primary md:hidden" />
+            <Church className="h-6 w-6 text-primary hidden md:block" />
             <span className="hidden font-bold sm:inline-block font-headline uppercase text-primary">
               Igreja Vivendo a Palavra
             </span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {navLinks.slice(1).map((link) => (
               <Link
                 key={link.href}
@@ -45,44 +46,50 @@ export function Header() {
             ))}
           </nav>
         </div>
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
-                  <span className="sr-only">Toggle Menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="left" className="bg-background">
-                <Link href="/" className="flex items-center">
-                  <Church className="h-6 w-6 mr-2 text-primary" />
-                  <span className="font-bold font-headline uppercase text-primary">Igreja Vivendo a Palavra</span>
-                </Link>
-                <div className="flex flex-col space-y-4 mt-6">
-                  {navLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      className={cn(
-                        "text-lg",
-                        pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
-                      )}
-                    >
-                      {link.label}
+        
+        <div className="flex items-center">
+            <div className="md:hidden">
+                <Sheet>
+                <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                    <Menu className="h-5 w-5" />
+                    <span className="sr-only">Toggle Menu</span>
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="bg-background">
+                    <Link href="/" className="flex items-center">
+                    <Church className="h-6 w-6 mr-2 text-primary" />
+                    <span className="font-bold font-headline uppercase text-primary">Igreja Vivendo a Palavra</span>
                     </Link>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-          <nav className="hidden md:flex items-center">
-             <Link href="/missoes#doar">
-              <Button>
-                Doar Agora
-              </Button>
-            </Link>
-          </nav>
+                    <div className="flex flex-col space-y-4 mt-6">
+                    {navLinks.map((link) => (
+                        <Link
+                        key={link.href}
+                        href={link.href}
+                        className={cn(
+                            "text-lg",
+                            pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
+                        )}
+                        >
+                        {link.label}
+                        </Link>
+                    ))}
+                     <Link href="/missoes#doar" className="pt-4">
+                        <Button className="w-full">
+                            Doar Agora
+                        </Button>
+                    </Link>
+                    </div>
+                </SheetContent>
+                </Sheet>
+            </div>
+            <nav className="hidden md:flex items-center">
+                <Link href="/missoes#doar">
+                <Button>
+                    Doar Agora
+                </Button>
+                </Link>
+            </nav>
         </div>
       </div>
     </header>
