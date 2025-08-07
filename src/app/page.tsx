@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background text-foreground">
-      <section className="w-full pt-24 pb-12 md:pt-32 md:pb-24 lg:pt-48 lg:pb-32 xl:pt-64 xl:pb-48 bg-black relative">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative">
         <Image
           src="https://placehold.co/1920x1080.png"
           alt="Hero Background"
