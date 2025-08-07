@@ -29,30 +29,6 @@ const youtubeVideos = [
   }
 ]
 
-const galleryImages = [
-  {
-    src: "https://i.imgur.com/xVtQ8zG.jpeg",
-    alt: "Momento da igreja",
-    dataAiHint: "church moment"
-  },
-  {
-    src: "https://i.imgur.com/U9btjTV.jpeg",
-    alt: "Momento da igreja",
-    dataAiHint: "church moment"
-  },
-  {
-    src: "https://i.imgur.com/vgQUXh7.jpeg",
-    alt: "Momento da igreja",
-    dataAiHint: "church moment"
-  },
-  {
-    src: "https://i.imgur.com/65HSikK.jpeg",
-    alt: "Momento da igreja",
-    dataAiHint: "church moment"
-  },
-];
-
-
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
   const appLocationRef = React.useRef<HTMLDivElement>(null);
@@ -208,19 +184,8 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4 mb-6">Nossos Momentos</h2>
                  <div className="grid grid-cols-2 gap-4 mt-8">
-                    {galleryImages.map((image, index) => (
-                        <div key={index} className="overflow-hidden rounded-lg group">
-                            <Image
-                                src={image.src}
-                                alt={image.alt}
-                                width={600}
-                                height={600}
-                                data-ai-hint={image.dataAiHint}
-                                className="transform transition-transform duration-300 group-hover:scale-110 object-cover aspect-square"
-                            />
-                        </div>
-                    ))}
-                </div>
+                    {/* Placeholder for YouTube videos */}
+                 </div>
             </div>
         </div>
       </section>
