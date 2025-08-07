@@ -13,19 +13,19 @@ import { InteractiveCard } from '@/components/InteractiveCard';
 const youtubeVideos = [
   {
     title: "Apenas uma Palavra",
-    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=8qtDjKYh0cg5UeuN"
+    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=SOirILXR5lEz-LLv"
   },
   {
     title: "Oração em Línguas",
-    embedUrl: "https://www.youtube.com/embed/16543_c5Y-4?si=5svfO2aYJk1y_N-d"
+    embedUrl: "https://www.youtube.com/embed/WwaS9A4c0YM?si=8jRVGh4rG0Cprg3n"
   },
    {
     title: "Chamadas para Gerar Sonhos",
-    embedUrl: "https://www.youtube.com/embed/rXgXG9A2h3s?si=uRzN8x3zQ_yR_c9Y"
+    embedUrl: "https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz"
   },
   {
     title: "O Homem Interior e o Homem Exterior",
-    embedUrl: "https://www.youtube.com/embed/ZkK-YIfmoz0?si=libM6vCTieK_yus3"
+    embedUrl: "https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB"
   }
 ]
 
