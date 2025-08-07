@@ -21,7 +21,7 @@ const youtubeVideos = [
   },
    {
     title: "Série Especial",
-    embedUrl: "https://www.youtube.com/embed/2tSS_lGQCQ0?si=mSAO7-mEtusE5af4&amp;controls=0"
+    embedUrl: "https://www.youtube.com/embed/2tSS_lGQCQ0?si=mSAO-mEtusE5af4&amp;controls=0"
   },
   {
     title: "Momentos de Adoração",
@@ -191,7 +191,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {youtubeVideos.map((video, index) => (
                         <Card key={index} className="overflow-hidden hover:scale-105 transition-transform duration-300 group">
-                           {video.embedUrl ? (
+                           {video.embedUrl && (
                                 <div className="relative aspect-video">
                                     <iframe
                                         src={video.embedUrl}
@@ -203,20 +203,6 @@ export default function Home() {
                                         className="absolute top-0 left-0 w-full h-full"
                                     ></iframe>
                                 </div>
-                            ) : (
-                                <Link href={video.videoUrl!} target="_blank">
-                                    <div className="relative aspect-video">
-                                        <Image 
-                                            src={video.imageUrl!} 
-                                            alt={video.title} 
-                                            data-ai-hint={video.dataAiHint}
-                                            fill
-                                            className="object-cover transition-transform duration-300 group-hover:scale-110"
-                                        />
-                                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                                        </div>
-                                    </div>
-                                </Link>
                             )}
                         </Card>
                     ))}
@@ -231,6 +217,7 @@ export default function Home() {
     
 
     
+
 
 
 
