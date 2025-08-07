@@ -180,7 +180,7 @@ export default function Home() {
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
             <div>
-                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
+                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Visite-nos</h2>
                  <p className="text-muted-foreground mt-2 mb-6">
                     Estamos ansiosos para receber você em nossa casa.
@@ -233,10 +233,6 @@ export default function Home() {
                                     </div>
                                 </Link>
                             )}
-                            <CardHeader>
-                                <CardTitle className="text-lg font-headline truncate">{video.title}</CardTitle>
-                                <CardDescription className="text-sm truncate">{video.description}</CardDescription>
-                            </CardHeader>
                         </Card>
                     ))}
                 </div>
