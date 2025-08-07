@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -74,7 +75,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section id="features" className="w-full py-12 md:py-16 bg-background flex items-center justify-center">
+      <section id="features" className="w-full py-12 bg-background flex items-center justify-center">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
@@ -137,7 +138,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="app-location" className="w-full py-12 md:py-16">
+      <section id="app-location" className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-4 text-center md:text-left">
             <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Conecte-se</div>
@@ -166,8 +167,8 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="w-full py-12 md:py-16">
-        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
+      <section className="w-full py-12">
+        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
             <div>
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Visite-nos</h2>
@@ -230,3 +231,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
