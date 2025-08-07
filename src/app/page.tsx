@@ -139,14 +139,14 @@ export default function Home() {
       </section>
 
       <section id="app-location" className="w-full py-12">
-        <div className="container px-4 md:px-6 flex flex-col items-center gap-8">
-          <div className="space-y-4 text-center">
+        <div className="container grid md:grid-cols-2 gap-8 items-center justify-center px-4 md:px-6">
+          <div className="space-y-4 text-center md:text-left">
             <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Conecte-se</div>
             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Leve a Igreja com Você</h2>
-            <p className="text-muted-foreground md:text-xl/relaxed max-w-xl mx-auto">
+            <p className="text-muted-foreground md:text-xl/relaxed max-w-xl mx-auto md:mx-0">
               Baixe nosso aplicativo para ter acesso a mensagens, estudos, agenda de eventos e muito mais. Fique conectado com a nossa comunidade onde quer que esteja.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
               <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank">
                 <Button size="lg" className="w-full sm:w-auto">
                     <Image src="https://i.imgur.com/wyj5M5q.png" alt="App Store" width={24} height={24} className="dark:invert mr-2"/>
@@ -161,7 +161,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <div className="w-full max-w-sm h-full flex items-center justify-center">
+          <div className="w-full max-w-sm h-full flex items-center justify-center mx-auto">
             <InteractivePhone transform={transform} />
           </div>
         </div>
@@ -169,10 +169,10 @@ export default function Home() {
       
       <section className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
-            <div className="text-center">
+            <div className="text-center md:text-left">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Visite-nos</h2>
-                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
+                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto md:mx-0">
                     Estamos ansiosos para receber você em nossa casa.
                 </p>
                 <div className="h-full w-full rounded-lg overflow-hidden">
@@ -186,10 +186,10 @@ export default function Home() {
                         referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            <div className="text-center">
+            <div className="text-center md:text-left">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Assista Nossas Mensagens</h2>
-                <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
+                <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto md:mx-0">
                     Acompanhe nossas últimas pregações, estudos e momentos de louvor em nosso canal do YouTube.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
