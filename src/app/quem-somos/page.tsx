@@ -92,7 +92,7 @@ export default function QuemSomosPage() {
                         src={image.src}
                         alt={image.alt}
                         data-ai-hint={image.dataAiHint}
-                        layout="fill"
+                        fill
                         objectFit="cover"
                         className="transition-transform duration-300 group-hover:scale-105"
                       />
