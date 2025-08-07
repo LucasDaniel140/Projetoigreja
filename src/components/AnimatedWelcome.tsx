@@ -45,6 +45,7 @@ type AnimatedWelcomeProps = {
 export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
     const timeline = useRef<anime.AnimeTimelineInstance | null>(null);
     const welcomeContainerRef = useRef<HTMLDivElement>(null);
+    const [isReady, setIsReady] = React.useState(false);
 
     useEffect(() => {
         const welcomeEl = welcomeContainerRef.current?.querySelector(`.welcome-el`);
@@ -53,6 +54,9 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
         if (welcomeEl && homeEl) {
             timeline.current = anime.timeline({ 
                 loop: true,
+                complete: () => {
+                    if(!isReady) setIsReady(true);
+                }
             })
             .add({
                 targets: welcomeEl.querySelectorAll('.letter, sup'),
@@ -93,10 +97,10 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
         return () => {
             timeline.current?.pause();
         };
-    }, []);
+    }, [isReady]);
 
   return (
-    <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px' }}>
+    <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px', opacity: isReady ? 1 : 0, transition: 'opacity 0.3s ease-in' }}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="welcome-el" style={{display: 'inline-block'}}>
             <WelcomeText text="" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
