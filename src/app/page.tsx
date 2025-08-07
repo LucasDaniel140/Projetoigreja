@@ -129,16 +129,12 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center items-center h-full min-h-[400px] md:min-h-[500px]">
-             <div className="perspective-container">
-                <div className="phone-3d-container">
-                    <Image
-                    src="https://i.imgur.com/8Ipq9Na.png"
-                    alt="Aplicativo da Igreja"
-                    width={300}
-                    height={600}
-                    />
-                </div>
-            </div>
+            <Image
+            src="https://i.imgur.com/8Ipq9Na.png"
+            alt="Aplicativo da Igreja"
+            width={300}
+            height={600}
+            />
           </div>
         </div>
       </section>
