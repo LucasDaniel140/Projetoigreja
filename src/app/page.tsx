@@ -140,7 +140,7 @@ export default function Home() {
 
       <section id="app-location" className="w-full py-12">
         <div className="container mx-auto px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-8 items-center justify-center">
+            <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
                 <div className="space-y-4 text-center md:text-left">
                     <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Conecte-se</div>
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Leve a Igreja com Você</h2>
@@ -171,10 +171,10 @@ export default function Home() {
       
       <section className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
-            <div className="text-center md:text-left">
+            <div className="text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Visite-nos</h2>
-                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto md:mx-0">
+                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
                     Estamos ansiosos para receber você em nossa casa.
                 </p>
                 <div className="h-full w-full rounded-lg overflow-hidden">
@@ -188,10 +188,10 @@ export default function Home() {
                         referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            <div className="text-center md:text-left">
+            <div className="text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Assista Nossas Mensagens</h2>
-                <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto md:mx-0">
+                <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
                     Acompanhe nossas últimas pregações, estudos e momentos de louvor em nosso canal do YouTube.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -237,3 +237,4 @@ export default function Home() {
     
 
     
+
