@@ -7,7 +7,7 @@ import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-[100dvh] bg-background text-foreground">
+    <>
       <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex flex-col items-center justify-center min-h-[60vh]">
         <Image
           src="https://placehold.co/1920x1080.png"
@@ -91,6 +91,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }
