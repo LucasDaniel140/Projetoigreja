@@ -206,7 +206,7 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
-                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                 <div className="grid grid-cols-2 gap-4 mt-8">
                     <div className="overflow-hidden rounded-lg group">
                     <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="church event" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
                     </div>
