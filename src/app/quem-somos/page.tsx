@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -6,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Church, Target, Eye, Heart } from "lucide-react";
 import Image from "next/image";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 const leadership = [
@@ -19,12 +20,34 @@ const leadership = [
 const historyImages = [
     { src: "https://placehold.co/600x400.png", alt: "Igreja antiga em uma garagem", dataAiHint: "garage church" },
     { src: "https://placehold.co/600x400.png", alt: "Fachada da nova igreja", dataAiHint: "modern church building" },
+    { src: "https://placehold.co/600x400.png", alt: "Culto de domingo", dataAiHint: "church service" },
+    { src: "https://placehold.co/600x400.png", alt: "Ação social da igreja", dataAiHint: "church community outreach" },
+    { src: "https://placehold.co/600x400.png", alt: "Grupo de jovens", dataAiHint: "church youth group" },
+    { src: "https://placehold.co/600x400.png", alt: "Batismo na igreja", dataAiHint: "church baptism" },
 ];
 
 export default function QuemSomosPage() {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+  const [count, setCount] = React.useState(0)
+
   const autoplayPlugin = React.useRef(
     Autoplay({ delay: 3000, stopOnInteraction: true })
   );
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+
 
   return (
     <div className="bg-background">
@@ -32,7 +55,7 @@ export default function QuemSomosPage() {
         <section className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-headline">Nossa Identidade</h1>
           <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
-          Somos uma igreja que vive pela Palavra, apaixonada por Jesus e guiada pelo Espírito Santo. Cremos que Deus tem um propósito para cada pessoa e desejamos que todos experimentem a plenitude do Evangelho.
+          Somos uma igreja apaixonada por Cristo, sendo continuamente direcionados pelo Espírito Santo. Acreditamos no propósito de Deus para cada pessoa e desejamos que todos vivam a plenitude do Evangelho.
           </p>
         </section>
 
@@ -50,33 +73,48 @@ export default function QuemSomosPage() {
               </p>
             </div>
           </div>
-          <Carousel
-            plugins={[autoplayPlugin.current]}
-            className="w-full max-w-lg mx-auto"
-            opts={{ align: "start", loop: true }}
-            onMouseEnter={autoplayPlugin.current.stop}
-            onMouseLeave={autoplayPlugin.current.reset}
-          >
-            <CarouselContent>
-              {historyImages.map((image, index) => (
-                <CarouselItem key={index}>
-                  <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
-                    <Image
-                      src={image.src}
-                      alt={image.alt}
-                      data-ai-hint={image.dataAiHint}
-                      layout="fill"
-                      objectFit="cover"
-                      className="transition-transform duration-300 group-hover:scale-105"
-                    />
-                     <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <p className="text-white font-bold">{image.alt}</p>
+          <div>
+            <Carousel
+              setApi={setApi}
+              plugins={[autoplayPlugin.current]}
+              className="w-full max-w-lg mx-auto"
+              opts={{ align: "start", loop: true }}
+              onMouseEnter={autoplayPlugin.current.stop}
+              onMouseLeave={autoplayPlugin.current.reset}
+            >
+              <CarouselContent>
+                {historyImages.map((image, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        data-ai-hint={image.dataAiHint}
+                        layout="fill"
+                        objectFit="cover"
+                        className="transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p className="text-white font-bold">{image.alt}</p>
+                      </div>
                     </div>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+            <div className="py-2 text-center text-sm text-muted-foreground">
+                <div className="flex gap-2 justify-center mt-4">
+                    {Array.from({ length: count }).map((_, i) => (
+                        <button
+                            key={i}
+                            onClick={() => api?.scrollTo(i)}
+                            className={`h-2 w-2 rounded-full ${current === i + 1 ? "bg-primary" : "bg-muted"}`}
+                            aria-label={`Ir para o slide ${i + 1}`}
+                        />
+                    ))}
+                </div>
+            </div>
+          </div>
         </section>
 
         <Separator className="my-12" />
