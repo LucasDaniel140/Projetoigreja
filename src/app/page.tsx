@@ -203,20 +203,6 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
-                 <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="church event" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
-                    </div>
-                    <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="worship service" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
-                    </div>
-                    <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="community gathering" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
-                    </div>
-                    <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="prayer meeting" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
-                    </div>
-                </div>
             </div>
         </div>
       </section>
