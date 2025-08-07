@@ -18,12 +18,12 @@ const leadership = [
 ];
 
 const historyImages = [
-    { src: "https://placehold.co/600x400.png", alt: "Igreja antiga em uma garagem", dataAiHint: "garage church" },
-    { src: "https://placehold.co/600x400.png", alt: "Fachada da nova igreja", dataAiHint: "modern church building" },
-    { src: "https://placehold.co/600x400.png", alt: "Culto de domingo", dataAiHint: "church service" },
-    { src: "https://placehold.co/600x400.png", alt: "Ação social da igreja", dataAiHint: "church community outreach" },
-    { src: "https://placehold.co/600x400.png", alt: "Grupo de jovens", dataAiHint: "church youth group" },
-    { src: "https://placehold.co/600x400.png", alt: "Batismo na igreja", dataAiHint: "church baptism" },
+    { src: "https://i.imgur.com/xVtQ8zG.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/U9btjTV.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/vgQUXh7.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/65HSikK.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/Nqef2Od.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/E54k9Yk.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
 ];
 
 export default function QuemSomosPage() {
