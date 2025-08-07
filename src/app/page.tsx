@@ -62,7 +62,7 @@ export default function Home() {
               <CardContent>
                 <CardDescription>Nosso compromisso é com o bem-estar da nossa comunidade. Conheça nossos projetos e veja como ajudar.</CardDescription>
                 <Link href="/acoes-sociais" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary">Participe <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                  <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
