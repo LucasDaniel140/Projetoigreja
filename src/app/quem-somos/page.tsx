@@ -85,7 +85,6 @@ export default function QuemSomosPage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
           </Carousel>
         </section>
 
@@ -144,14 +143,12 @@ export default function QuemSomosPage() {
         <section className="text-center">
             <h2 className="text-3xl font-headline font-bold mb-8">Galeria de Momentos</h2>
             <Carousel
-              plugins={[autoplayPlugin.current]}
+              plugins={[Autoplay({ delay: 3000, stopOnInteraction: true })]}
               className="w-full max-w-4xl mx-auto"
                opts={{
                 align: "start",
                 loop: true,
               }}
-              onMouseEnter={autoplayPlugin.current.stop}
-              onMouseLeave={autoplayPlugin.current.reset}
             >
               <CarouselContent>
                 {galleryImages.map((image, index) => (
