@@ -86,3 +86,18 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .perspective-container {
+    perspective: 1000px;
+  }
+
+  .phone-3d-container {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+  }
+
+  .perspective-container:hover .phone-3d-container {
+    transform: rotateY(15deg) rotateX(5deg) scale(1.05);
+  }
+}

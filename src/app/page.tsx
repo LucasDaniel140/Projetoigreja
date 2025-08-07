@@ -98,7 +98,7 @@ export default function Home() {
       </section>
 
       <section id="app-location" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
-        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
           <div className="space-y-4">
             <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Conecte-se</div>
             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Leve a Igreja com Você</h2>
@@ -119,26 +119,39 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-          </div>
-          <div className="space-y-4">
-            <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Visite-nos</div>
-            <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Nosso Endereço</h2>
-            <div className="rounded-lg overflow-hidden">
-             <iframe
-                src="https://maps.google.com/maps?q=R.%20Rui%20Barbosa%2C%201296%20-%20Lot.%20Mimoso%20Doeste%20I%2C%20Lu%C3%ADs%20Eduardo%20Magalh%C3%A3es%20-%20BA%2C%2047850-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="350"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            <div className="mt-8 pt-8 border-t border-border">
+                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Visite-nos</div>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Nosso Endereço</h2>
+                <p className="text-muted-foreground mt-2">
+                R. Rui Barbosa, 1296 - Lot. Mimoso Doeste I, Luís Eduardo Magalhães - BA, 47850-000
+                </p>
             </div>
-             <p className="text-muted-foreground text-center md:text-left">
-              R. Rui Barbosa, 1296 - Lot. Mimoso Doeste I, Luís Eduardo Magalhães - BA, 47850-000
-            </p>
+          </div>
+          <div className="flex justify-center items-center h-full min-h-[400px] md:min-h-[500px]">
+             <div className="perspective-container">
+                <div className="phone-3d-container">
+                    <Image
+                    src="https://i.imgur.com/vthA202.png"
+                    alt="Aplicativo da Igreja"
+                    width={300}
+                    height={600}
+                    className="rounded-[3rem] shadow-2xl border-4 border-black"
+                    />
+                </div>
+            </div>
           </div>
         </div>
+      </section>
+      <section className="w-full">
+         <iframe
+            src="https://maps.google.com/maps?q=R.%20Rui%20Barbosa%2C%201296%20-%20Lot.%20Mimoso%20Doeste%20I%2C%20Lu%C3%ADs%20Eduardo%20Magalh%C3%A3es%20-%20BA%2C%2047850-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
       </section>
     </>
   );
