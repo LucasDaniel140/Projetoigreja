@@ -8,14 +8,18 @@ import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 export default function Home() {
   return (
     <>
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex flex-col items-center justify-center min-h-[60vh]">
-        <Image
-          src="https://placehold.co/1920x1080.png"
-          alt="Hero Background"
-          fill
-          className="object-cover opacity-30"
-          data-ai-hint="church concert stage"
-        />
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex flex-col items-center justify-center min-h-[60vh] overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+          poster="https://placehold.co/1920x1080.png"
+        >
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          Seu navegador não suporta a tag de vídeo.
+        </video>
         <div className="container px-4 md:px-6 relative flex flex-col justify-center items-center h-full flex-grow w-full">
           <AnimatedWelcome />
           <div className="flex flex-col items-center space-y-4 text-center mt-8">
