@@ -1,4 +1,7 @@
 
+"use client";
+
+import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket, Smartphone, MapPin } from "lucide-react";
@@ -8,8 +11,24 @@ import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
 
 export default function Home() {
+  const [transform, setTransform] = useState('');
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+
+    const rotateX = (clientY / innerHeight - 0.5) * -30;
+    const rotateY = (clientX / innerWidth - 0.5) * 30;
+
+    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+  };
+
+  const handleMouseLeave = () => {
+    setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg)');
+  };
+
   return (
-    <>
+    <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full">
       <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex flex-col items-center justify-center min-h-[60vh] overflow-hidden">
         <video
           autoPlay
@@ -130,7 +149,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full h-full min-h-[400px] md:min-h-[600px] flex items-center justify-center">
-            <InteractivePhone />
+            <InteractivePhone transform={transform} />
           </div>
         </div>
       </section>
@@ -145,6 +164,6 @@ export default function Home() {
             referrerPolicy="no-referrer-when-downgrade"
             ></iframe>
       </section>
-    </>
+    </div>
   );
 }
