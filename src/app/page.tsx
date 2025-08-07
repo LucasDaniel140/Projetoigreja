@@ -10,25 +10,6 @@ import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
 import { InteractiveCard } from '@/components/InteractiveCard';
 
-const youtubeVideos = [
-  {
-    title: "Apenas uma Palavra",
-    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=SOirILXR5lEz-LLv"
-  },
-  {
-    title: "Oração em Línguas",
-    embedUrl: "https://www.youtube.com/embed/WwaS9A4c0YM?si=8jRVGh4rG0Cprg3n"
-  },
-   {
-    title: "Chamadas para Gerar Sonhos",
-    embedUrl: "https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz"
-  },
-  {
-    title: "O Homem Interior e o Homem Exterior",
-    embedUrl: "https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB"
-  }
-]
-
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
   const appLocationRef = React.useRef<HTMLDivElement>(null);
@@ -165,8 +146,8 @@ export default function Home() {
       </section>
       
       <section className="w-full py-12">
-        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
-            <div className="text-left md:text-left">
+        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div className="flex flex-col items-center text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mb-6">Visite-nos</h2>
                 <div className="h-full w-full rounded-lg overflow-hidden">
@@ -185,16 +166,16 @@ export default function Home() {
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4 mb-6">Nossos Momentos</h2>
                  <div className="grid grid-cols-2 gap-4 mt-4">
                     <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/vGohlJdcGvE?si=SOirILXR5lEz-LLv" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/vGohlJdcGvE?si=SOirILXR5lEz-LLv" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                     <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/WwaS9A4c0YM?si=8jRVGh4rG0Cprg3n" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/WwaS9A4c0YM?si=8jRVGh4rG0Cprg3n" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                     <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                     <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
                     </div>
                  </div>
             </div>
