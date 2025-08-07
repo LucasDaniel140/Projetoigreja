@@ -54,7 +54,7 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
         if (welcomeEl && homeEl) {
             timeline.current = anime.timeline({ 
                 loop: true,
-                complete: () => {
+                begin: () => {
                     if(!isReady) setIsReady(true);
                 }
             })
