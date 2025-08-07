@@ -20,15 +20,11 @@ const youtubeVideos = [
   },
    {
     title: "Série Especial",
-    imageUrl: "https://placehold.co/600x400.png",
-    dataAiHint: "christian relationships",
-    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+    embedUrl: "https://www.youtube.com/embed/2tSS_lGQCQ0?si=mSAO7-mEtusE5af4&amp;controls=0"
   },
   {
     title: "Momentos de Adoração",
-    imageUrl: "https://placehold.co/600x400.png",
-    dataAiHint: "church worship",
-    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+    embedUrl: "https://www.youtube.com/embed/_a2gUBNM0dE?si=5Y2YvH2Mgph2jzoq&amp;controls=0"
   }
 ]
 
