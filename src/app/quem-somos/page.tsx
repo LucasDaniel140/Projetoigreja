@@ -16,12 +16,6 @@ const leadership = [
   { name: "Pra. Angela Pacheco", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
 ];
 
-const historyImages = [
-  { src: "https://placehold.co/600x400.png", alt: "Igreja antiga em uma garagem", dataAiHint: "garage church" },
-  { src: "https://placehold.co/600x400.png", alt: "Construção do novo templo", dataAiHint: "church construction" },
-  { src: "https://placehold.co/600x400.png", alt: "Fachada da nova igreja", dataAiHint: "modern church building" },
-];
-
 const galleryImages = [
   { src: "https://placehold.co/600x400.png", alt: "Culto de Domingo", dataAiHint: "church service" },
   { src: "https://placehold.co/600x400.png", alt: "Grupo de jovens", dataAiHint: "youth group" },
@@ -32,10 +26,6 @@ const galleryImages = [
 ];
 
 export default function QuemSomosPage() {
-  const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
-  
   const galleryAutoplayPlugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true })
   );
@@ -64,33 +54,33 @@ export default function QuemSomosPage() {
               </p>
             </div>
           </div>
-          <div>
-            <Carousel
-              plugins={[autoplayPlugin.current]}
-              className="w-full"
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              onMouseEnter={autoplayPlugin.current.stop}
-              onMouseLeave={autoplayPlugin.current.reset}
-            >
-              <CarouselContent>
-                {historyImages.map((image, index) => (
-                  <CarouselItem key={index}>
-                    <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        data-ai-hint={image.dataAiHint}
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="text-center">
+                <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
+                    <Image
+                    src="https://placehold.co/600x400.png"
+                    alt="Igreja antiga em uma garagem"
+                    data-ai-hint="garage church"
+                    layout="fill"
+                    objectFit="cover"
+                    />
+                </div>
+                <h3 className="font-bold mt-2">Antes</h3>
+                <p className="text-sm text-muted-foreground">O início em uma garagem</p>
+            </div>
+             <div className="text-center">
+                <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
+                    <Image
+                    src="https://placehold.co/600x400.png"
+                    alt="Fachada da nova igreja"
+                    data-ai-hint="modern church building"
+                    layout="fill"
+                    objectFit="cover"
+                    />
+                </div>
+                <h3 className="font-bold mt-2">Depois</h3>
+                <p className="text-sm text-muted-foreground">O templo hoje</p>
+            </div>
           </div>
         </section>
 
