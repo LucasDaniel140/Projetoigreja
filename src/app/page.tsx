@@ -17,7 +17,7 @@ export default function Home() {
           className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
           poster="https://placehold.co/1920x1080.png"
         >
-          <source src="https://i.imgur.com/KRdQUVQ.mp4" type="video/mp4" />
+          <source src="https://i.imgur.com/o6GrCN0.mp4" type="video/mp4" />
           Seu navegador não suporta a tag de vídeo.
         </video>
         <div className="container px-4 md:px-6 relative flex flex-col justify-center items-center h-full flex-grow w-full">
