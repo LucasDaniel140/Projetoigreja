@@ -20,7 +20,7 @@ export function Footer() {
                 <Image src="https://i.imgur.com/O9h3YcW.png" alt="YouTube" width={28} height={28} className="hover:opacity-80 transition-opacity" />
             </Link>
              <Link href="https://open.spotify.com/show/0Yw2x1a4XdV0VL76Qt53Bp?si=972a7d87e24b45f9" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
-                <Image src="https://www.logowik.com/content/uploads/images/spotify-black-icon4349.jpg" alt="Spotify" width={24} height={24} className="hover:opacity-80 transition-opacity" />
+                <Image src="https://i.imgur.com/D4Fisnj.png" alt="Spotify" width={24} height={24} className="hover:opacity-80 transition-opacity" />
             </Link>
              <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank" rel="noopener noreferrer" aria-label="App Store">
                  <Image src="https://www.clker.com/cliparts/5/j/n/C/d/u/apple-logo-black-hi.png" alt="App Store" width={24} height={24} className="hover:opacity-80 transition-opacity" />
