@@ -23,11 +23,7 @@ export function Footer() {
   return (
     <footer className="bg-black text-secondary-foreground border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="text-center md:text-left mb-4 md:mb-0">
-            <h3 className="text-xl font-headline font-bold uppercase text-primary">Igreja Vivendo a Palavra</h3>
-            <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Igreja Vivendo a Palavra. Todos os direitos reservados.</p>
-          </div>
+        <div className="flex flex-col md:flex-row justify-center items-center">
           <TooltipProvider>
             <div className="flex flex-wrap justify-center items-center gap-4">
               <Tooltip>
