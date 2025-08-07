@@ -93,8 +93,7 @@ export default function QuemSomosPage() {
                         alt={image.alt}
                         data-ai-hint={image.dataAiHint}
                         fill
-                        objectFit="cover"
-                        className="transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
                   </CarouselItem>

@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         body: ['var(--font-inter)', 'sans-serif'],
-        headline: ['var(--font-oswald)', 'serif'],
+        headline: ['Oswald', 'serif'],
         code: ['monospace'],
       },
       colors: {

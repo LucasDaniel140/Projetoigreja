@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket } from "lucide-react";
 import Image from "next/image";
@@ -10,9 +10,29 @@ import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
 import { InteractiveCard } from '@/components/InteractiveCard';
 
+const youtubeVideos = [
+  {
+    id: "vGohlJdcGvE",
+    title: "Vencendo a Ansiedade",
+  },
+  {
+    id: "WwaS9A4c0YM",
+    title: "O Poder da Aliança",
+  },
+  {
+    id: "_a2gUBNM0dE",
+    title: "Ressurreição",
+  },
+  {
+    id: "2tSS_lGQCQ0",
+    title: "Crescendo em Meio ao Deserto",
+  },
+];
+
+
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
-  const appLocationRef = React.useRef<HTMLDivElement>(null);
+  const appLocationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = appLocationRef.current;
@@ -36,13 +56,13 @@ export default function Home() {
     };
     
     if (container) {
-      container.addEventListener('mousemove', handleMouseMove as EventListener);
+      container.addEventListener('mousemove', handleMouseMove);
       container.addEventListener('mouseleave', handleMouseLeave);
     }
 
     return () => {
       if (container) {
-        container.removeEventListener('mousemove', handleMouseMove as EventListener);
+        container.removeEventListener('mousemove', handleMouseMove);
         container.removeEventListener('mouseleave', handleMouseLeave);
       }
     }
@@ -145,7 +165,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="w-full py-12">
+       <section className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
             <div className="flex flex-col items-center text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>

@@ -4,7 +4,7 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
 
-const WelcomeText = ({ text, isVisible, className, children }: { text: string; isVisible: boolean; className?: string, children?: React.ReactNode }) => {
+const WelcomeText = ({ text, isVisible, className, children }: { text?: string; isVisible: boolean; className?: string, children?: React.ReactNode }) => {
     const textRef = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const WelcomeText = ({ text, isVisible, className, children }: { text: string; i
                 }
             });
         }
-    }, [text]);
+    }, [text, children]);
 
     return (
         <h1
@@ -38,18 +38,24 @@ const WelcomeText = ({ text, isVisible, className, children }: { text: string; i
     );
 };
   
-type AnimatedWelcomeProps = {
-    position?: 'top' | 'bottom' | 'center';
+const AnimatedText = ({ text, children, isVisible, className }: { text?: string; children?: React.ReactNode; isVisible: boolean; className?: string }) => {
+  return (
+    <div style={{ display: 'inline-block' }}>
+      <WelcomeText text={text} isVisible={isVisible} className={className}>
+        {children}
+      </WelcomeText>
+    </div>
+  );
 };
 
-export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
+export function AnimatedWelcome() {
     const timeline = useRef<anime.AnimeTimelineInstance | null>(null);
     const welcomeContainerRef = useRef<HTMLDivElement>(null);
     const [isReady, setIsReady] = React.useState(false);
 
     useEffect(() => {
-        const welcomeEl = welcomeContainerRef.current?.querySelector(`.welcome-el`);
-        const homeEl = welcomeContainerRef.current?.querySelector(`.home-el`);
+        const welcomeEl = welcomeContainerRef.current?.querySelector('.welcome-el');
+        const homeEl = welcomeContainerRef.current?.querySelector('.home-el');
 
         if (welcomeEl && homeEl) {
             timeline.current = anime.timeline({ 
@@ -102,15 +108,15 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
   return (
     <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px', opacity: isReady ? 1 : 0, transition: 'opacity 0.3s ease-in' }}>
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="welcome-el" style={{display: 'inline-block'}}>
-            <WelcomeText text="" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
-                Bem-vindo<sup style={{ display: 'inline-block', verticalAlign: 'super', fontSize: '0.5em' }}>(a)</sup>
-            </WelcomeText>
+        <div className="welcome-el">
+          <AnimatedText isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
+            Bem-vindo<sup style={{ display: 'inline-block', verticalAlign: 'super', fontSize: '0.5em' }}>(a)</sup>
+          </AnimatedText>
         </div>
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="home-el" style={{display: 'inline-block'}}>
-            <WelcomeText text="esta é a sua casa" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
+        <div className="home-el">
+            <AnimatedText text="esta é a sua casa" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
         </div>
       </div>
     </div>

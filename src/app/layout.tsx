@@ -4,10 +4,9 @@ import './globals.css';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Toaster } from "@/components/ui/toaster"
-import { Inter, Oswald } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const oswald = Oswald({ subsets: ['latin'], weight: ['700'], variable: '--font-oswald' });
 
 export const metadata: Metadata = {
   title: 'Igreja Vivendo a Palavra',
@@ -20,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("dark", inter.variable, oswald.variable)}>
+    <html lang="en" suppressHydrationWarning className={cn("dark", inter.variable)}>
       <head />
       <body className={cn("min-h-screen bg-background font-body antialiased")} suppressHydrationWarning>
         <div className="relative flex min-h-screen flex-col">
