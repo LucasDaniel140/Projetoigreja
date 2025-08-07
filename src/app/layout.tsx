@@ -20,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning className={cn("dark", inter.variable, oswald.variable)}>
       <head />
-      <body className={cn("min-h-screen bg-background font-body antialiased", inter.variable, oswald.variable)}>
+      <body className={cn("min-h-screen bg-background font-body antialiased")}>
         <div className="relative flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>
