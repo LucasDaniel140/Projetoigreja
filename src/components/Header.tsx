@@ -21,12 +21,12 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Church className="h-6 w-6 text-primary" />
-            <span className="hidden font-bold sm:inline-block font-headline">
+            <span className="hidden font-bold sm:inline-block font-headline uppercase text-primary">
               IgrejaConectada
             </span>
           </Link>
@@ -36,8 +36,8 @@ export function Header() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "transition-colors hover:text-foreground/80",
-                  pathname === link.href ? "text-foreground" : "text-foreground/60"
+                  "transition-colors hover:text-primary",
+                  pathname === link.href ? "text-primary font-bold" : "text-foreground/60"
                 )}
               >
                 {link.label}
@@ -54,10 +54,10 @@ export function Header() {
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left">
+              <SheetContent side="left" className="bg-background">
                 <Link href="/" className="flex items-center">
                   <Church className="h-6 w-6 mr-2 text-primary" />
-                  <span className="font-bold font-headline">IgrejaConectada</span>
+                  <span className="font-bold font-headline uppercase text-primary">IgrejaConectada</span>
                 </Link>
                 <div className="flex flex-col space-y-4 mt-6">
                   {navLinks.map((link) => (
