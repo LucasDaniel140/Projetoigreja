@@ -72,8 +72,10 @@ export default function Home() {
                 <CardTitle className="font-headline text-2xl uppercase">Visionários</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col flex-grow">
-                <CardDescription className="flex-grow">Uma plataforma para visionários que querem expandir o Reino. (Site externo)</CardDescription>
-                <Button variant="link" className="px-0 text-primary mt-4 cursor-not-allowed">Em Breve <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                <CardDescription className="flex-grow">Uma plataforma para visionários que querem expandir o Reino.</CardDescription>
+                 <Link href="#" target="_blank" className="mt-4 inline-block">
+                  <Button variant="link" className="px-0 text-primary">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </Link>
               </CardContent>
             </Card>
             <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">

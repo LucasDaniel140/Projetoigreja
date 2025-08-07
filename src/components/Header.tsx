@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Church, Menu } from "lucide-react";
+import { Church, Menu, Users } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,8 @@ const navLinks = [
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Ações Sociais" },
   { href: "/estudos", label: "Estudos" },
-  { href: "/parceiros", label: "Parceiros" },
+  { href: "/novo-aqui", label: "É Novo Aqui?" },
+  { href: "#", label: "Visionários", target: "_blank" },
 ];
 
 export function Header() {
@@ -36,6 +37,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
+                target={link.target}
                 className={cn(
                   "transition-colors hover:text-primary",
                   pathname === link.href ? "text-primary font-bold" : "text-foreground/60"
@@ -66,6 +68,7 @@ export function Header() {
                         <Link
                         key={link.href}
                         href={link.href}
+                        target={link.target}
                         className={cn(
                             "text-lg",
                             pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
