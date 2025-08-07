@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
-import { cn } from '@/lib/utils';
 
 export function AnimatedWelcome() {
   const animationRef = useRef<HTMLHeadingElement>(null);
@@ -12,8 +11,10 @@ export function AnimatedWelcome() {
       const textWrapper = animationRef.current;
       const textContent = textWrapper.textContent;
       if (textContent) {
+        // Wrap each letter in a span with a nested span for the animation
         textWrapper.innerHTML = textContent.replace(/\S/g, "<span class='letter-wrapper' style='display: inline-block; overflow: hidden;'><span class='letter' style='display: inline-block;'>$&</span></span>");
 
+        // Create the timeline
         anime.timeline({ loop: true })
           .add({
             targets: '.letter',
