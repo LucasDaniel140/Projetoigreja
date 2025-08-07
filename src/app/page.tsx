@@ -128,15 +128,15 @@ export default function Home() {
                 </p>
             </div>
           </div>
-          <div className="w-full h-full min-h-[400px] md:min-h-[600px] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:rounded-lg [&>iframe]:shadow-2xl">
-            <iframe 
-                title="iPhone 15 Pro" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/fe295083f96d44fc848f2f52e9636e65/embed?autospin=1&autostart=1&ui_theme=dark&ui_infos=0&ui_controls=0"
-            >
-            </iframe>
+          <div className="w-full h-full min-h-[400px] md:min-h-[600px] flex items-center justify-center">
+            <Image 
+                src="https://i.imgur.com/8Ipq9Na.png"
+                alt="App da Igreja em um celular"
+                width={300}
+                height={600}
+                className="object-contain"
+                data-ai-hint="church app phone"
+            />
           </div>
         </div>
       </section>
