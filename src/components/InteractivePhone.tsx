@@ -36,7 +36,7 @@ export function InteractivePhone() {
       }}
     >
       <Image
-        src="https://i.imgur.com/8Ipq9Na.png"
+        src="https://i.imgur.com/5tEj5Ag.png"
         alt="App da Igreja em um celular"
         width={300}
         height={600}
