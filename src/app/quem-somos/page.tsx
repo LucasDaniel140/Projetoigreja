@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Church, Target, Eye, Heart } from "lucide-react";
 import Image from "next/image";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 const leadership = [
@@ -32,7 +32,7 @@ export default function QuemSomosPage() {
         <section className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-headline">Nossa Identidade</h1>
           <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
-          Somos uma igreja apaixonada por Cristo, sendo continuamente direcionados pelo Espírito Santo. Acreditamos no propósito de Deus para cada pessoa e desejamos que todos vivam a plenitude do Evangelho.
+          Somos uma igreja que vive pela Palavra, apaixonada por Jesus e guiada pelo Espírito Santo. Cremos que Deus tem um propósito para cada pessoa e desejamos que todos experimentem a plenitude do Evangelho.
           </p>
         </section>
 
