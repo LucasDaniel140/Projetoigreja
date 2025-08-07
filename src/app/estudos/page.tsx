@@ -26,7 +26,7 @@ const studies = [
           <li>Aplicações práticas para a vida cristã diária.</li>
         </ul>
         <Button asChild>
-          <Link href="#">
+          <Link href="#" target="_blank">
             <MessageSquare className="mr-2 h-4 w-4" />
             Falar com Responsável
           </Link>
@@ -51,7 +51,7 @@ const studies = [
                 <li>Módulo 4: Louvor e Termos Bíblicos em Libras.</li>
             </ul>
              <Button asChild>
-                <Link href="#">
+                <Link href="https://wa.me/5577999709717" target="_blank">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Falar com Responsável
                 </Link>
@@ -76,7 +76,7 @@ const studies = [
                 <li>Apologética: Defendendo a fé cristã.</li>
             </ul>
              <Button asChild>
-                <Link href="https://wa.me/77998372291" target="_blank">
+                <Link href="https://wa.me/5577999795558" target="_blank">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Falar com Responsável
                 </Link>
@@ -101,7 +101,7 @@ const studies = [
                 <li>Criando Filhos nos Caminhos do Senhor.</li>
             </ul>
              <Button asChild>
-                <Link href="#">
+                <Link href="https://wa.me/5577998128008" target="_blank">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Falar com Responsável
                 </Link>
