@@ -149,10 +149,10 @@ export default function Home() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
                     <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank">
-                        <Image src="https://i.imgur.com/I7S6hLg.png" alt="Download on the App Store" width={160} height={53} />
+                        <Image src="https://i.imgur.com/juZArY5.png" alt="Download on the App Store" width={160} height={53} />
                     </Link>
                     <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank">
-                       <Image src="https://i.imgur.com/TqkG3zD.png" alt="Get it on Google Play" width={180} height={53} />
+                       <Image src="https://i.imgur.com/Qpz1saX.png" alt="Get it on Google Play" width={180} height={53} />
                     </Link>
                     </div>
                 </div>
@@ -165,7 +165,7 @@ export default function Home() {
       
       <section className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
-            <div className="text-center md:text-left">
+            <div className="text-left md:text-left">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Visite-nos</h2>
                  <p className="text-muted-foreground mt-2 mb-6 max-w-xl">
@@ -231,6 +231,7 @@ export default function Home() {
     
 
     
+
 
 
 
