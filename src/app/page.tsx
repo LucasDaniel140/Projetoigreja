@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket } from "lucide-react";
@@ -31,16 +31,16 @@ const youtubeVideos = [
 
 
 export default function Home() {
-  const [transform, setTransform] = useState('');
+  const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const { clientX, clientY } = e;
-    const { innerWidth, innerHeight } = window;
-
-    const rotateX = (clientY / innerHeight - 0.5) * -30;
-    const rotateY = (clientX / innerWidth - 0.5) * 30;
-
-    setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+    if (typeof window !== 'undefined') {
+      const { innerWidth, innerHeight } = window;
+      const rotateX = (clientY / innerHeight - 0.5) * -30;
+      const rotateY = (clientX / innerWidth - 0.5) * 30;
+      setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+    }
   };
 
   const handleMouseLeave = () => {
