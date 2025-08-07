@@ -33,23 +33,38 @@ const youtubeVideos = [
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY } = e;
-    if (typeof window !== 'undefined') {
-      const { innerWidth, innerHeight } = window;
-      const rotateX = (clientY / innerHeight - 0.5) * -30;
-      const rotateY = (clientX / innerWidth - 0.5) * 30;
-      setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
-    }
-  };
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      if (typeof window !== 'undefined') {
+        const { innerWidth, innerHeight } = window;
+        const rotateX = (clientY / innerHeight - 0.5) * -30;
+        const rotateY = (clientX / innerWidth - 0.5) * 30;
+        setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
+      }
+    };
 
-  const handleMouseLeave = () => {
-    setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg)');
-  };
+    const handleMouseLeave = () => {
+      setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg)');
+    };
+    
+    const container = document.getElementById('hero-section');
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove as EventListener);
+      container.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('mousemove', handleMouseMove as EventListener);
+        container.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    }
+  }, []);
 
   return (
-    <div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="w-full">
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex flex-col items-center justify-center min-h-[60vh] overflow-hidden">
+    <div className="w-full">
+      <section id="hero-section" className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex flex-col items-center justify-center min-h-[60vh] overflow-hidden">
         <video
           autoPlay
           loop
@@ -86,7 +101,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto mt-12 grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+            <Card className="flex flex-col feature-card">
               <CardHeader>
                 <Globe className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Missão Africa</CardTitle>
@@ -98,7 +113,7 @@ export default function Home() {
                 </Link>
               </CardContent>
             </Card>
-            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+            <Card className="flex flex-col feature-card">
               <CardHeader>
                 <HeartHandshake className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Reação</CardTitle>
@@ -110,7 +125,7 @@ export default function Home() {
                 </Link>
               </CardContent>
             </Card>
-            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+            <Card className="flex flex-col feature-card">
               <CardHeader>
                 <Rocket className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Visionários</CardTitle>
@@ -122,7 +137,7 @@ export default function Home() {
                 </Link>
               </CardContent>
             </Card>
-            <Card className="flex flex-col bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+            <Card className="flex flex-col feature-card">
               <CardHeader>
                 <BookOpen className="h-8 w-8 text-primary mb-2" />
                 <CardTitle className="font-headline text-2xl uppercase">Estudos</CardTitle>
@@ -213,5 +228,3 @@ export default function Home() {
     </div>
   );
 }
-
-    

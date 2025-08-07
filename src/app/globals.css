@@ -86,3 +86,24 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .feature-card {
+    @apply relative bg-card border-border/50 transition-colors w-full;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: calc(var(--radius) + 1px);
+    background: conic-gradient(from 180deg at 50% 50%, #e66465, #9198e5, #e66465);
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+    z-index: -1;
+  }
+
+  .feature-card:hover::before {
+    opacity: 1;
+  }
+}
