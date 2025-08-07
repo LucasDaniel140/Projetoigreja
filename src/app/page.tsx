@@ -29,6 +29,29 @@ const youtubeVideos = [
   }
 ]
 
+const galleryImages = [
+  {
+    src: "https://i.imgur.com/xVtQ8zG.jpeg",
+    alt: "Momento da igreja",
+    dataAiHint: "church moment"
+  },
+  {
+    src: "https://i.imgur.com/U9btjTV.jpeg",
+    alt: "Momento da igreja",
+    dataAiHint: "church moment"
+  },
+  {
+    src: "https://i.imgur.com/vgQUXh7.jpeg",
+    alt: "Momento da igreja",
+    dataAiHint: "church moment"
+  },
+  {
+    src: "https://i.imgur.com/65HSikK.jpeg",
+    alt: "Momento da igreja",
+    dataAiHint: "church moment"
+  },
+];
+
 
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
@@ -171,7 +194,7 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mb-6">Visite-nos</h2>
                 <div className="h-full w-full rounded-lg overflow-hidden">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!m12!1m3!1d7802.747970446119!2d-45.80001752432361!3d-12.086529888153335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x934a713399ab35a1%3A0xf279243579f3a83b!2sMinist%C3%A9rio%20Vivendo%20a%20Palavra!5e0!3m2!1spt-PT!2sus!4v1754596320009!5m2!1spt-PT!2sus"
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7802.747970446119!2d-45.80001752432361!3d-12.086529888153335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x934a713399ab35a1%3A0xf279243579f3a83b!2sMinist%C3%A9rio%20Vivendo%20a%20Palavra!5e0!3m2!1spt-PT!2sus!4v1754596320009!5m2!1spt-PT!2sus"
                         width="100%"
                         height="100%"
                         className="aspect-video"
@@ -183,23 +206,18 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4 mb-6">Assista Nossas Mensagens</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {youtubeVideos.map((video, index) => (
-                        <div key={index} className="overflow-hidden hover:scale-105 transition-transform duration-300 group rounded-lg">
-                           {video.embedUrl && (
-                                <div className="relative aspect-video">
-                                    <iframe
-                                        src={video.embedUrl}
-                                        title={video.title}
-                                        frameBorder="0"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerPolicy="strict-origin-when-cross-origin"
-                                        allowFullScreen
-                                        className="absolute top-0 left-0 w-full h-full"
-                                    ></iframe>
-                                </div>
-                            )}
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4 mb-6">Nossos Momentos</h2>
+                 <div className="grid grid-cols-2 gap-4 mt-8">
+                    {galleryImages.map((image, index) => (
+                        <div key={index} className="overflow-hidden rounded-lg group">
+                            <Image
+                                src={image.src}
+                                alt={image.alt}
+                                width={600}
+                                height={600}
+                                data-ai-hint={image.dataAiHint}
+                                className="transform transition-transform duration-300 group-hover:scale-110 object-cover aspect-square"
+                            />
                         </div>
                     ))}
                 </div>
@@ -210,5 +228,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
