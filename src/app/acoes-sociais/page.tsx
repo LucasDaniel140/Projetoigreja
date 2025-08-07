@@ -9,40 +9,71 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { CalendarIcon, Users, UtensilsCrossed, FileText } from "lucide-react";
+import { CalendarIcon, Heart, ShoppingBasket } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
-const formSchema = z.object({
+const beneficiaryFormSchema = z.object({
   fullName: z.string().min(3, "Nome completo é obrigatório."),
   cpf: z.string().length(11, "CPF deve ter 11 dígitos.").refine(val => !isNaN(parseInt(val)), "CPF deve conter apenas números."),
   birthDate: z.date({ required_error: "Data de nascimento é obrigatória." }),
   address: z.string().min(5, "Endereço é obrigatório."),
   familySize: z.coerce.number().min(1, "O número de membros da família é obrigatório."),
+  phone: z.string().min(10, "Telefone é obrigatório."),
+});
+
+const donationFormSchema = z.object({
+    name: z.string().min(3, "Nome é obrigatório."),
+    email: z.string().email("Email inválido."),
+    paymentMethod: z.enum(["pix", "card", "boleto"], {
+        required_error: "Selecione um método de pagamento.",
+    }),
 });
 
 export default function AcoesSociaisPage() {
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  
+  const beneficiaryForm = useForm<z.infer<typeof beneficiaryFormSchema>>({
+    resolver: zodResolver(beneficiaryFormSchema),
     defaultValues: {
       fullName: "",
       cpf: "",
       address: "",
       familySize: 1,
+      phone: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  const donationForm = useForm<z.infer<typeof donationFormSchema>>({
+    resolver: zodResolver(donationFormSchema),
+    defaultValues: {
+        name: "",
+        email: "",
+        paymentMethod: "pix",
+    },
+  });
+
+  function onBeneficiarySubmit(values: z.infer<typeof beneficiaryFormSchema>) {
+    console.log("Beneficiary:", values);
     toast({
       title: "Cadastro enviado!",
       description: "Seu pré-cadastro foi realizado com sucesso. Aguarde nosso contato.",
     });
-    form.reset();
+    beneficiaryForm.reset();
   }
+
+  function onDonationSubmit(values: z.infer<typeof donationFormSchema>) {
+    console.log("Donation:", values);
+    toast({
+      title: "Doação Processada!",
+      description: "Muito obrigado por sua contribuição de R$100,00. Você está fazendo a diferença!",
+    });
+    donationForm.reset();
+  }
+
 
   return (
     <div className="container mx-auto px-4 py-12 md:px-6">
@@ -62,10 +93,10 @@ export default function AcoesSociaisPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <Form {...beneficiaryForm}>
+              <form onSubmit={beneficiaryForm.handleSubmit(onBeneficiarySubmit)} className="space-y-6">
                 <FormField
-                  control={form.control}
+                  control={beneficiaryForm.control}
                   name="fullName"
                   render={({ field }) => (
                     <FormItem>
@@ -77,21 +108,36 @@ export default function AcoesSociaisPage() {
                     </FormItem>
                   )}
                 />
+                 <div className="grid sm:grid-cols-2 gap-4">
+                    <FormField
+                    control={beneficiaryForm.control}
+                    name="cpf"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormLabel>CPF</FormLabel>
+                        <FormControl>
+                            <Input placeholder="Apenas números" {...field} maxLength={11} />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                    />
+                    <FormField
+                        control={beneficiaryForm.control}
+                        name="phone"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormLabel>Telefone</FormLabel>
+                            <FormControl>
+                                <Input placeholder="(00) 00000-0000" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </div>
                 <FormField
-                  control={form.control}
-                  name="cpf"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>CPF (apenas números)</FormLabel>
-                      <FormControl>
-                        <Input placeholder="00000000000" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
+                  control={beneficiaryForm.control}
                   name="birthDate"
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
@@ -132,7 +178,7 @@ export default function AcoesSociaisPage() {
                   )}
                 />
                 <FormField
-                  control={form.control}
+                  control={beneficiaryForm.control}
                   name="address"
                   render={({ field }) => (
                     <FormItem>
@@ -145,7 +191,7 @@ export default function AcoesSociaisPage() {
                   )}
                 />
                  <FormField
-                  control={form.control}
+                  control={beneficiaryForm.control}
                   name="familySize"
                   render={({ field }) => (
                     <FormItem>
@@ -163,44 +209,87 @@ export default function AcoesSociaisPage() {
           </CardContent>
         </Card>
 
-        <div className="space-y-8">
-          <Card className="bg-secondary">
-            <CardHeader className="flex flex-row items-center gap-4">
-              <UtensilsCrossed className="w-8 h-8 text-primary" />
-              <div>
-                <CardTitle className="font-headline text-2xl">Distribuição de Alimentos</CardTitle>
-                <CardDescription>Distribuição de cestas básicas para famílias cadastradas.</CardDescription>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <p className="font-semibold">Próxima distribuição:</p>
-              <p className="text-muted-foreground">Último sábado do mês, às 9h, no salão da igreja.</p>
-              <p className="mt-2 text-sm">É necessário o pré-cadastro para retirada.</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="flex flex-row items-center gap-4">
-               <FileText className="w-8 h-8 text-primary" />
-                <div>
-                    <CardTitle className="font-headline text-2xl">Relatórios e Transparência</CardTitle>
-                    <CardDescription>Veja o impacto de nossas ações.</CardDescription>
-                </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
-                 <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                    <span>Famílias Atendidas em 2024</span>
-                    <span className="font-bold text-lg">120+</span>
-                 </div>
-                 <div className="flex justify-between items-center p-3 bg-muted rounded-lg">
-                    <span>Refeições Servidas</span>
-                    <span className="font-bold text-lg">5.000+</span>
-                 </div>
-                 <Button variant="outline" className="w-full">
-                    <FileText className="mr-2 h-4 w-4" /> Ver Relatório Completo de 2023
-                </Button>
-            </CardContent>
-          </Card>
-        </div>
+        <Card className="bg-secondary">
+          <CardHeader>
+            <div className="flex justify-center mb-4">
+                <ShoppingBasket className="w-12 h-12 text-primary"/>
+            </div>
+            <CardTitle className="font-headline text-2xl text-center">Doe uma Cesta Básica</CardTitle>
+            <CardDescription className="text-center">
+              Com R$ 100,00 você alimenta uma família. Sua doação é um gesto de amor que transforma vidas.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+             <Form {...donationForm}>
+                <form onSubmit={donationForm.handleSubmit(onDonationSubmit)} className="space-y-6">
+                    <div className="text-center border border-dashed border-primary/50 rounded-lg p-4">
+                        <p className="text-sm text-muted-foreground">Valor da doação</p>
+                        <p className="text-4xl font-bold">R$ 100,00</p>
+                    </div>
+                     <FormField
+                        control={donationForm.control}
+                        name="name"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormLabel>Seu Nome</FormLabel>
+                            <FormControl>
+                                <Input placeholder="Nome para identificação" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                    <FormField
+                        control={donationForm.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                            <FormLabel>Seu E-mail</FormLabel>
+                            <FormControl>
+                                <Input type="email" placeholder="seu@email.com" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                     <FormField
+                        control={donationForm.control}
+                        name="paymentMethod"
+                        render={({ field }) => (
+                            <FormItem className="space-y-3">
+                            <FormLabel>Método de Pagamento</FormLabel>
+                            <FormControl>
+                                <RadioGroup
+                                onValueChange={field.onChange}
+                                defaultValue={field.value}
+                                className="flex flex-col space-y-1"
+                                >
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                    <FormControl><RadioGroupItem value="pix" /></FormControl>
+                                    <FormLabel className="font-normal">PIX</FormLabel>
+                                </FormItem>
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                    <FormControl><RadioGroupItem value="card" /></FormControl>
+                                    <FormLabel className="font-normal">Cartão de Crédito</FormLabel>
+                                </FormItem>
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                    <FormControl><RadioGroupItem value="boleto" /></FormControl>
+                                    <FormLabel className="font-normal">Boleto Bancário</FormLabel>
+                                </FormItem>
+                                </RadioGroup>
+                            </FormControl>
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                    <Button type="submit" className="w-full">
+                        <Heart className="mr-2 h-4 w-4" />
+                        Confirmar Doação
+                    </Button>
+                </form>
+             </Form>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
