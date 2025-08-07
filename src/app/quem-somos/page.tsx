@@ -13,8 +13,8 @@ import Autoplay from "embla-carousel-autoplay";
 const leadership = [
   { name: "Pr. Samuel Souza", role: "Pastor Sênior", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
   { name: "Pra. Rafaelle Souza", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
-  { name: "Everton Araújo", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
-  { name: "Leticia Araújo", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pr. Everton Araújo", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pra. Leticia Araújo", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
 ];
 
 const historyImages = [
