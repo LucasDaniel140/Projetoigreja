@@ -3,15 +3,23 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
 
-const WelcomeText = ({ text, isVisible, className }: { text: string; isVisible: boolean; className?: string }) => {
+const WelcomeText = ({ text, isVisible, className, children }: { text: string; isVisible: boolean; className?: string, children?: React.ReactNode }) => {
     const textRef = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
         if (textRef.current) {
-            textRef.current.innerHTML = text.replace(
-            /\S/g,
-            "<span class='letter-wrapper' style='display: inline-block; overflow: hidden;'><span class='letter' style='display: inline-block;'>$&</span></span>"
-            );
+            const textNodes = Array.from(textRef.current.childNodes).filter(node => node.nodeType === Node.TEXT_NODE);
+            textNodes.forEach(node => {
+                if (node.textContent) {
+                    const newHtml = node.textContent.replace(
+                        /\S/g,
+                        "<span class='letter-wrapper' style='display: inline-block; overflow: hidden;'><span class='letter' style='display: inline-block;'>$&</span></span>"
+                    );
+                    const span = document.createElement('span');
+                    span.innerHTML = newHtml;
+                    node.parentNode?.replaceChild(span, node);
+                }
+            });
         }
     }, [text]);
 
@@ -24,7 +32,7 @@ const WelcomeText = ({ text, isVisible, className }: { text: string; isVisible: 
                 position: 'relative',
             }}
         >
-            {text}
+            {children || text}
         </h1>
     );
 };
@@ -47,7 +55,7 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
                 loop: true,
             })
             .add({
-                targets: welcomeEl.querySelectorAll('.letter'),
+                targets: welcomeEl.querySelectorAll('.letter, sup'),
                 translateY: ["100%", "0%"],
                 opacity: [0, 1],
                 easing: "easeOutExpo",
@@ -55,7 +63,7 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
                 delay: anime.stagger(100),
             })
             .add({
-                targets: welcomeEl.querySelectorAll('.letter'),
+                targets: welcomeEl.querySelectorAll('.letter, sup'),
                 translateY: ["0%", "-100%"],
                 opacity: [1, 0],
                 easing: "easeInExpo",
@@ -108,7 +116,9 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
     <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px' }}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="welcome-el" style={{display: 'inline-block'}}>
-            <WelcomeText text="Bem-vindo(a)" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
+            <WelcomeText text="" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
+                Bem-vindo<sup style={{ display: 'inline-block', verticalAlign: 'super', fontSize: '0.5em' }}>(a)</sup>
+            </WelcomeText>
         </div>
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
