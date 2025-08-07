@@ -5,10 +5,10 @@ import { Church, Target, Eye, Heart } from "lucide-react";
 import Image from "next/image";
 
 const leadership = [
-  { name: "Pr. João Almeida", role: "Pastor Sênior", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
-  { name: "Pra. Ana Paula", role: "Pastora de Louvor e Adoração", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
-  { name: "Ev. Carlos Santos", role: "Líder de Evangelismo", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
-  { name: "Maria Oliveira", role: "Líder do Ministério Infantil", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pr. Samuel Souza", role: "Pastor Sênior", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
+  { name: "Pra. Rafaelle Souza", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
+  { name: "Pr. Suzano Selmo", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pra. Angela Pacheco", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
 ];
 
 const galleryImages = [
@@ -36,10 +36,10 @@ export default function QuemSomosPage() {
             <h2 className="text-3xl font-headline font-bold mb-4">Nossa História</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                A IgrejaConectada nasceu em 2010 do coração de um pequeno grupo de amigos que sonhava com uma comunidade de fé relevante, acolhedora e com um profundo impacto social. Começamos em uma garagem, com cadeiras emprestadas e um grande desejo de ver vidas transformadas.
+                Nossa jornada começou de forma extraordinária, na simplicidade de uma garagem, guiados por Deus. Em setembro de 2016, demos um grande passo ao nos mudarmos para um novo espaço, onde nossa identidade começou a tomar forma.
               </p>
               <p>
-                Ao longo dos anos, Deus nos abençoou com crescimento e a oportunidade de expandir nossos ministérios. Hoje, somos uma igreja vibrante, com programas para todas as idades e um forte compromisso com missões e ações sociais, sempre mantendo a simplicidade e o calor do nosso início.
+                Em fevereiro de 2017, celebramos a consagração dos nossos pastores Samuel e Rafaelle Souza, um marco especial. Durante essa caminhada, Deus enviou pessoas-chave, como os pastores Suzano Selmo e Angela Pacheco, que nos ajudaram a crescer. Com o coração ardendo pela presença de Deus e a direção do Espírito Santo, nasceu o nome que hoje nos define: Vivendo a Palavra.
               </p>
             </div>
           </div>
@@ -51,7 +51,7 @@ export default function QuemSomosPage() {
         <Separator className="my-12" />
 
         <section>
-          <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div className="grid md:grid-cols-2 gap-8 text-center">
             <Card>
               <CardHeader>
                 <div className="mx-auto bg-accent rounded-full p-4 w-fit">
@@ -60,7 +60,10 @@ export default function QuemSomosPage() {
                 <CardTitle className="font-headline">Nossa Missão</CardTitle>
               </CardHeader>
               <CardContent className="text-muted-foreground">
-                Conectar pessoas a Jesus e umas às outras, equipando-as para servir e transformar o mundo através do Evangelho.
+                Viver, Amar e Servir fundamentados em Deus, nossa base e inspiração.
+                <br/>• Viver a plenitude em Cristo
+                <br/>• Amar como fomos amados
+                <br/>• Servir com o coração
               </CardContent>
             </Card>
             <Card>
@@ -71,18 +74,7 @@ export default function QuemSomosPage() {
                 <CardTitle className="font-headline">Nossa Visão</CardTitle>
               </CardHeader>
               <CardContent className="text-muted-foreground">
-                Ser uma igreja-família, relevante culturalmente, que manifesta o amor de Cristo e promove justiça e esperança em nossa cidade e até os confins da terra.
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                 <div className="mx-auto bg-accent rounded-full p-4 w-fit">
-                    <Heart className="h-8 w-8 text-accent-foreground" />
-                </div>
-                <CardTitle className="font-headline">Nossos Valores</CardTitle>
-              </CardHeader>
-              <CardContent className="text-muted-foreground">
-                Adoração, Comunhão, Discipulado, Serviço e Evangelismo. Estes são os pilares que sustentam tudo o que fazemos.
+                Ser uma igreja acolhedora que inspira vidas a viverem os propósitos de Deus, conhecendo a Cristo profundamente e vivendo o evangelho em sua essência — com fé, simplicidade e amor em família.
               </CardContent>
             </Card>
           </div>
