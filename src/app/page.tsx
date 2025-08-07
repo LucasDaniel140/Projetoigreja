@@ -15,7 +15,6 @@ export default function Home() {
           muted
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
-          poster="https://placehold.co/1920x1080.png"
         >
           <source src="https://i.imgur.com/o6GrCN0.mp4" type="video/mp4" />
           Seu navegador não suporta a tag de vídeo.
