@@ -23,7 +23,7 @@ export function Footer() {
   return (
     <footer className="bg-black text-secondary-foreground border-t border-border/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row justify-center items-center">
+        <div className="flex flex-col justify-center items-center gap-4">
           <TooltipProvider>
             <div className="flex flex-wrap justify-center items-center gap-4">
               <Tooltip>
@@ -103,6 +103,12 @@ export function Footer() {
               </Tooltip>
             </div>
           </TooltipProvider>
+          <p className="text-xs text-muted-foreground">
+            Desenvolvido por{' '}
+            <Link href="https://www.instagram.com/candeeiromidias" target="_blank" rel="noopener noreferrer" className="text-chart-2 hover:underline">
+              Candeeiro Mídias
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
