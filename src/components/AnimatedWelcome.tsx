@@ -46,13 +46,13 @@ export function AnimatedWelcome() {
             if (welcomeEl && homeEl) {
                 timeline.current = anime.timeline({ 
                     loop: true,
-                    duration: 1400,
                 })
                 .add({
                     targets: welcomeEl.querySelectorAll('.letter'),
                     translateY: ["100%", "0%"],
                     opacity: [0, 1],
                     easing: "easeOutExpo",
+                    duration: 1000,
                     delay: anime.stagger(100),
                 })
                 .add({
@@ -60,6 +60,7 @@ export function AnimatedWelcome() {
                     translateY: ["0%", "-100%"],
                     opacity: [1, 0],
                     easing: "easeInExpo",
+                    duration: 900,
                     delay: anime.stagger(100),
                     offset: '+=1000' // Wait 1s before hiding
                 })
@@ -68,6 +69,7 @@ export function AnimatedWelcome() {
                     translateY: ["100%", "0%"],
                     opacity: [0, 1],
                     easing: "easeOutExpo",
+                    duration: 1000,
                     delay: anime.stagger(100),
                 }, '-=800') // Overlap with previous animation
                 .add({
@@ -75,6 +77,7 @@ export function AnimatedWelcome() {
                     translateY: ["0%", "-100%"],
                     opacity: [1, 0],
                     easing: "easeInExpo",
+                    duration: 900,
                     delay: anime.stagger(100),
                     offset: '+=1000' // Wait 1s
                 });
