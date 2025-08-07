@@ -1,37 +1,42 @@
 "use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Book, Film, Mic } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Book, Heart, Hand, GraduationCap } from "lucide-react";
 import Link from "next/link";
 
 const studies = [
   {
-    title: "Estudo sobre Gênesis",
-    description: "Uma jornada pelo primeiro livro da Bíblia, explorando a criação, a queda e as promessas de Deus.",
+    title: "Estudo de Romanos",
+    description: "Uma análise profunda da carta de Paulo aos Romanos, explorando temas como justificação pela fé, a soberania de Deus e a vida no Espírito.",
     type: "text",
     icon: <Book className="h-6 w-6 text-primary" />,
     link: "#",
+    paid: false,
   },
   {
-    title: "Série de Pregações: O Sermão do Monte",
-    description: "Estudo aprofundado sobre os ensinamentos de Jesus em Mateus 5-7.",
+    title: "Curso de Libras",
+    description: "Aprenda a Língua Brasileira de Sinais e ajude a tornar nossa comunidade mais inclusiva e acessível.",
     type: "video",
-    icon: <Film className="h-6 w-6 text-primary" />,
+    icon: <Hand className="h-6 w-6 text-primary" />,
     link: "#",
+    paid: true,
   },
   {
-    title: "Podcast: Heróis da Fé",
-    description: "Conheça a história e o legado dos grandes homens e mulheres de fé da Bíblia.",
-    type: "audio",
-    icon: <Mic className="h-6 w-6 text-primary" />,
+    title: "Teologia",
+    description: "Aprofunde seu conhecimento teológico com nosso curso abrangente sobre as doutrinas fundamentais da fé cristã.",
+    type: "text",
+    icon: <GraduationCap className="h-6 w-6 text-primary" />,
     link: "#",
+    paid: true,
   },
     {
-    title: "Devocional: Manhãs com o Espírito Santo",
-    description: "Comece seu dia com uma reflexão e oração para fortalecer sua conexão com Deus.",
-    type: "text",
-    icon: <Book className="h-6 w-6 text-primary" />,
+    title: "Curso de Casais",
+    description: "Fortaleça seu relacionamento e construa um casamento saudável com base nos princípios bíblicos.",
+    type: "video",
+    icon: <Heart className="h-6 w-6 text-primary" />,
     link: "#",
+    paid: false,
   },
 ];
 
@@ -47,8 +52,8 @@ export default function EstudosPage() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {studies.map((study, index) => (
-          <Link href={study.link} key={index}>
-            <Card className="h-full flex flex-col hover:bg-secondary/80 transition-colors cursor-pointer">
+          <Link href={study.link} key={index} className="flex">
+            <Card className="h-full flex flex-col hover:bg-secondary/80 transition-colors cursor-pointer w-full">
               <CardHeader className="flex flex-row items-center gap-4">
                 {study.icon}
                 <div className="flex-1">
@@ -58,6 +63,9 @@ export default function EstudosPage() {
               <CardContent className="flex-grow">
                 <CardDescription>{study.description}</CardDescription>
               </CardContent>
+              <CardFooter>
+                {study.paid && <Badge variant="secondary">Pago</Badge>}
+              </CardFooter>
             </Card>
           </Link>
         ))}
