@@ -22,7 +22,7 @@ export default function Home() {
                 bem vindo
               </h1>
               <p className="max-w-[600px] text-foreground/80 md:text-xl">
-                Bem-vindo a um lugar de fé, comunidade e propósito. Descubra nossos ministérios, eventos e como você pode fazer parte da nossa família.
+                Somos uma igreja apaixonada por Cristo, sendo continuamente direcionados pelo Espírito Santo. Acreditamos no propósito de Deus para cada pessoa e desejamos que todos vivam a plenitude do Evangelho.
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
