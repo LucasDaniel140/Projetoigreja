@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Church, Target, Eye, Heart } from "lucide-react";
 import Image from "next/image";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 const leadership = [
@@ -32,7 +32,7 @@ const galleryImages = [
 ];
 
 export default function QuemSomosPage() {
-  const plugin = React.useRef(
+  const autoplayPlugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true })
   );
 
@@ -62,10 +62,10 @@ export default function QuemSomosPage() {
           </div>
           <div>
             <Carousel
-              plugins={[plugin.current]}
+              plugins={[autoplayPlugin.current]}
               className="w-full"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
+              onMouseEnter={autoplayPlugin.current.stop}
+              onMouseLeave={autoplayPlugin.current.reset}
             >
               <CarouselContent>
                 {historyImages.map((image, index) => (
@@ -82,8 +82,6 @@ export default function QuemSomosPage() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
             </Carousel>
           </div>
         </section>
@@ -148,6 +146,12 @@ export default function QuemSomosPage() {
                 align: "start",
                 loop: true,
               }}
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                  stopOnInteraction: true,
+                }),
+              ]}
             >
               <CarouselContent>
                 {galleryImages.map((image, index) => (
@@ -161,8 +165,6 @@ export default function QuemSomosPage() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
             </Carousel>
         </section>
       </div>
