@@ -85,8 +85,7 @@ export default function QuemSomosPage() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            
           </Carousel>
         </section>
 
@@ -166,8 +165,7 @@ export default function QuemSomosPage() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
+              
             </Carousel>
         </section>
       </div>
