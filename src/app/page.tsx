@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket } from "lucide-react";
 import Image from "next/image";
@@ -32,23 +32,29 @@ const youtubeVideos = [
 
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
+  const appLocationRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const container = appLocationRef.current;
+
     const handleMouseMove = (e: MouseEvent) => {
+      if (!container) return;
       const { clientX, clientY } = e;
-      if (typeof window !== 'undefined') {
-        const { innerWidth, innerHeight } = window;
-        const rotateX = (clientY / innerHeight - 0.5) * -30;
-        const rotateY = (clientX / innerWidth - 0.5) * 30;
-        setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
-      }
+      const rect = container.getBoundingClientRect();
+      
+      const localX = clientX - rect.left;
+      const localY = clientY - rect.top;
+
+      const rotateX = (localY / rect.height - 0.5) * -30;
+      const rotateY = (localX / rect.width - 0.5) * 30;
+
+      setTransform(`perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`);
     };
 
     const handleMouseLeave = () => {
       setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg)');
     };
     
-    const container = document.getElementById('app-location');
     if (container) {
       container.addEventListener('mousemove', handleMouseMove as EventListener);
       container.addEventListener('mouseleave', handleMouseLeave);
@@ -95,9 +101,6 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl uppercase text-primary">Nossa Comunidade</h2>
-              <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                Explore as diferentes formas como servimos e nos conectamos.
-              </p>
             </div>
           </div>
           <div className="mx-auto mt-12 grid max-w-5xl items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -137,7 +140,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="app-location" className="w-full py-12">
+      <section id="app-location" ref={appLocationRef} className="w-full py-12">
         <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
                 <div className="space-y-4 text-center md:text-left">
@@ -200,7 +203,7 @@ export default function Home() {
                         </div>
                     ))}
                 </div>
-                 <div className="grid grid-cols-2 gap-4 mt-8">
+                 <div className="grid grid-cols-2 gap-4 mt-4">
                     <div className="overflow-hidden rounded-lg group">
                     <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="church event" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
                     </div>
