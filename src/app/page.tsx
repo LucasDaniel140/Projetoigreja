@@ -48,7 +48,7 @@ export default function Home() {
       setTransform('perspective(1000px) rotateX(0deg) rotateY(0deg)');
     };
     
-    const container = document.getElementById('hero-section');
+    const container = document.getElementById('app-location');
     if (container) {
       container.addEventListener('mousemove', handleMouseMove as EventListener);
       container.addEventListener('mouseleave', handleMouseLeave);
@@ -208,16 +208,16 @@ export default function Home() {
                 </div>
                  <div className="grid grid-cols-2 gap-4 mt-8">
                     <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="church event" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="church event" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
                     </div>
                     <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="worship service" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="worship service" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
                     </div>
                     <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="community gathering" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="community gathering" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
                     </div>
                     <div className="overflow-hidden rounded-lg group">
-                    <Image src="https://placehold.co/600x600.png" alt="Momento da igreja" width={600} height={600} data-ai-hint="prayer meeting" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
+                    <Image src="https://placehold.co/300x300.png" alt="Momento da igreja" width={300} height={300} data-ai-hint="prayer meeting" className="w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105" />
                     </div>
                 </div>
             </div>
