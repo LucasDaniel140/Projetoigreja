@@ -12,20 +12,20 @@ import { InteractivePhone } from "@/components/InteractivePhone";
 
 const youtubeVideos = [
   {
-    title: "Culto de Domingo",
-    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=XT-2GFDTaMBVsrZk&amp;controls=0"
+    title: "Oração em Línguas",
+    embedUrl: "https://www.youtube.com/embed/16543_c5Y-4?si=5svfO2aYJk1y_N-d"
   },
   {
-    title: "Estudo Bíblico",
-    embedUrl: "https://www.youtube.com/embed/ZkK-YIfmoz0?si=libM6vCTieK_yus3&amp;controls=0"
+    title: "Apenas uma Palavra",
+    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=XT-2GFDTaMBVsrZk"
   },
    {
-    title: "Série Especial",
-    embedUrl: "https://www.youtube.com/embed/2tSS_lGQCQ0?si=mSAO-mEtusE5af4&amp;controls=0"
+    title: "Chamadas para Gerar Sonhos",
+    embedUrl: "https://www.youtube.com/embed/rXgXG9A2h3s?si=uRzN8x3zQ_yR_c9Y"
   },
   {
-    title: "Momentos de Adoração",
-    embedUrl: "https://www.youtube.com/embed/_a2gUBNM0dE?si=5Y2YvH2Mgph2jzoq&amp;controls=0"
+    title: "O Homem Interior e o Homem Exterior",
+    embedUrl: "https://www.youtube.com/embed/ZkK-YIfmoz0?si=libM6vCTieK_yus3"
   }
 ]
 
