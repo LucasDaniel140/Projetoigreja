@@ -4,11 +4,43 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket, Smartphone, MapPin } from "lucide-react";
+import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket, Smartphone, MapPin, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
+
+const youtubeVideos = [
+  {
+    title: "Culto de Domingo",
+    description: "Mensagem sobre esperança e fé.",
+    imageUrl: "https://placehold.co/600x400.png",
+    dataAiHint: "church sermon",
+    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+  },
+  {
+    title: "Estudo Bíblico",
+    description: "Aprofundando em Romanos.",
+    imageUrl: "https://placehold.co/600x400.png",
+    dataAiHint: "bible study",
+    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+  },
+   {
+    title: "Série Especial",
+    description: "Relacionamentos segundo o coração de Deus.",
+    imageUrl: "https://placehold.co/600x400.png",
+    dataAiHint: "christian relationships",
+    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+  },
+  {
+    title: "Momentos de Adoração",
+    description: "Nossos melhores momentos de louvor.",
+    imageUrl: "https://placehold.co/600x400.png",
+    dataAiHint: "church worship",
+    videoUrl: "https://www.youtube.com/@VivendoaPalavra"
+  }
+]
+
 
 export default function Home() {
   const [transform, setTransform] = useState('');
@@ -153,16 +185,51 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="w-full">
-         <iframe
-            src="https://maps.google.com/maps?q=R.%20Rui%20Barbosa%2C%201296%20-%20Lot.%20Mimoso%20Doeste%20I%2C%20Lu%C3%ADs%20Eduardo%20Magalh%C3%A3es%20-%20BA%2C%2047850-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            width="100%"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen={false}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+      <section className="w-full py-12 md:py-24 lg:py-32">
+        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
+            <div>
+                <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Assista Nossas Mensagens</h2>
+                <p className="text-muted-foreground mt-2 mb-6">
+                    Acompanhe nossas últimas pregações, estudos e momentos de louvor em nosso canal do YouTube.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {youtubeVideos.map((video, index) => (
+                        <Link key={index} href={video.videoUrl} target="_blank">
+                            <Card className="overflow-hidden hover:scale-105 transition-transform duration-300 group">
+                                <div className="relative aspect-video">
+                                    <Image 
+                                        src={video.imageUrl} 
+                                        alt={video.title} 
+                                        data-ai-hint={video.dataAiHint}
+                                        fill
+                                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <Youtube className="w-12 h-12 text-white" />
+                                    </div>
+                                </div>
+                                <CardHeader>
+                                    <CardTitle className="text-lg font-headline truncate">{video.title}</CardTitle>
+                                    <CardDescription className="text-sm truncate">{video.description}</CardDescription>
+                                </CardHeader>
+                            </Card>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+            <div className="h-full w-full rounded-lg overflow-hidden min-h-[400px] md:min-h-full">
+                <iframe
+                    src="https://maps.google.com/maps?q=R.%20Rui%20Barbosa%2C%201296%20-%20Lot.%20Mimoso%20Doeste%20I%2C%20Lu%C3%ADs%20Eduardo%20Magalh%C3%A3es%20-%20BA%2C%2047850-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
+            </div>
+        </div>
       </section>
     </div>
   );
