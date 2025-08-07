@@ -8,7 +8,7 @@ import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background text-foreground">
-      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex items-center justify-center min-h-[50vh]">
+      <section className="w-full py-12 md:py-24 lg:py-32 bg-black relative flex flex-col items-center justify-center min-h-[60vh]">
         <Image
           src="https://placehold.co/1920x1080.png"
           alt="Hero Background"
@@ -16,10 +16,12 @@ export default function Home() {
           className="object-cover opacity-30"
           data-ai-hint="church concert stage"
         />
-        <div className="container px-4 md:px-6 relative">
-          <div className="flex flex-col items-center space-y-4 text-center">
-            <AnimatedWelcome />
-            <div className="flex flex-col gap-2 min-[400px]:flex-row pt-8">
+        <div className="container px-4 md:px-6 relative flex flex-col justify-between h-full flex-grow w-full">
+          <div className="w-full">
+             <AnimatedWelcome position="top" />
+          </div>
+          <div className="flex flex-col items-center space-y-4 text-center my-8">
+            <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link href="/quem-somos">
                 <Button size="lg">
                   Nossa História
@@ -27,6 +29,9 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
+          </div>
+           <div className="w-full">
+            <AnimatedWelcome position="bottom" />
           </div>
         </div>
       </section>
