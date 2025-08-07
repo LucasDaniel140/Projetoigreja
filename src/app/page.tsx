@@ -98,9 +98,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="app-location" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+      <section id="app-location" className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-4 md:col-span-2 text-center md:text-left">
+          <div className="space-y-4 text-center md:text-left">
             <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Conecte-se</div>
             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Leve a Igreja com Você</h2>
             <p className="text-muted-foreground md:text-xl/relaxed max-w-3xl mx-auto md:mx-0">
@@ -127,6 +127,16 @@ export default function Home() {
                 R. Rui Barbosa, 1296 - Lot. Mimoso Doeste I, Luís Eduardo Magalhães - BA, 47850-000
                 </p>
             </div>
+          </div>
+          <div className="w-full h-full min-h-[400px] md:min-h-[600px] [&>iframe]:w-full [&>iframe]:h-full [&>iframe]:rounded-lg [&>iframe]:shadow-2xl">
+            <iframe 
+                title="iPhone 15 Pro" 
+                frameBorder="0" 
+                allowFullScreen 
+                allow="autoplay; fullscreen; xr-spatial-tracking" 
+                src="https://sketchfab.com/models/fe295083f96d44fc848f2f52e9636e65/embed?autospin=1&autostart=1&ui_theme=dark&ui_infos=0&ui_controls=0"
+            >
+            </iframe>
           </div>
         </div>
       </section>
