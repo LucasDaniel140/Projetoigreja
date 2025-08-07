@@ -9,7 +9,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Apple, Play } from "lucide-react";
 import {
   Dialog,
   DialogContent,
