@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/quem-somos", label: "Quem Somos" },
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Ações Sociais" },
+  { href: "/estudos", label: "Estudos" },
   { href: "/parceiros", label: "Parceiros" },
 ];
 

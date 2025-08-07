@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ArrowRight, Heart, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
@@ -41,28 +41,50 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-center justify-items-center gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none mt-12">
-            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors">
+          <div className="mx-auto grid max-w-5xl items-start justify-items-center gap-8 sm:grid-cols-2 lg:grid-cols-4 mt-12">
+            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
               <CardHeader>
-                <Heart className="h-8 w-8 text-primary mb-2" />
-                <CardTitle className="font-headline text-2xl uppercase">Missões</CardTitle>
+                <Globe className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="font-headline text-2xl uppercase">Missão Africa</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>Apoiamos projetos missionários que levam esperança e transformação ao redor do mundo. Veja como você pode se envolver.</CardDescription>
+                <CardDescription>Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</CardDescription>
                 <Link href="/missoes" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
-            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors">
+            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
               <CardHeader>
-                <Users className="h-8 w-8 text-primary mb-2" />
-                <CardTitle className="font-headline text-2xl uppercase">Ações Sociais</CardTitle>
+                <HeartHandshake className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="font-headline text-2xl uppercase">Reação</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription>Nosso compromisso é com o bem-estar da nossa comunidade. Conheça nossos projetos e veja como ajudar.</CardDescription>
+                <CardDescription>Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</CardDescription>
                 <Link href="/acoes-sociais" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                </Link>
+              </CardContent>
+            </Card>
+            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+              <CardHeader>
+                <Rocket className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="font-headline text-2xl uppercase">Visionários</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>Uma plataforma para visionários que querem expandir o Reino. (Site externo)</CardDescription>
+                <Button variant="link" className="px-0 text-primary mt-4 cursor-not-allowed">Em Breve <ArrowRight className="ml-2 h-4 w-4" /></Button>
+              </CardContent>
+            </Card>
+            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors w-full">
+              <CardHeader>
+                <BookOpen className="h-8 w-8 text-primary mb-2" />
+                <CardTitle className="font-headline text-2xl uppercase">Estudos</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</CardDescription>
+                <Link href="/estudos" className="mt-4 inline-block">
+                  <Button variant="link" className="px-0 text-primary">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>
