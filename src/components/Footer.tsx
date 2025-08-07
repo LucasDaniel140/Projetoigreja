@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -68,7 +69,7 @@ export function Footer() {
                    <Dialog>
                     <DialogTrigger asChild>
                         <button aria-label="Baixe nosso App">
-                            <Image src="https://i.imgur.com/rvjo6I3.png" alt="App da Igreja" width={24} height={24} className="hover:opacity-80 transition-opacity" />
+                            <Image src="https://i.imgur.com/gotyp5h.png" alt="App da Igreja" width={24} height={24} className="hover:opacity-80 transition-opacity" />
                         </button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
