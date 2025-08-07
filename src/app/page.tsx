@@ -100,13 +100,13 @@ export default function Home() {
 
       <section id="app-location" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-4">
+          <div className="space-y-4 md:col-span-2 text-center md:text-left">
             <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Conecte-se</div>
             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Leve a Igreja com Você</h2>
-            <p className="text-muted-foreground md:text-xl/relaxed">
+            <p className="text-muted-foreground md:text-xl/relaxed max-w-3xl mx-auto md:mx-0">
               Baixe nosso aplicativo para ter acesso a mensagens, estudos, agenda de eventos e muito mais. Fique conectado com a nossa comunidade onde quer que esteja.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
               <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank">
                 <Button size="lg" className="w-full sm:w-auto">
                     <Image src="https://i.imgur.com/wyj5M5q.png" alt="App Store" width={24} height={24} className="dark:invert mr-2"/>
@@ -127,14 +127,6 @@ export default function Home() {
                 R. Rui Barbosa, 1296 - Lot. Mimoso Doeste I, Luís Eduardo Magalhães - BA, 47850-000
                 </p>
             </div>
-          </div>
-          <div className="flex justify-center items-center h-full min-h-[400px] md:min-h-[500px]">
-            <Image
-            src="https://i.imgur.com/8Ipq9Na.png"
-            alt="Aplicativo da Igreja"
-            width={300}
-            height={600}
-            />
           </div>
         </div>
       </section>
