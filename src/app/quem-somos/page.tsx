@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Church, Target, Eye, Heart } from "lucide-react";
 import Image from "next/image";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 
 const leadership = [
@@ -34,6 +34,10 @@ const galleryImages = [
 export default function QuemSomosPage() {
   const autoplayPlugin = React.useRef(
     Autoplay({ delay: 5000, stopOnInteraction: true })
+  );
+  
+  const galleryAutoplayPlugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
   );
 
   return (
@@ -145,17 +149,14 @@ export default function QuemSomosPage() {
         <section className="text-center">
             <h2 className="text-3xl font-headline font-bold mb-8">Galeria de Momentos</h2>
             <Carousel
+              plugins={[galleryAutoplayPlugin.current]}
               className="w-full max-w-4xl mx-auto"
                opts={{
                 align: "start",
                 loop: true,
               }}
-              plugins={[
-                Autoplay({
-                  delay: 4000,
-                  stopOnInteraction: true,
-                }),
-              ]}
+              onMouseEnter={galleryAutoplayPlugin.current.stop}
+              onMouseLeave={galleryAutoplayPlugin.current.reset}
             >
               <CarouselContent>
                 {galleryImages.map((image, index) => (
@@ -169,6 +170,8 @@ export default function QuemSomosPage() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
             </Carousel>
         </section>
       </div>
