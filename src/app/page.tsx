@@ -188,15 +188,13 @@ export default function Home() {
       <section className="w-full py-12 md:py-24 lg:py-32">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start">
             <div className="h-full w-full rounded-lg overflow-hidden min-h-[400px] md:min-h-full">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.864698184542!2d-45.80732838887968!3d-12.09600379133968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93b05421c13d8a7b%3A0x6d15a45b73678486!2sIgreja%20Vivendo%20a%20Palavra!5e0!3m2!1spt-BR!2sbr!4v1716309831333!5m2!1spt-BR!2sbr"
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7802.747970446119!2d-45.80001752432361!3d-12.086529888153335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x934a713399ab35a1%3A0xf279243579f3a83b!2sMinist%C3%A9rio%20Vivendo%20a%20Palavra!5e0!3m2!1spt-PT!2sus!4v1754596320009!5m2!1spt-PT!2sus"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
-                    allowFullScreen={false}
+                    allowFullScreen={true}
                     loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
+                    referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div>
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
