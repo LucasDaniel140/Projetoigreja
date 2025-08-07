@@ -12,12 +12,12 @@ import { InteractivePhone } from "@/components/InteractivePhone";
 
 const youtubeVideos = [
   {
-    title: "Oração em Línguas",
-    embedUrl: "https://www.youtube.com/embed/16543_c5Y-4?si=5svfO2aYJk1y_N-d"
+    title: "Apenas uma Palavra",
+    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=8qtDjKYh0cg5UeuN"
   },
   {
-    title: "Apenas uma Palavra",
-    embedUrl: "https://www.youtube.com/embed/vGohlJdcGvE?si=XT-2GFDTaMBVsrZk"
+    title: "Oração em Línguas",
+    embedUrl: "https://www.youtube.com/embed/16543_c5Y-4?si=5svfO2aYJk1y_N-d"
   },
    {
     title: "Chamadas para Gerar Sonhos",
@@ -213,3 +213,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
