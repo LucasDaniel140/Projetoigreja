@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const oswald = Oswald({ subsets: ['latin'], weight: ['700'], variable: '--font-oswald' });
 
 export const metadata: Metadata = {
-  title: 'IgrejaConectada',
+  title: 'Igreja Vivendo a Palavra',
   description: 'Conectando corações, transformando vidas.',
 };
 
