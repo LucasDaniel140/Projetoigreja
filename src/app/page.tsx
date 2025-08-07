@@ -32,11 +32,6 @@ export default function Home() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link href="/eventos">
-                <Button size="lg" variant="outline">
-                  Próximos Eventos
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -52,7 +47,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mx-auto grid max-w-5xl items-center justify-items-center gap-8 sm:grid-cols-2 md:gap-12 lg:grid-cols-3 lg:max-w-none mt-12">
+          <div className="mx-auto grid max-w-5xl items-center justify-items-center gap-8 sm:grid-cols-2 md:gap-12 lg:max-w-none mt-12">
             <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors">
               <CardHeader>
                 <Heart className="h-8 w-8 text-primary mb-2" />
@@ -62,18 +57,6 @@ export default function Home() {
                 <CardDescription>Apoiamos projetos missionários que levam esperança e transformação ao redor do mundo. Veja como você pode se envolver.</CardDescription>
                 <Link href="/missoes" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
-                </Link>
-              </CardContent>
-            </Card>
-            <Card className="bg-card border-border/50 hover:bg-secondary/80 transition-colors">
-              <CardHeader>
-                <Calendar className="h-8 w-8 text-primary mb-2" />
-                <CardTitle className="font-headline text-2xl uppercase">Eventos</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>De cultos a conferências e atividades comunitárias, há sempre algo acontecendo. Fique por dentro da nossa agenda.</CardDescription>
-                <Link href="/eventos" className="mt-4 inline-block">
-                  <Button variant="link" className="px-0 text-primary">Ver Calendário <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
               </CardContent>
             </Card>

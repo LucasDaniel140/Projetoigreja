@@ -14,7 +14,6 @@ const navLinks = [
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Ações Sociais" },
   { href: "/parceiros", label: "Parceiros" },
-  { href: "/eventos", label: "Eventos" },
 ];
 
 export function Header() {
