@@ -16,6 +16,11 @@ const leadership = [
   { name: "Pra. Angela Pacheco", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
 ];
 
+const historyImages = [
+    { src: "https://placehold.co/600x400.png", alt: "Igreja antiga em uma garagem", dataAiHint: "garage church" },
+    { src: "https://placehold.co/600x400.png", alt: "Fachada da nova igreja", dataAiHint: "modern church building" },
+];
+
 const galleryImages = [
   { src: "https://placehold.co/600x400.png", alt: "Culto de Domingo", dataAiHint: "church service" },
   { src: "https://placehold.co/600x400.png", alt: "Grupo de jovens", dataAiHint: "youth group" },
@@ -26,8 +31,8 @@ const galleryImages = [
 ];
 
 export default function QuemSomosPage() {
-  const galleryAutoplayPlugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
   );
 
   return (
@@ -54,34 +59,35 @@ export default function QuemSomosPage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4">
-            <div className="text-center">
-                <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
+          <Carousel
+            plugins={[autoplayPlugin.current]}
+            className="w-full max-w-md mx-auto"
+            opts={{ align: "start", loop: true }}
+            onMouseEnter={autoplayPlugin.current.stop}
+            onMouseLeave={autoplayPlugin.current.reset}
+          >
+            <CarouselContent>
+              {historyImages.map((image, index) => (
+                <CarouselItem key={index}>
+                  <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
                     <Image
-                    src="https://placehold.co/600x400.png"
-                    alt="Igreja antiga em uma garagem"
-                    data-ai-hint="garage church"
-                    layout="fill"
-                    objectFit="cover"
+                      src={image.src}
+                      alt={image.alt}
+                      data-ai-hint={image.dataAiHint}
+                      layout="fill"
+                      objectFit="cover"
+                      className="transition-transform duration-300 group-hover:scale-105"
                     />
-                </div>
-                <h3 className="font-bold mt-2">Antes</h3>
-                <p className="text-sm text-muted-foreground">O início em uma garagem</p>
-            </div>
-             <div className="text-center">
-                <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
-                    <Image
-                    src="https://placehold.co/600x400.png"
-                    alt="Fachada da nova igreja"
-                    data-ai-hint="modern church building"
-                    layout="fill"
-                    objectFit="cover"
-                    />
-                </div>
-                <h3 className="font-bold mt-2">Depois</h3>
-                <p className="text-sm text-muted-foreground">O templo hoje</p>
-            </div>
-          </div>
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <p className="text-white font-bold">{image.alt}</p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </section>
 
         <Separator className="my-12" />
@@ -139,14 +145,14 @@ export default function QuemSomosPage() {
         <section className="text-center">
             <h2 className="text-3xl font-headline font-bold mb-8">Galeria de Momentos</h2>
             <Carousel
-              plugins={[galleryAutoplayPlugin.current]}
+              plugins={[autoplayPlugin.current]}
               className="w-full max-w-4xl mx-auto"
                opts={{
                 align: "start",
                 loop: true,
               }}
-              onMouseEnter={galleryAutoplayPlugin.current.stop}
-              onMouseLeave={galleryAutoplayPlugin.current.reset}
+              onMouseEnter={autoplayPlugin.current.stop}
+              onMouseLeave={autoplayPlugin.current.reset}
             >
               <CarouselContent>
                 {galleryImages.map((image, index) => (
