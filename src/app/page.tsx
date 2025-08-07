@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Calendar, Heart, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 
 export default function Home() {
   return (
@@ -18,9 +19,7 @@ export default function Home() {
         <div className="container px-4 md:px-6 relative">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
-              <h1 className="font-headline text-4xl font-bold uppercase tracking-tighter sm:text-5xl xl:text-7xl/none text-primary">
-                bem vindo
-              </h1>
+              <AnimatedWelcome />
               <p className="max-w-[600px] text-foreground/80 md:text-xl">
                 Você não está aqui por acaso! Você está aqui porque o próprio Deus te atraiu a este lugar. E uma das nossas maiores alegrias é receber você em nossa família e tê-lo como um irmão em Cristo!
               </p>
