@@ -40,8 +40,9 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
     useEffect(() => {
         const welcomeEl = welcomeContainerRef.current?.querySelector(`.welcome-el`);
         const homeEl = welcomeContainerRef.current?.querySelector(`.home-el`);
+        const peaceEl = welcomeContainerRef.current?.querySelector(`.peace-el`);
 
-        if (welcomeEl && homeEl) {
+        if (welcomeEl && homeEl && peaceEl) {
             timeline.current = anime.timeline({ 
                 loop: true,
             })
@@ -78,6 +79,23 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
                 duration: 900,
                 delay: anime.stagger(100),
                 offset: '+=1000'
+            })
+            .add({
+                targets: peaceEl.querySelectorAll('.letter'),
+                translateY: ["100%", "0%"],
+                opacity: [0, 1],
+                easing: "easeOutExpo",
+                duration: 1000,
+                delay: anime.stagger(100),
+            }, '-=800')
+            .add({
+                targets: peaceEl.querySelectorAll('.letter'),
+                translateY: ["0%", "-100%"],
+                opacity: [1, 0],
+                easing: "easeInExpo",
+                duration: 900,
+                delay: anime.stagger(100),
+                offset: '+=1000'
             });
         }
 
@@ -90,12 +108,17 @@ export function AnimatedWelcome({ position = 'center' }: AnimatedWelcomeProps) {
     <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px' }}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="welcome-el" style={{display: 'inline-block'}}>
-            <WelcomeText text="Bem vindo" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
+            <WelcomeText text="Bem-vindo(a)" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
         </div>
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="home-el" style={{display: 'inline-block'}}>
             <WelcomeText text="esta é a sua casa" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
+        </div>
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="peace-el" style={{display: 'inline-block'}}>
+            <WelcomeText text="sinta-se em paz" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
         </div>
       </div>
     </div>
