@@ -17,14 +17,8 @@ const studies = [
     paid: false,
     details: (
       <div className="space-y-4 text-sm text-muted-foreground">
-        <p>Este estudo aprofundado oferece uma jornada versículo por versículo através de um dos livros mais transformadores da Bíblia.</p>
-        <p><strong>Tópicos abordados:</strong></p>
-        <ul className="list-disc pl-5 space-y-1">
-          <li>A Doutrina da Justificação pela Fé.</li>
-          <li>A Vida no Espírito Santo.</li>
-          <li>O Papel de Israel no Plano de Deus.</li>
-          <li>Aplicações práticas para a vida cristã diária.</li>
-        </ul>
+        <p>Romanos 122 é um discipulado individual pensado para quem decidiu seguir Jesus e deseja se batizar.</p>
+        <p>Um tempo de ensino simples e profundo, onde aprendemos os fundamentos da fé cristã e o que significa ser um verdadeiro discípulo.</p>
         <Button asChild>
           <Link href="#" target="_blank">
             <MessageSquare className="mr-2 h-4 w-4" />
