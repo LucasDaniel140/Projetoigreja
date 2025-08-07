@@ -5,6 +5,7 @@ import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket, Smartphone, MapPin
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
+import { InteractivePhone } from "@/components/InteractivePhone";
 
 export default function Home() {
   return (
@@ -129,14 +130,7 @@ export default function Home() {
             </div>
           </div>
           <div className="w-full h-full min-h-[400px] md:min-h-[600px] flex items-center justify-center">
-            <Image 
-                src="https://i.imgur.com/8Ipq9Na.png"
-                alt="App da Igreja em um celular"
-                width={300}
-                height={600}
-                className="object-contain"
-                data-ai-hint="church app phone"
-            />
+            <InteractivePhone />
           </div>
         </div>
       </section>
