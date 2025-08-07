@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, BookOpen, Globe, HeartHandshake, Rocket } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -92,7 +92,7 @@ export default function Home() {
                 <CardTitle className="font-headline text-2xl uppercase">Missão Africa</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col flex-grow">
-                <CardDescription className="flex-grow">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</CardDescription>
+                <p className="flex-grow text-muted-foreground">Apoiamos projetos que levam esperança ao redor do mundo. Envolva-se!</p>
                 <Link href="/missoes" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
@@ -104,7 +104,7 @@ export default function Home() {
                 <CardTitle className="font-headline text-2xl uppercase">Reação</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col flex-grow">
-                <CardDescription className="flex-grow">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</CardDescription>
+                <p className="flex-grow text-muted-foreground">Nosso projeto social para abençoar a comunidade local. Conheça e ajude.</p>
                 <Link href="/acoes-sociais" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Saiba Mais <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
@@ -116,7 +116,7 @@ export default function Home() {
                 <CardTitle className="font-headline text-2xl uppercase">Visionários</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col flex-grow">
-                <CardDescription className="flex-grow">Uma plataforma para visionários que querem expandir o Reino.</CardDescription>
+                <p className="flex-grow text-muted-foreground">Uma plataforma para visionários que querem expandir o Reino.</p>
                  <Link href="#" target="_blank" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
@@ -128,7 +128,7 @@ export default function Home() {
                 <CardTitle className="font-headline text-2xl uppercase">Estudos</CardTitle>
               </CardHeader>
               <CardContent className="flex flex-col flex-grow">
-                <CardDescription className="flex-grow">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</CardDescription>
+                <p className="flex-grow text-muted-foreground">Aprofunde seu conhecimento na Palavra com nossos materiais e cursos.</p>
                 <Link href="/estudos" className="mt-4 inline-block">
                   <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar <ArrowRight className="ml-2 h-4 w-4" /></Button>
                 </Link>
@@ -140,13 +140,13 @@ export default function Home() {
 
       <section id="app-location" className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div className="space-y-4 text-center md:text-left">
+          <div className="space-y-4 text-center">
             <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Conecte-se</div>
             <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Leve a Igreja com Você</h2>
-            <p className="text-muted-foreground md:text-xl/relaxed max-w-3xl mx-auto md:mx-0">
+            <p className="text-muted-foreground md:text-xl/relaxed max-w-xl mx-auto">
               Baixe nosso aplicativo para ter acesso a mensagens, estudos, agenda de eventos e muito mais. Fique conectado com a nossa comunidade onde quer que esteja.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center">
               <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank">
                 <Button size="lg" className="w-full sm:w-auto">
                     <Image src="https://i.imgur.com/wyj5M5q.png" alt="App Store" width={24} height={24} className="dark:invert mr-2"/>
@@ -169,10 +169,10 @@ export default function Home() {
       
       <section className="w-full py-12">
         <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
-            <div>
+            <div className="text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Visite-nos</h2>
-                 <p className="text-muted-foreground mt-2 mb-6">
+                 <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
                     Estamos ansiosos para receber você em nossa casa.
                 </p>
                 <div className="h-full w-full rounded-lg overflow-hidden">
@@ -186,10 +186,10 @@ export default function Home() {
                         referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
-            <div>
+            <div className="text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4">Assista Nossas Mensagens</h2>
-                <p className="text-muted-foreground mt-2 mb-6">
+                <p className="text-muted-foreground mt-2 mb-6 max-w-xl mx-auto">
                     Acompanhe nossas últimas pregações, estudos e momentos de louvor em nosso canal do YouTube.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -231,5 +231,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
