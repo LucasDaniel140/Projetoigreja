@@ -24,7 +24,7 @@ export default function Home() {
           <div className="flex flex-col items-center space-y-4 text-center mt-8">
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link href="/quem-somos">
-                <Button size="lg" variant="outline" className="bg-white text-black hover:bg-white/90">
+                <Button size="lg" variant="outline" className="bg-white text-black hover:bg-white/90 transition-transform duration-200 hover:scale-105">
                   Nossa História
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
