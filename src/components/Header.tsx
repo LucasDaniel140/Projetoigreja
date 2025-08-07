@@ -26,11 +26,11 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center justify-start">
-          <Link href="/" className="flex items-center space-x-2">
+        <div className="flex items-center">
+          <Link href="/" className="flex items-center space-x-2 mr-6">
             <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-7 w-auto" />
           </Link>
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium ml-6">
+          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
             {navLinks.slice(1).map((link) => (
               <Link
                 key={link.href}
