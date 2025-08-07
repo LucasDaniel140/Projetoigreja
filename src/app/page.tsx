@@ -148,17 +148,27 @@ export default function Home() {
                     Baixe nosso aplicativo para ter acesso a mensagens, estudos, agenda de eventos e muito mais. Fique conectado com a nossa comunidade onde quer que esteja.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
-                    <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank">
-                        <Button size="lg" className="w-full sm:w-auto">
-                            <Image src="https://i.imgur.com/wyj5M5q.png" alt="App Store" width={24} height={24} className="dark:invert mr-2"/>
-                            App Store
-                        </Button>
+                    <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank" className="inline-flex items-center justify-center bg-black text-white rounded-lg px-4 h-[56px] w-full sm:w-auto hover:bg-gray-800 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-8 w-8 mr-3" viewBox="0 0 16 16">
+                            <path d="M8.28,1.66A2.8,2.8,0,0,0,5.8,3.28a2.93,2.93,0,0,0,0,5.46,2.8,2.8,0,0,0,2.48-1.62,2.5,2.5,0,0,1-1.87-.82,2.55,2.55,0,0,1,.87-3.41A2.47,2.47,0,0,1,8.28,1.66Z"/>
+                            <path d="M9.83,16a5.52,5.52,0,0,1-3.23-1.61,4.71,4.71,0,0,1-1.6-3.43,4.92,4.92,0,0,1,1.82-3.83,5.13,5.13,0,0,1,4.19-1,1.5,1.5,0,0,0,.08,0,5,5,0,0,1,2.51,2.8,1.48,1.48,0,0,0,0,.15,5.2,5.2,0,0,1-3.69,6.86A.23.23,0,0,1,9.83,16Z"/>
+                        </svg>
+                        <div className="text-left">
+                            <p className="text-xs">Baixar na</p>
+                            <p className="text-xl font-semibold leading-tight">App Store</p>
+                        </div>
                     </Link>
-                    <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank">
-                        <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                            <Image src="https://www.clker.com/cliparts/J/J/B/Y/A/M/google-play-logo-md.png" alt="Google Play" width={24} height={24} className="mr-2"/>
-                            Google Play
-                        </Button>
+                    <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank" className="inline-flex items-center justify-center bg-black text-white rounded-lg px-4 h-[56px] w-full sm:w-auto hover:bg-gray-800 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="h-7 w-7 mr-3" viewBox="0 0 16 16">
+                            <path d="M11.23,8,4.51,1.27A1,1,0,0,1,4.51,0,1,1,0,0,1,6,0l7.23,7.23a.47.47,0,0,1,0,.69L6.1,15.15a1,1,0,0,1-1.42,0,1,1,0,0,1,0-1.42Z"/>
+                            <path d="M3.52,12.52,9.75,8,3.52,3.48a.49.49,0,0,1-.2-.82.47.47,0,0,1,.83-.2L10.6,7.57a.47.47,0,0,1,0,.86L4.15,13.54a.47.47,0,0,1-.83-.2A.49.49,0,0,1,3.52,12.52Z"/>
+                            <path d="M.1,14.62a1,1,0,0,1-.1-.7,1,1,0,0,1,1.42-1.42L3.58,14.62,1,15.9a.49.49,0,0,1-.7,0A.47.47,0,0,1,.1,14.62Z"/>
+                            <path d="M1,1.42,3.58.1.1,2.09A.47.47,0,0,1,0,1.42.49.49,0,0,1,1,0Z"/>
+                        </svg>
+                         <div className="text-left">
+                            <p className="text-xs uppercase">Disponível no</p>
+                            <p className="text-xl font-semibold leading-tight">Google Play</p>
+                        </div>
                     </Link>
                     </div>
                 </div>
@@ -237,5 +247,6 @@ export default function Home() {
     
 
     
+
 
 
