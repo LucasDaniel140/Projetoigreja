@@ -43,8 +43,19 @@ export default function QuemSomosPage() {
               </p>
             </div>
           </div>
-          <div className="relative h-64 md:h-96 rounded-lg overflow-hidden shadow-lg">
-             <Image src="https://placehold.co/600x400.png" alt="Igreja antiga" data-ai-hint="old church building" layout="fill" objectFit="cover" />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg">
+                <Image src="https://placehold.co/400x600.png" alt="Igreja antiga em uma garagem" data-ai-hint="garage church" layout="fill" objectFit="cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+                    <p className="text-white font-semibold text-sm">O Início</p>
+                </div>
+            </div>
+             <div className="relative h-64 md:h-80 rounded-lg overflow-hidden shadow-lg mt-8">
+                <Image src="https://placehold.co/400x600.png" alt="Fachada da nova igreja" data-ai-hint="modern church building" layout="fill" objectFit="cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+                    <p className="text-white font-semibold text-sm">Dias Atuais</p>
+                </div>
+            </div>
           </div>
         </section>
 
