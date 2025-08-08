@@ -1,4 +1,5 @@
 
+
 "use client"
 
 import * as React from "react"
@@ -55,6 +56,11 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname();
+
+  // Don't render sidebar for login page
+  if (pathname === '/admin') {
+    return <>{children}</>
+  }
 
   return (
     <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">

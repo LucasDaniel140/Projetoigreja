@@ -61,11 +61,6 @@ export function Header() {
                 Doar Agora
             </Button>
             </Link>
-            <Link href="/admin/dashboard">
-            <Button variant="outline">
-                Admin
-            </Button>
-            </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -96,9 +91,6 @@ export function Header() {
                     {link.label}
                     </Link>
                 ))}
-                 <Link href="/admin/dashboard" onClick={handleLinkClick} className={cn("text-lg", pathname.startsWith('/admin') ? "font-bold text-primary" : "text-muted-foreground")}>
-                    Admin
-                </Link>
                 <Link href="/missoes#doar" className="pt-4" onClick={handleLinkClick}>
                     <Button className="w-full">
                         Doar Agora
