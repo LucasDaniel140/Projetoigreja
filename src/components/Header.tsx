@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Image from "next/image";
+import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -22,6 +23,11 @@ const navLinks = [
 
 export function Header() {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    setMobileMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -59,7 +65,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         <div className="md:hidden">
-            <Sheet>
+            <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                 <Menu className="h-5 w-5" />
@@ -67,7 +73,7 @@ export function Header() {
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-background">
-                <Link href="/" className="flex items-center">
+                <Link href="/" className="flex items-center" onClick={handleLinkClick}>
                 <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-7 w-auto" />
                 </Link>
                 <div className="flex flex-col space-y-4 mt-6">
@@ -76,6 +82,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     target={link.target}
+                    onClick={handleLinkClick}
                     className={cn(
                         "text-lg",
                         pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
@@ -84,7 +91,7 @@ export function Header() {
                     {link.label}
                     </Link>
                 ))}
-                <Link href="/missoes#doar" className="pt-4">
+                <Link href="/missoes#doar" className="pt-4" onClick={handleLinkClick}>
                     <Button className="w-full">
                         Doar Agora
                     </Button>
