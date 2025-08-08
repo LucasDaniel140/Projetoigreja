@@ -12,7 +12,7 @@ export default function PagesAdminPage() {
           Gerenciamento de Páginas
         </CardTitle>
         <CardDescription>
-          Altere qualquer texto do site principal, organizado por cada página ou seção, utilizando um editor visual poderoso.
+          Altere textos, vídeos e imagens do site principal. O administrador pode trocar os vídeos da seção "Nossos Momentos", as fotos da "Nossa História" em "Quem Somos" e as fotos dos líderes.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
