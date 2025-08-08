@@ -1,5 +1,4 @@
 
-
 "use client"
 
 import * as React from "react"
@@ -59,7 +58,11 @@ export default function AdminLayout({
 
   // Don't render sidebar for login page
   if (pathname === '/admin') {
-    return <>{children}</>
+    return (
+        <div className="bg-background min-h-screen">
+            {children}
+        </div>
+    )
   }
 
   return (
