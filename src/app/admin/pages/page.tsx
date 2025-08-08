@@ -1,7 +1,9 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { File, PenSquare, Home, Users } from "lucide-react";
+import { File, PenSquare, Home, Users, Video } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function PagesAdminPage() {
   return (
@@ -56,11 +58,39 @@ export default function PagesAdminPage() {
                             Página Inicial
                         </CardTitle>
                     </CardHeader>
-                    <CardContent className="text-muted-foreground space-y-1">
-                        <p>• Gerenciamento de banners no carrossel</p>
-                        <p>• Alteração dos destaques principais</p>
-                        <p>• Edição do versículo do dia</p>
-                        <p>• Ajuste das chamadas para ação (CTAs)</p>
+                    <CardContent className="text-muted-foreground space-y-4">
+                        <div className="space-y-1">
+                          <p>• Gerenciamento de banners no carrossel</p>
+                          <p>• Alteração dos destaques principais</p>
+                          <p>• Edição do versículo do dia</p>
+                          <p>• Ajuste das chamadas para ação (CTAs)</p>
+                        </div>
+                        <Separator />
+                        <div className="space-y-3">
+                            <h4 className="flex items-center gap-2 font-semibold">
+                              <Video className="h-4 w-4" />
+                              Vídeos "Nossos Momentos"
+                            </h4>
+                            <CardDescription>Cole o código de incorporação (iframe) do YouTube abaixo.</CardDescription>
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-2">
+                                  <Label htmlFor="video1">Vídeo 1</Label>
+                                  <Textarea id="video1" placeholder='<iframe src="..."></iframe>' />
+                                </div>
+                                 <div className="space-y-2">
+                                  <Label htmlFor="video2">Vídeo 2</Label>
+                                  <Textarea id="video2" placeholder='<iframe src="..."></iframe>' />
+                                </div>
+                                 <div className="space-y-2">
+                                  <Label htmlFor="video3">Vídeo 3</Label>
+                                  <Textarea id="video3" placeholder='<iframe src="..."></iframe>' />
+                                </div>
+                                 <div className="space-y-2">
+                                  <Label htmlFor="video4">Vídeo 4</Label>
+                                  <Textarea id="video4" placeholder='<iframe src="..."></iframe>' />
+                                </div>
+                            </div>
+                        </div>
                     </CardContent>
                 </Card>
             </div>
