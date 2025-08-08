@@ -2,8 +2,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { File, PenSquare, Home, Users } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 
 export default function PagesAdminPage() {
   return (
@@ -58,17 +56,11 @@ export default function PagesAdminPage() {
                             Página Inicial
                         </CardTitle>
                     </CardHeader>
-                    <CardContent className="text-muted-foreground space-y-4">
-                        <div className="space-y-1">
-                            <p>• Gerenciamento de banners no carrossel</p>
-                            <p>• Alteração dos destaques principais</p>
-                            <p>• Edição do versículo do dia</p>
-                            <p>• Ajuste das chamadas para ação (CTAs)</p>
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="main-page-text">Texto de Destaque da Página Principal</Label>
-                            <Textarea id="main-page-text" placeholder="Digite o texto que aparecerá na página inicial..." />
-                        </div>
+                    <CardContent className="text-muted-foreground space-y-1">
+                        <p>• Gerenciamento de banners no carrossel</p>
+                        <p>• Alteração dos destaques principais</p>
+                        <p>• Edição do versículo do dia</p>
+                        <p>• Ajuste das chamadas para ação (CTAs)</p>
                     </CardContent>
                 </Card>
             </div>
