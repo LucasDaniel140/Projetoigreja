@@ -23,11 +23,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={cn("dark", inter.variable, oswald.variable)}>
       <head />
       <body className={cn("min-h-screen bg-background font-body antialiased")} suppressHydrationWarning>
-        <div className="relative flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+        {children}
         <Toaster />
       </body>
     </html>

@@ -4,10 +4,8 @@
 import * as React from "react"
 import Link from "next/link"
 import {
-  Home,
   Settings,
   PanelLeft,
-  Search,
   Users,
   File,
   LayoutDashboard,
@@ -29,7 +27,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
