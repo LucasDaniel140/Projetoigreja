@@ -11,7 +11,7 @@ export default function PagesAdminPage() {
           Gerenciamento de Páginas
         </CardTitle>
         <CardDescription>
-          Edite o conteúdo das páginas principais do site, como "Quem Somos" e a Página Inicial.
+          Altere qualquer texto do site principal, organizado por cada página ou seção.
         </CardDescription>
       </CardHeader>
       <CardContent>
