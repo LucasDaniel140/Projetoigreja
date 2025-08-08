@@ -10,6 +10,8 @@ class VideoStore {
     '<iframe class="w-full h-full" src="https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
   ];
 
+  private backgroundVideoUrl: string = "https://i.imgur.com/o6GrCN0.mp4";
+
   getUrls(): string[] {
     return this.urls;
   }
@@ -18,6 +20,14 @@ class VideoStore {
     if (Array.isArray(newUrls) && newUrls.length === 4) {
       this.urls = newUrls;
     }
+  }
+
+  getBackgroundVideoUrl(): string {
+    return this.backgroundVideoUrl;
+  }
+
+  setBackgroundVideoUrl(newUrl: string) {
+    this.backgroundVideoUrl = newUrl;
   }
 }
 

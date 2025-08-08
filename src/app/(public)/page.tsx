@@ -9,7 +9,7 @@ import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
 import { InteractiveCard } from '@/components/InteractiveCard';
-import { getVideoUrls } from '../admin/media/actions';
+import { getVideoUrls, getBackgroundVideoUrl } from '../admin/media/actions';
 
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
@@ -19,17 +19,21 @@ export default function Home() {
     "https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz",
     "https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB"
   ]);
+  const [backgroundVideo, setBackgroundVideo] = useState("https://i.imgur.com/o6GrCN0.mp4");
 
   const appLocationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    async function fetchVideos() {
-      const videoUrls = await getVideoUrls();
-      if(videoUrls && videoUrls.length === 4 && videoUrls.every(url => url)) {
+    async function fetchMedia() {
+      const [videoUrls, bgUrl] = await Promise.all([getVideoUrls(), getBackgroundVideoUrl()]);
+      if (videoUrls && videoUrls.length === 4 && videoUrls.every(url => url)) {
         setVideos(videoUrls);
       }
+      if (bgUrl) {
+        setBackgroundVideo(bgUrl);
+      }
     }
-    fetchVideos();
+    fetchMedia();
   }, []);
 
   useEffect(() => {
@@ -81,8 +85,9 @@ export default function Home() {
           muted
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover opacity-30"
+          key={backgroundVideo}
         >
-          <source src="https://i.imgur.com/o6GrCN0.mp4" type="video/mp4" />
+          <source src={backgroundVideo} type="video/mp4" />
           Seu navegador não suporta a tag de vídeo.
         </video>
         <div className="container px-4 md:px-6 relative flex flex-col justify-center items-center h-full flex-grow w-full">
@@ -209,3 +214,4 @@ export default function Home() {
     </div>
   );
 }
+
