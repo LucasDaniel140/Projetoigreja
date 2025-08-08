@@ -9,7 +9,7 @@ import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
 import { InteractiveCard } from '@/components/InteractiveCard';
-import { getVideoUrls } from '../admin/pages/actions';
+import { getVideoUrls } from '../admin/media/actions';
 
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
