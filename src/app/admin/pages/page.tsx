@@ -1,9 +1,10 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { File, PenSquare, Home, Users, Video } from "lucide-react";
+import { File, PenSquare, Home, Users, Video, Save } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 export default function PagesAdminPage() {
   return (
@@ -89,6 +90,12 @@ export default function PagesAdminPage() {
                                   <Label htmlFor="video4">Vídeo 4</Label>
                                   <Textarea id="video4" placeholder='<iframe src="..."></iframe>' />
                                 </div>
+                            </div>
+                            <div className="flex justify-end pt-4">
+                                <Button>
+                                    <Save className="mr-2 h-4 w-4" />
+                                    Salvar Alterações
+                                </Button>
                             </div>
                         </div>
                     </CardContent>
