@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
@@ -8,30 +9,28 @@ import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
 import { InteractiveCard } from '@/components/InteractiveCard';
-
-const youtubeVideos = [
-  {
-    id: "vGohlJdcGvE",
-    title: "Vencendo a Ansiedade",
-  },
-  {
-    id: "WwaS9A4c0YM",
-    title: "O Poder da Aliança",
-  },
-  {
-    id: "_a2gUBNM0dE",
-    title: "Ressurreição",
-  },
-  {
-    id: "2tSS_lGQCQ0",
-    title: "Crescendo em Meio ao Deserto",
-  },
-];
-
+import { getVideoUrls } from '../admin/pages/actions';
 
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
+  const [videos, setVideos] = useState([
+    "https://www.youtube.com/embed/vGohlJdcGvE?si=SOirILXR5lEz-LLv",
+    "https://www.youtube.com/embed/WwaS9A4c0YM?si=8jRVGh4rG0Cprg3n",
+    "https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz",
+    "https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB"
+  ]);
+
   const appLocationRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    async function fetchVideos() {
+      const videoUrls = await getVideoUrls();
+      if(videoUrls && videoUrls.length === 4 && videoUrls.every(url => url)) {
+        setVideos(videoUrls);
+      }
+    }
+    fetchVideos();
+  }, []);
 
   useEffect(() => {
     const container = appLocationRef.current;
@@ -66,6 +65,12 @@ export default function Home() {
       }
     }
   }, []);
+
+  const extractSrcFromIframe = (iframeCode: string) => {
+    const match = iframeCode.match(/src="([^"]+)"/);
+    return match ? match[1] : "";
+  };
+
 
   return (
     <div className="w-full">
@@ -184,18 +189,18 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4 mb-6">Nossos Momentos</h2>
                  <div className="grid grid-cols-2 gap-4 mt-4">
-                    <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/vGohlJdcGvE?si=SOirILXR5lEz-LLv" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                  {videos.map((video, index) => (
+                    <div key={index} className="aspect-video rounded-lg overflow-hidden">
+                      <iframe 
+                        className="w-full h-full" 
+                        src={extractSrcFromIframe(video) || video} 
+                        title="YouTube video player" 
+                        frameBorder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowFullScreen>
+                      </iframe>
                     </div>
-                    <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/WwaS9A4c0YM?si=8jRVGh4rG0Cprg3n" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                    </div>
-                    <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                    </div>
-                    <div className="aspect-video rounded-lg overflow-hidden">
-                        <iframe className="w-full h-full" src="https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                    </div>
+                  ))}
                  </div>
             </div>
         </div>
