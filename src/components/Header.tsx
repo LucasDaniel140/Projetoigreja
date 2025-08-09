@@ -30,23 +30,21 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="flex-1">
-             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2">
-                <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-7 w-auto" />
-            </Link>
-        </div>
+      <div className="container flex h-16 items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center space-x-2">
+          <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-7 w-auto" />
+        </Link>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex flex-1 justify-center items-center space-x-6 text-sm font-medium">
+        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center space-x-6 text-sm font-medium">
           {navLinks.slice(1).map((link) => (
             <Link
               key={link.href}
               href={link.href}
               target={link.target}
               className={cn(
-                "transition-colors hover:text-primary",
+                "transition-colors hover:text-primary whitespace-nowrap",
                 pathname === link.href ? "text-primary font-bold" : "text-foreground/60"
               )}
             >
@@ -54,13 +52,9 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        
-        {/* Empty div for spacing */}
-        <div className="hidden md:flex flex-1 justify-end items-center space-x-4">
-        </div>
 
         {/* Mobile Menu */}
-        <div className="md:hidden ml-auto">
+        <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
