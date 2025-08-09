@@ -31,7 +31,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="flex-1 flex justify-start">
+        <div className="flex-1">
              {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
                 <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-7 w-auto" />
