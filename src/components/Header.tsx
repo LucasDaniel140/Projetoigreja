@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -56,13 +55,8 @@ export function Header() {
           ))}
         </nav>
         
-        {/* Desktop Buttons */}
+        {/* Empty div for spacing */}
         <div className="hidden md:flex flex-1 justify-end items-center space-x-4">
-            <Link href="/missoes#doar">
-            <Button>
-                Doar Agora
-            </Button>
-            </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -93,11 +87,6 @@ export function Header() {
                     {link.label}
                     </Link>
                 ))}
-                <Link href="/missoes#doar" className="pt-4" onClick={handleLinkClick}>
-                    <Button className="w-full">
-                        Doar Agora
-                    </Button>
-                </Link>
                 </div>
             </SheetContent>
             </Sheet>
