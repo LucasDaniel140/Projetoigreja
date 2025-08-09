@@ -3,8 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,14 +14,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { createCheckoutSession } from "./actions";
-
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
+import { useState } from "react";
 
 const beneficiaryFormSchema = z.object({
   fullName: z.string().min(3, "Nome completo é obrigatório."),
@@ -34,34 +26,15 @@ const beneficiaryFormSchema = z.object({
   phone: z.string().min(10, "Telefone é obrigatório."),
 });
 
-const donationFormSchema = z.object({
-    name: z.string().min(3, "Nome é obrigatório."),
-    email: z.string().email("Email inválido."),
-    paymentMethod: z.enum(["pix", "card", "boleto"], {
-        required_error: "Selecione um método de pagamento.",
-    }),
-});
 
-function DonationForm() {
+function DonationButton() {
   const { toast } = useToast();
-  const donationForm = useForm<z.infer<typeof donationFormSchema>>({
-    resolver: zodResolver(donationFormSchema),
-    defaultValues: {
-        name: "",
-        email: "",
-    },
-  });
+  const [isLoading, setIsLoading] = useState(false);
 
-  async function onDonationSubmit(values: z.infer<typeof donationFormSchema>) {
-    const { name, email, paymentMethod } = values;
-
+  const handleDonationClick = async () => {
+    setIsLoading(true);
     try {
-      const session = await createCheckoutSession({
-        name,
-        email,
-        paymentMethod,
-      });
-
+      const session = await createCheckoutSession();
       if (session?.url) {
         window.location.href = session.url;
       } else {
@@ -74,78 +47,21 @@ function DonationForm() {
         description: "Houve um problema ao criar a sessão de pagamento. Tente novamente.",
         variant: "destructive",
       });
+       setIsLoading(false);
     }
   }
   
   return (
-     <Form {...donationForm}>
-        <form onSubmit={donationForm.handleSubmit(onDonationSubmit)} className="space-y-6">
-            <div className="text-center border border-dashed border-primary/50 rounded-lg p-4">
-                <p className="text-sm text-muted-foreground">Valor da doação</p>
-                <p className="text-4xl font-bold">R$ 100,00</p>
-            </div>
-             <FormField
-                control={donationForm.control}
-                name="name"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Seu Nome</FormLabel>
-                    <FormControl>
-                        <Input placeholder="Nome para identificação" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-            <FormField
-                control={donationForm.control}
-                name="email"
-                render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Seu E-mail</FormLabel>
-                    <FormControl>
-                        <Input type="email" placeholder="seu@email.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-             <FormField
-                control={donationForm.control}
-                name="paymentMethod"
-                render={({ field }) => (
-                    <FormItem className="space-y-3">
-                    <FormLabel>Método de Pagamento</FormLabel>
-                    <FormControl>
-                        <RadioGroup
-                        onValueChange={field.onChange}
-                        defaultValue={field.value}
-                        className="flex flex-col space-y-1"
-                        >
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                            <FormControl><RadioGroupItem value="card" /></FormControl>
-                            <FormLabel className="font-normal">Cartão de Crédito</FormLabel>
-                        </FormItem>
-                         <FormItem className="flex items-center space-x-3 space-y-0">
-                            <FormControl><RadioGroupItem value="pix" /></FormControl>
-                            <FormLabel className="font-normal">PIX</FormLabel>
-                        </FormItem>
-                        <FormItem className="flex items-center space-x-3 space-y-0">
-                            <FormControl><RadioGroupItem value="boleto" /></FormControl>
-                            <FormLabel className="font-normal">Boleto Bancário</FormLabel>
-                        </FormItem>
-                        </RadioGroup>
-                    </FormControl>
-                    <FormMessage />
-                    </FormItem>
-                )}
-                />
-            <Button type="submit" className="w-full">
-                <Heart className="mr-2 h-4 w-4" />
-                Confirmar Doação
-            </Button>
-        </form>
-     </Form>
+    <div className="text-center space-y-4">
+        <div className="text-center border border-dashed border-primary/50 rounded-lg p-4">
+            <p className="text-sm text-muted-foreground">Valor da doação</p>
+            <p className="text-4xl font-bold">R$ 100,00</p>
+        </div>
+        <Button onClick={handleDonationClick} disabled={isLoading} className="w-full">
+            <Heart className="mr-2 h-4 w-4" />
+            {isLoading ? "Processando..." : "Confirmar Doação"}
+        </Button>
+    </div>
   )
 }
 
@@ -318,9 +234,7 @@ export default function AcoesSociaisPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Elements stripe={stripePromise}>
-              <DonationForm />
-            </Elements>
+            <DonationButton />
           </CardContent>
         </Card>
       </div>
