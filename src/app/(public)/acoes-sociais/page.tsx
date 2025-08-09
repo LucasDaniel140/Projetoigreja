@@ -1,21 +1,33 @@
+
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import React from 'react';
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { CalendarIcon, Heart, ShoppingBasket } from "lucide-react";
+import { CalendarIcon, ShoppingBasket } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
-import { createCheckoutSession } from "./actions";
-import { useState } from "react";
+
+// Adiciona a tipagem para o custom element do Stripe
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'stripe-buy-button': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & {
+        'buy-button-id': string;
+        'publishable-key': string;
+      };
+    }
+  }
+}
 
 const beneficiaryFormSchema = z.object({
   fullName: z.string().min(3, "Nome completo é obrigatório."),
@@ -26,41 +38,14 @@ const beneficiaryFormSchema = z.object({
   phone: z.string().min(10, "Telefone é obrigatório."),
 });
 
-
-function DonationButton() {
-  const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleDonationClick = async () => {
-    setIsLoading(true);
-    try {
-      const session = await createCheckoutSession();
-      if (session?.url) {
-        window.location.href = session.url;
-      } else {
-        throw new Error('Failed to create checkout session');
-      }
-    } catch (error) {
-      console.error(error);
-      toast({
-        title: "Erro ao processar doação",
-        description: "Houve um problema ao criar a sessão de pagamento. Tente novamente.",
-        variant: "destructive",
-      });
-       setIsLoading(false);
-    }
-  }
-  
+function StripeDonationButton() {
   return (
-    <div className="text-center space-y-4">
-        <div className="text-center border border-dashed border-primary/50 rounded-lg p-4">
-            <p className="text-sm text-muted-foreground">Valor da doação</p>
-            <p className="text-4xl font-bold">R$ 100,00</p>
-        </div>
-        <Button onClick={handleDonationClick} disabled={isLoading} className="w-full">
-            <Heart className="mr-2 h-4 w-4" />
-            {isLoading ? "Processando..." : "Confirmar Doação"}
-        </Button>
+    <div className="flex justify-center">
+       <stripe-buy-button
+        buy-button-id="buy_btn_1RuM8LCKYoCACmnbzc3da5Hh"
+        publishable-key="pk_test_51RW4oxCKYoCACmnb6a45nerz49Ytdjs84KFy6rQeziVRdAIeqAscL19GNzuymL6pq2CfpRxMqCXSpRWz9vgArnzM00UztX67Cr"
+      >
+      </stripe-buy-button>
     </div>
   )
 }
@@ -234,7 +219,7 @@ export default function AcoesSociaisPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <DonationButton />
+            <StripeDonationButton />
           </CardContent>
         </Card>
       </div>
