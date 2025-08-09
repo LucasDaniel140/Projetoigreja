@@ -30,6 +30,7 @@ export async function createCheckoutSession() {
       cancel_url: `${origin}/acoes-sociais?canceled=true`,
     });
 
+    // Retorna um objeto JSON simples, que é serializável.
     return {
       id: session.id,
       url: session.url,
@@ -37,6 +38,7 @@ export async function createCheckoutSession() {
   } catch (err) {
     const error = err as Error;
     console.error(`Error creating Stripe session: ${error.message}`);
+    // Lançar um erro aqui para que o catch no front-end possa capturá-lo.
     throw new Error('Could not create Stripe checkout session');
   }
 }
