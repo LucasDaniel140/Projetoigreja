@@ -27,7 +27,7 @@ export async function createCheckoutSession(params: CreateCheckoutSessionParams)
   // IMPORTANTE: Substitua este valor pelo ID do Preço (Price ID) do seu produto no Stripe.
   // Ele geralmente começa com "price_...". Você pode encontrá-lo no painel do Stripe,
   // na página de detalhes do seu produto "Doação de Cesta Básica".
-  const priceId = 'price_1RW54sCKYoCACmnbN3D2gZCI'; // <--- SUBSTITUA ESTE VALOR
+  const priceId = 'price_1RuLfmCKYoCACmnb0XzTVlDA'; // <--- SUBSTITUA ESTE VALOR
 
   if (!priceId.startsWith('price_')) {
     throw new Error('O ID do preço do Stripe não foi configurado corretamente. Ele deve começar com "price_".');
