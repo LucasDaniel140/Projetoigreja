@@ -60,8 +60,6 @@ function DonationForm() {
         name,
         email,
         paymentMethod,
-        amount: 10000, // R$ 100,00 in cents
-        productName: 'Doação de Cesta Básica',
       });
 
       if (session?.url) {

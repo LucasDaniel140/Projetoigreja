@@ -9,8 +9,6 @@ const createCheckoutSessionSchema = z.object({
   name: z.string().min(3),
   email: z.string().email(),
   paymentMethod: z.enum(['card', 'pix', 'boleto']),
-  amount: z.number().positive(),
-  productName: z.string(),
 });
 
 type CreateCheckoutSessionParams = z.infer<typeof createCheckoutSessionSchema>;
@@ -22,22 +20,25 @@ export async function createCheckoutSession(params: CreateCheckoutSessionParams)
     throw new Error('Invalid parameters for checkout session');
   }
 
-  const { name, email, paymentMethod, amount, productName } = validatedParams.data;
+  const { name, email, paymentMethod } = validatedParams.data;
   
   const origin = 'http://localhost:3000'; // Em produção, substitua pelo seu domínio
+
+  // IMPORTANTE: Substitua este valor pelo ID do Preço (Price ID) do seu produto no Stripe.
+  // Ele geralmente começa com "price_...". Você pode encontrá-lo no painel do Stripe,
+  // na página de detalhes do seu produto "Doação de Cesta Básica".
+  const priceId = 'price_1RW54sCKYoCACmnbN3D2gZCI'; // <--- SUBSTITUA ESTE VALOR
+
+  if (!priceId.startsWith('price_')) {
+    throw new Error('O ID do preço do Stripe não foi configurado corretamente. Ele deve começar com "price_".');
+  }
 
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: [paymentMethod],
       line_items: [
         {
-          price_data: {
-            currency: 'brl',
-            product_data: {
-              name: productName,
-            },
-            unit_amount: amount,
-          },
+          price: priceId,
           quantity: 1,
         },
       ],
