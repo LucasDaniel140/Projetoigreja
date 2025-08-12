@@ -80,7 +80,9 @@ export default function MissoesPage() {
           <p className="mt-4 max-w-2xl text-lg">
             Em Morrumbala, Moçambique, levamos amor de Cristo de forma prática, alimentando mais de 300 pessoas diariamente.
           </p>
-          <Button size="lg" className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90">Faça sua Doação</Button>
+          <Link href="https://wa.me/5577999567768" target="_blank">
+            <Button size="lg" className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90">Faça sua Doação</Button>
+          </Link>
         </div>
       </section>
 
