@@ -16,6 +16,8 @@ const leadership = [
   { name: "Pra. Leticia Araújo", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
   { name: "Pr. Welliton Moraes", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
   { name: "Pra. Calliiny Moraes", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pr. Clisman Rocha", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pra. Regina Rocha", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
 ];
 
 const historyImages = [
