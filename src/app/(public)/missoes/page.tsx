@@ -5,7 +5,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Users, Home, Construction, BookOpen, HandHeart, MapPin } from 'lucide-react';
+import { Users, Home, Construction, BookOpen, HandHeart } from 'lucide-react';
 import SplitText from '@/components/SplitText';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -216,10 +216,8 @@ export default function MissoesPage() {
        <section className="py-16 bg-card text-card-foreground">
         <div className="container mx-auto px-4 text-center">
           <blockquote className="text-2xl md:text-3xl italic font-headline">
-             <SplitText text="Participe. Doe. Seja resposta." className="text-2xl md:text-3xl italic font-headline" splitType='words' />
-             <p className="mt-2">
-                <SplitText text="Porque servir é a forma mais bonita de amar." className="text-2xl md:text-3xl italic font-headline" splitType='words' delay={200} />
-             </p>
+             <p>Participe. Doe. Seja resposta.</p>
+             <p className="mt-2">Porque servir é a forma mais bonita de amar.</p>
           </blockquote>
         </div>
       </section>
