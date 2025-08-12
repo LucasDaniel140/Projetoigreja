@@ -83,7 +83,7 @@ export default function MissoesPage() {
       <section className="py-16 lg:py-24 bg-card text-card-foreground">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold font-headline">Nosso <span className="text-primary">Impacto</span></h2>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="bg-secondary p-8 flex flex-col items-center justify-center text-secondary-foreground">
               <Users className="h-12 w-12 text-primary"/>
               <p className="text-5xl font-bold mt-4">300+</p>
@@ -93,11 +93,6 @@ export default function MissoesPage() {
               <Home className="h-12 w-12 text-primary"/>
               <p className="text-5xl font-bold mt-4">10+</p>
               <p className="mt-2 text-muted-foreground">Bases missionárias apoiadas</p>
-            </Card>
-            <Card className="bg-secondary p-8 flex flex-col items-center justify-center text-secondary-foreground">
-              <InfinityIcon className="h-12 w-12 text-primary"/>
-              <p className="text-5xl font-bold mt-4">∞</p>
-              <p className="mt-2 text-muted-foreground">Vidas transformadas</p>
             </Card>
           </div>
         </div>
@@ -163,8 +158,8 @@ export default function MissoesPage() {
       <section className="py-16 bg-card text-card-foreground">
         <div className="container mx-auto px-4 text-center">
           <blockquote className="text-2xl md:text-3xl italic font-headline">
-             <p>Participe. Doe. Seja resposta.</p>
-             <p>Porque servir é a forma mais bonita de amar.</p>
+             <SplitText text="Participe. Doe. Seja resposta." className="block" />
+             <SplitText text="Porque servir é a forma mais bonita de amar." className="block mt-2" delay={300}/>
           </blockquote>
         </div>
       </section>
