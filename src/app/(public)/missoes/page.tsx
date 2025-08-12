@@ -133,12 +133,6 @@ export default function MissoesPage() {
                       ))}
                   </div>
               </div>
-              <div className="absolute -bottom-4 -right-4 z-10">
-                <Button variant="secondary" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg">
-                  <MapPin className="mr-2 h-4 w-4" />
-                  Morrumbala, Moçambique
-                </Button>
-              </div>
             </div>
           </div>
         </div>
