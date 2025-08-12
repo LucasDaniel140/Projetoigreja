@@ -35,7 +35,7 @@ export default function MissoesPage() {
                   text="Vidas em África"
                   className="text-5xl md:text-7xl font-bold font-headline uppercase"
                   splitType="chars"
-                  delay={80}
+                  delay={100}
                 />
               </span>
           </div>
