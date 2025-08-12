@@ -70,8 +70,9 @@ export async function addUser(userData: UserData) {
 
   if (error) {
     console.error('Erro ao adicionar usuário no banco de dados:', error);
-    // Se falhar aqui, idealmente deveríamos remover o usuário do Auth
-    await supabase.auth.admin.deleteUser(authData.user.id);
+    // Se a inserção no banco de dados falhar, o usuário ainda existirá no Supabase Auth.
+    // Isso é algo a ser tratado manualmente ou com uma função de servidor mais robusta.
+    // A remoção da chamada admin.deleteUser corrige o erro de permissão imediato.
     throw new Error('Não foi possível salvar os dados do usuário.');
   }
 
