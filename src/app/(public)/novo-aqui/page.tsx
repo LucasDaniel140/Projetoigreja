@@ -64,12 +64,12 @@ const ministries = [
                 <p>Por isso, investimos com excelência, intencionalidade e carinho na <strong>Casa Kids</strong> e na <strong>Igreja Kids</strong>, dois pilares que caminham juntos no propósito de edificar as crianças com fundamentos sólidos na fé.</p>
                 
                 <div className="grid md:grid-cols-2 gap-4">
-                    <div className="bg-blue-100/10 p-4 rounded-lg border border-blue-200/20">
-                        <h4 className="font-bold text-blue-300 mb-2">Igreja Kids</h4>
+                    <div className="bg-card p-4 rounded-lg border border-border/20">
+                        <h4 className="font-bold text-foreground mb-2">Igreja Kids</h4>
                         <p>Ministério semanal durante os cultos, conduzindo as crianças a uma vivência espiritual profunda, com ensino bíblico acessível e cheio de alegria.</p>
                     </div>
-                    <div className="bg-green-100/10 p-4 rounded-lg border border-green-200/20">
-                         <h4 className="font-bold text-green-300 mb-2">Casa Kids</h4>
+                    <div className="bg-card p-4 rounded-lg border border-border/20">
+                         <h4 className="font-bold text-foreground mb-2">Casa Kids</h4>
                          <p>Espaço especial para discipulado, cuidado, criatividade e conexão, onde valores eternos são ensinados com amor e verdade.</p>
                     </div>
                 </div>
@@ -87,10 +87,25 @@ const ministries = [
         icon: <Coffee className="h-6 w-6 text-primary-foreground" />,
         title: "Café de Boas-Vindas",
         content: (
-             <div className="space-y-4 text-sm text-muted-foreground">
-               <p>O Boas-Vindas é um momento especial criado para receber de forma calorosa todos que estão chegando à Vivendo a Palavra. É um café preparado com carinho para novos membros e para aqueles que desejam conhecer mais sobre quem somos, nossa história, a visão que nos guia, a missão que nos move e os valores que sustentam tudo o que fazemos.</p>
-               <p>Nessa noite, você vai descobrir o que nos constrói como igreja, entender como nasceu esse propósito e como pode se envolver para fazer parte dessa família em Cristo. É também um passo essencial para todos que desejam se tornar membros, pois acreditamos que pertencer começa com compreender e caminhar juntos na mesma direção.</p>
-               <p>Aqui, cada novo passo é celebrado, cada história é importante e você é bem-vindo para viver a Palavra conosco.</p>
+            <div className="space-y-6 text-sm text-muted-foreground">
+                <p>O <strong>Café de Boas-Vindas</strong> é um momento especial criado para receber de forma calorosa todos que estão chegando à Vivendo a Palavra. É um café preparado com carinho para novos membros e para aqueles que desejam conhecer mais sobre quem somos.</p>
+                
+                <div className="bg-secondary/30 p-4 rounded-lg border border-border/20">
+                    <h4 className="font-bold text-foreground mb-3">O que você vai descobrir:</h4>
+                    <ul className="list-disc pl-5 space-y-2">
+                    <li>Nossa história e como nasceu nosso propósito</li>
+                    <li>A visão que nos guia</li>
+                    <li>A missão que nos move</li>
+                    <li>Os valores que sustentam tudo o que fazemos</li>
+                    <li>Como você pode se envolver e fazer parte desta família</li>
+                    </ul>
+                </div>
+
+                <p>É também um passo essencial para todos que desejam se tornar membros, pois acreditamos que pertencer começa com compreender e caminhar juntos na mesma direção.</p>
+
+                <div className="bg-primary/10 p-4 rounded-lg border border-primary/20 text-center font-medium text-foreground/90">
+                    <p>Aqui, cada novo passo é celebrado, cada história é importante e você é bem-vindo para viver a Palavra conosco.</p>
+                </div>
             </div>
         )
     },
