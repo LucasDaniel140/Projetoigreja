@@ -68,13 +68,13 @@ const studies = [
     )
   },
     {
-    title: "Curso de Casais",
+    title: "Curso de Noivos",
     type: "video",
     icon: <Heart className="h-6 w-6 text-primary" />,
     paid: false,
     details: (
         <div className="space-y-4 text-sm text-muted-foreground">
-            <p>O Curso de Casais, exclusivo para membros da igreja que desejam se preparar para o casamento, é um momento para aprender a construir relacionamentos firmes, tendo Jesus como alicerce.</p>
+            <p>O Curso de Noivos, exclusivo para membros da igreja que desejam se preparar para o casamento, é um momento para aprender a construir relacionamentos firmes, tendo Jesus como alicerce.</p>
             <p>A primeira decisão mais importante da nossa vida é aceitar Jesus no coração, e a segunda é escolher com quem vamos compartilhar nossa vida. Casar-se é um passo sério, que deve ser feito com responsabilidade, intencionalidade e, acima de tudo, guiado por Deus.</p>
             <p>Neste curso, caminhamos juntos fortalecendo o amor, o respeito e a fé, preparando cada casal para uma vida a dois.</p>
              <Button asChild>
