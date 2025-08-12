@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Handshake, BookOpen, CalendarDays, Coffee, Baby, Rocket, Heart, ChevronDown, Clock, UserCheck, MessageSquare } from "lucide-react";
 import Link from "next/link";
+import ShinyText from "@/components/ShinyText";
 
 
 const ministries = [
@@ -185,7 +186,10 @@ export default function NovoAquiPage() {
             <div className="mx-auto bg-primary rounded-full p-4 w-fit mb-6">
                 <Heart className="h-8 w-8 text-primary-foreground" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold font-headline text-foreground">É NOVO AQUI?</h1>
+             <ShinyText 
+                text="É NOVO AQUI?" 
+                className="text-4xl md:text-5xl font-bold font-headline text-foreground"
+             />
             <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
                 Bem-vindo à Igreja Vivendo a Palavra. Preparamos este guia especial para você conhecer tudo o que temos disponível. Explore nossos ministérios, horários de cultos e descubra como fazer parte desta família em Cristo.
             </p>
