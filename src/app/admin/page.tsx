@@ -16,21 +16,31 @@ import { AlertCircle } from "lucide-react";
 
 export default function AdminLoginPage() {
     const router = useRouter();
-    const { login } = useAuth();
+    const { login, signUp } = useAuth();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(false);
 
-    const handleLogin = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError(null);
         setIsLoading(true);
         try {
-            await login(email, password);
-            router.push('/admin/dashboard');
+            if (isSignUp) {
+                await signUp(name, email, password);
+                // Optionally, automatically log in the user or show a "check your email" message.
+                // For this implementation, we'll show a success message and switch to login view.
+                setIsSignUp(false);
+                alert("Conta criada com sucesso! Por favor, faça o login.");
+            } else {
+                await login(email, password);
+                router.push('/admin/dashboard');
+            }
         } catch (err: any) {
-            setError(err.message || 'Falha no login. Verifique suas credenciais.');
+            setError(err.message || 'Ocorreu uma falha. Verifique suas credenciais.');
         } finally {
             setIsLoading(false);
         }
@@ -46,19 +56,33 @@ export default function AdminLoginPage() {
                  <Link href="/" className="flex items-center justify-center space-x-2 mb-4">
                     <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-10 w-auto" />
                 </Link>
-                <CardTitle className="text-2xl">Login</CardTitle>
+                <CardTitle className="text-2xl">{isSignUp ? "Criar Conta" : "Login"}</CardTitle>
                 <CardDescription>
-                    Acesse o painel administrativo
+                    {isSignUp ? "Crie uma nova conta para acessar o painel" : "Acesse o painel administrativo"}
                 </CardDescription>
             </CardHeader>
             <CardContent>
-                <form onSubmit={handleLogin} className="grid gap-4">
+                <form onSubmit={handleSubmit} className="grid gap-4">
                     {error && (
                         <Alert variant="destructive">
                             <AlertCircle className="h-4 w-4" />
-                            <AlertTitle>Erro de Login</AlertTitle>
+                            <AlertTitle>Erro</AlertTitle>
                             <AlertDescription>{error}</AlertDescription>
                         </Alert>
+                    )}
+                     {isSignUp && (
+                        <div className="grid gap-2">
+                            <Label htmlFor="name">Nome</Label>
+                            <Input
+                                id="name"
+                                type="text"
+                                placeholder="Seu nome completo"
+                                required
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                disabled={isLoading}
+                            />
+                        </div>
                     )}
                     <div className="grid gap-2">
                         <Label htmlFor="email">Email</Label>
@@ -75,12 +99,14 @@ export default function AdminLoginPage() {
                     <div className="grid gap-2">
                         <div className="flex items-center">
                         <Label htmlFor="password">Senha</Label>
-                        <Link
-                            href="#"
-                            className="ml-auto inline-block text-sm underline"
-                        >
-                            Esqueceu sua senha?
-                        </Link>
+                         {!isSignUp && (
+                            <Link
+                                href="#"
+                                className="ml-auto inline-block text-sm underline"
+                            >
+                                Esqueceu sua senha?
+                            </Link>
+                         )}
                         </div>
                         <Input 
                             id="password" 
@@ -92,9 +118,26 @@ export default function AdminLoginPage() {
                         />
                     </div>
                     <Button type="submit" className="w-full" disabled={isLoading}>
-                        {isLoading ? 'Entrando...' : 'Entrar'}
+                        {isLoading ? (isSignUp ? 'Criando...' : 'Entrando...') : (isSignUp ? 'Criar Conta' : 'Entrar')}
                     </Button>
                 </form>
+                 <div className="mt-4 text-center text-sm">
+                    {isSignUp ? (
+                        <>
+                           Já tem uma conta?{" "}
+                            <button onClick={() => setIsSignUp(false)} className="underline">
+                                Faça login
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            Não tem uma conta?{" "}
+                            <button onClick={() => setIsSignUp(true)} className="underline">
+                                Crie uma conta
+                            </button>
+                        </>
+                    )}
+                </div>
             </CardContent>
         </Card>
     </div>
