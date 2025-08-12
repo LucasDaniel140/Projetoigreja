@@ -1,14 +1,51 @@
 
 "use client";
 
+import * as React from 'react';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Users, Home, Heart, Utensils, Construction, BookOpen, HandHeart, MapPin, InfinityIcon } from 'lucide-react';
-import Link from 'next/link';
+import { Users, Home, Construction, BookOpen, HandHeart, MapPin } from 'lucide-react';
 import SplitText from '@/components/SplitText';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+const missionImages = [
+  { src: "https://placehold.co/600x400.png", alt: "Voluntários em Moçambique", dataAiHint: "volunteers africa" },
+  { src: "https://placehold.co/600x400.png", alt: "Crianças sorrindo", dataAiHint: "african children smiling" },
+  { src: "https://placehold.co/600x400.png", alt: "Construção de cozinha comunitária", dataAiHint: "community kitchen building" },
+  { src: "https://placehold.co/600x400.png", alt: "Distribuição de material escolar", dataAiHint: "school supplies distribution" },
+  { src: "https://placehold.co/600x400.png", alt: "Pastor local pregando", dataAiHint: "local pastor preaching" },
+  { src: "https://placehold.co/600x400.png", alt: "Família recebendo doações", dataAiHint: "family receiving donations" },
+  { src: "https://placehold.co/600x400.png", alt: "Voluntários cozinhando", dataAiHint: "volunteers cooking" },
+  { src: "https://placehold.co/600x400.png", alt: "Crianças estudando", dataAiHint: "children studying" },
+  { src: "https://placehold.co/600x400.png", alt: "Momento de oração comunitária", dataAiHint: "community prayer" },
+  { src: "https://placehold.co/600x400.png", alt: "Visão aérea da comunidade", dataAiHint: "aerial view community" },
+];
 
 export default function MissoesPage() {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+  const [count, setCount] = React.useState(0)
+
+  const autoplayPlugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: true })
+  );
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
+
+
   return (
     <div className="bg-white text-black">
       {/* Hero Section */}
@@ -60,15 +97,43 @@ export default function MissoesPage() {
               </p>
             </div>
             <div className="relative">
-              <Image 
-                src="https://placehold.co/600x400.png" 
-                alt="Volunteers"
-                data-ai-hint="volunteers praying"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-xl"
-              />
-              <div className="absolute -bottom-4 -right-4">
+              <Carousel
+                setApi={setApi}
+                plugins={[autoplayPlugin.current]}
+                className="w-full max-w-lg mx-auto"
+                opts={{ align: "start", loop: true }}
+                onMouseEnter={autoplayPlugin.current.stop}
+                onMouseLeave={autoplayPlugin.current.reset}
+              >
+                <CarouselContent>
+                  {missionImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          data-ai-hint={image.dataAiHint}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+               <div className="py-2 text-center text-sm text-muted-foreground">
+                  <div className="flex gap-2 justify-center mt-4">
+                      {Array.from({ length: count }).map((_, i) => (
+                          <button
+                              key={i}
+                              onClick={() => api?.scrollTo(i)}
+                              className={`h-2 w-2 rounded-full ${current === i + 1 ? "bg-primary" : "bg-muted"}`}
+                              aria-label={`Ir para o slide ${i + 1}`}
+                          />
+                      ))}
+                  </div>
+              </div>
+              <div className="absolute -bottom-4 -right-4 z-10">
                 <Button variant="secondary" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg">
                   <MapPin className="mr-2 h-4 w-4" />
                   Morrumbala, Moçambique
@@ -105,7 +170,7 @@ export default function MissoesPage() {
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center">
               <div className="p-4 bg-primary/10 rounded-full">
-                <Utensils className="h-8 w-8 text-primary"/>
+                 <Image src="https://i.imgur.com/GzQ5Z2k.png" alt="Alimentação" width={32} height={32} />
               </div>
               <h3 className="mt-4 font-bold text-lg font-headline">Alimentação</h3>
               <p className="text-muted-foreground text-sm mt-1">Refeições nutritivas para famílias necessitadas</p>
@@ -154,11 +219,13 @@ export default function MissoesPage() {
       </section>
 
       {/* Citação Section */}
-      <section className="py-16 bg-card text-card-foreground">
+       <section className="py-16 bg-card text-card-foreground">
         <div className="container mx-auto px-4 text-center">
           <blockquote className="text-2xl md:text-3xl italic font-headline">
-             <p>Participe. Doe. Seja resposta.</p>
-             <p className="mt-2">Porque servir é a forma mais bonita de amar.</p>
+             <SplitText text="Participe. Doe. Seja resposta." className="text-2xl md:text-3xl italic font-headline" splitType='words' />
+             <p className="mt-2">
+                <SplitText text="Porque servir é a forma mais bonita de amar." className="text-2xl md:text-3xl italic font-headline" splitType='words' delay={200} />
+             </p>
           </blockquote>
         </div>
       </section>
