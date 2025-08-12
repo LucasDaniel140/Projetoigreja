@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -19,14 +20,14 @@ import { Heart } from 'lucide-react';
 const missionaries = [
   {
     id: 1,
-    name: 'Família Silva',
-    location: 'África Subsaariana',
+    name: 'Missão África',
+    location: 'Morrumbala, Moçambique',
     progress: 75,
     goal: 10000,
     raised: 7500,
     image: 'https://placehold.co/400x300.png',
     dataAiHint: 'african family mission',
-    description: 'Construção de poços de água potável e escolas para comunidades carentes.'
+    description: 'A Missão África nasceu do desejo de viver o amor de Cristo de forma prática. Em Morrumbala, Moçambique, encontramos famílias que enfrentavam a fome todos os dias. Com a ajuda da igreja e de pessoas generosas, hoje alimentamos mais de 300 pessoas diariamente e apoiamos mais de 10 bases missionárias na região.\n\nMais do que comida, levamos dignidade: construímos espaços para cozinhar com segurança, entregamos roupas, chinelos, materiais escolares e apoiamos pastores locais para que continuem levando a Palavra de Deus.\n\nEssa missão é importante porque transforma realidades e mostra que Deus cuida através de pessoas dispostas a servir. E você pode fazer parte disso!\n\nA partir de R$ 30 por mês, através do programa Adote uma Criança, você garante a alimentação de uma criança por um mês inteiro e pode contribuir com o valor que Deus colocar no seu coração.\n\nParticipe. Doe. Seja resposta. Porque servir é a forma mais bonita de amar.'
   },
   {
     id: 2,
@@ -220,7 +221,7 @@ export default function MissoesPage() {
                 <CardDescription>{missionary.location}</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow">
-                <p className="text-muted-foreground mb-4">{missionary.description}</p>
+                <p className="text-muted-foreground mb-4 whitespace-pre-wrap">{missionary.description}</p>
                 <div className="space-y-2">
                   <Progress value={missionary.progress} className="w-full" />
                   <div className="flex justify-between text-sm">
@@ -263,3 +264,5 @@ export default function MissoesPage() {
     </div>
   );
 }
+
+    
