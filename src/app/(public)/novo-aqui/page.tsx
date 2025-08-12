@@ -9,8 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Users, Handshake, BookOpen, CalendarDays, Coffee, Baby, Rocket, Heart, ChevronDown } from "lucide-react";
+import { Users, Handshake, BookOpen, CalendarDays, Coffee, Baby, Rocket, Heart, ChevronDown, Clock, UserCheck } from "lucide-react";
 import Link from "next/link";
 
 
@@ -19,14 +18,36 @@ const ministries = [
         icon: <CalendarDays className="h-6 w-6 text-primary-foreground" />,
         title: "Cultos",
         content: (
-            <ul className="space-y-2 text-sm text-muted-foreground list-disc pl-5">
-                <li><strong>Domingo:</strong> 9h e 18h</li>
-                <li><strong>Quarta-feira:</strong> 19h30</li>
-                <li><strong>Culto de Empreendedores (Visionários):</strong> Primeira terça do mês - 20h</li>
-                <li><strong>Culto de Jovens e Adolescentes:</strong> Primeiro e terceiro sábado de cada mês - 19h</li>
-                <li><strong>Culto de Mulheres:</strong> Segundo sábado de cada mês - 19h</li>
-                <li><strong>Culto de Homens:</strong> Quarto sábado de cada mês - 19h</li>
-            </ul>
+            <div className="grid md:grid-cols-2 gap-4 text-sm text-muted-foreground">
+                <Card className="bg-secondary/50">
+                    <CardHeader className="pb-4">
+                        <CardTitle className="flex items-center gap-2 text-base font-bold text-foreground">
+                            <Clock className="h-5 w-5 text-primary" />
+                            Cultos Regulares
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-2">
+                        <p><strong>Domingo:</strong> 9h e 18h</p>
+                        <p><strong>Quarta-feira:</strong> 19h30</p>
+                    </CardContent>
+                </Card>
+                <Card className="bg-secondary/50">
+                     <CardHeader className="pb-4">
+                        <CardTitle className="flex items-center gap-2 text-base font-bold text-foreground">
+                            <UserCheck className="h-5 w-5 text-primary" />
+                            Cultos Especiais
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <ul className="space-y-2 list-disc pl-5">
+                            <li><strong>Empreendedores (Visionários):</strong> 1ª terça do mês, 20h</li>
+                            <li><strong>Jovens e Adolescentes:</strong> 1º e 3º sábado, 19h</li>
+                            <li><strong>Mulheres:</strong> 2º sábado do mês, 19h</li>
+                            <li><strong>Homens:</strong> 4º sábado do mês, 19h</li>
+                        </ul>
+                    </CardContent>
+                </Card>
+            </div>
         )
     },
     {
@@ -92,8 +113,7 @@ const ministries = [
     {
         icon: <Rocket className="h-6 w-6 text-primary-foreground" />,
         title: "Visionários",
-        href: "#",
-        target: "_blank"
+        href: "/visionarios"
     }
 ];
 
@@ -171,5 +191,3 @@ export default function NovoAquiPage() {
     </div>
   );
 }
-
-    
