@@ -22,7 +22,10 @@ export default function MissoesPage() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <p className="text-lg font-headline tracking-widest text-primary uppercase">Missão África</p>
-          <h1 className="text-5xl md:text-7xl font-bold font-headline mt-2 uppercase">Transformando<br/>Vidas em África</h1>
+          <h1 className="text-5xl md:text-7xl font-bold font-headline mt-2 uppercase">
+            Transformando
+            <span className="block mt-2">Vidas em África</span>
+          </h1>
           <p className="mt-4 max-w-2xl text-lg">
             Em Morrumbala, Moçambique, levamos amor de Cristo de forma prática, alimentando mais de 300 pessoas diariamente.
           </p>
