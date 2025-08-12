@@ -14,7 +14,7 @@ const navLinks = [
   { href: "/", label: "Início" },
   { href: "/quem-somos", label: "Quem Somos" },
   { href: "/missoes", label: "Missões" },
-  { href: "/acoes-sociais", label: "Ações Sociais" },
+  { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
   { href: "/novo-aqui", label: "É Novo Aqui?" },
   { href: "#", label: "Visionários", target: "_blank" },
