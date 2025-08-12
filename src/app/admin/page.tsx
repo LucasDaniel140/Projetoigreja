@@ -9,14 +9,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import DarkVeil from "@/components/DarkVeil";
+import { useAuth } from "@/contexts/auth-context";
+import { useState } from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 
 export default function AdminLoginPage() {
     const router = useRouter();
+    const { login } = useAuth();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleLogin = (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
-        // TODO: Implement actual authentication logic
-        router.push('/admin/dashboard');
+        setError(null);
+        setIsLoading(true);
+        try {
+            await login(email, password);
+            router.push('/admin/dashboard');
+        } catch (err: any) {
+            setError(err.message || 'Falha no login. Verifique suas credenciais.');
+        } finally {
+            setIsLoading(false);
+        }
     }
 
   return (
@@ -36,6 +53,13 @@ export default function AdminLoginPage() {
             </CardHeader>
             <CardContent>
                 <form onSubmit={handleLogin} className="grid gap-4">
+                    {error && (
+                        <Alert variant="destructive">
+                            <AlertCircle className="h-4 w-4" />
+                            <AlertTitle>Erro de Login</AlertTitle>
+                            <AlertDescription>{error}</AlertDescription>
+                        </Alert>
+                    )}
                     <div className="grid gap-2">
                         <Label htmlFor="email">Email</Label>
                         <Input
@@ -43,6 +67,9 @@ export default function AdminLoginPage() {
                         type="email"
                         placeholder="m@example.com"
                         required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        disabled={isLoading}
                         />
                     </div>
                     <div className="grid gap-2">
@@ -55,10 +82,17 @@ export default function AdminLoginPage() {
                             Esqueceu sua senha?
                         </Link>
                         </div>
-                        <Input id="password" type="password" required />
+                        <Input 
+                            id="password" 
+                            type="password" 
+                            required 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            disabled={isLoading}
+                        />
                     </div>
-                    <Button type="submit" className="w-full">
-                        Entrar
+                    <Button type="submit" className="w-full" disabled={isLoading}>
+                        {isLoading ? 'Entrando...' : 'Entrar'}
                     </Button>
                 </form>
             </CardContent>
