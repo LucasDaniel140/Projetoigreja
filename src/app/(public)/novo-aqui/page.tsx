@@ -113,13 +113,17 @@ const ministries = [
         icon: <Handshake className="h-6 w-6 text-primary-foreground" />,
         title: "Voluntários",
         content: (
-            <div className="space-y-4 text-sm text-muted-foreground">
-                <p className="font-bold">Nossa missão é clara: Viver, Amar e Servir.</p>
-                <p>O voluntariado existe para que possamos expressar essa missão de forma prática, com atitudes que refletem o coração de Cristo. É para aqueles que fazem parte desta família, que já são membros e desejam colocar seus dons e talentos à disposição para servir ao Senhor e ao próximo.</p>
+            <div className="space-y-6 text-sm text-muted-foreground">
+                <div className="bg-primary/10 p-4 rounded-lg text-center font-bold text-primary">
+                    Nossa missão é clara: Viver, Amar e Servir.
+                </div>
+
+                <p>O voluntariado existe para que possamos expressar essa missão de forma prática, com atitudes que refletem o coração de Cristo.</p>
+                <p>O voluntariado é para aqueles que fazem parte desta família, que já são membros e desejam colocar seus dons e talentos à disposição para servir ao Senhor e ao próximo.</p>
                 
-                <div className="grid md:grid-cols-2 gap-4 my-4">
-                    <div className="bg-card p-4 rounded-lg">
-                        <h4 className="font-semibold text-foreground mb-2">Áreas de Atuação</h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-blue-900/10 p-4 rounded-lg border border-blue-400/20">
+                        <h4 className="font-bold text-foreground mb-2">Áreas de Atuação</h4>
                         <ul className="list-disc pl-5 space-y-1">
                             <li>Cultos</li>
                             <li>Evangelismos</li>
@@ -127,15 +131,22 @@ const ministries = [
                             <li>Missões Mundiais</li>
                         </ul>
                     </div>
-                    <div className="bg-card p-4 rounded-lg">
-                         <h4 className="font-semibold text-foreground mb-2">Impacto</h4>
-                         <p>Cada ato de serviço é uma oportunidade de tocar vidas e manifestar a Palavra de Deus.</p>
+                    <div className="bg-green-900/10 p-4 rounded-lg border border-green-400/20">
+                         <h4 className="font-bold text-foreground mb-2">Impacto</h4>
+                         <p>Cada ato de serviço é uma oportunidade de tocar vidas e manifestar o Reino de Deus.</p>
                     </div>
                 </div>
 
-                <blockquote className="border-l-4 border-primary pl-4 italic">“Eis-me aqui, envia-me!” — Isaías 6:8</blockquote>
+                <blockquote className="border-l-4 border-border/50 bg-secondary/30 p-4 rounded-r-lg italic text-center">
+                    “Eis-me aqui, envia-me!”
+                    <footer className="mt-2 text-xs not-italic">— Isaías 6:8</footer>
+                </blockquote>
+
                 <p>Servir é mais do que uma função - é um estilo de vida. É transformar fé em ação, amor em cuidado, Palavra em movimento.</p>
-                <p>Se você entende que viver a Palavra é também demonstrá-la em suas atitudes, venha servir conosco. Porque quando cada parte do corpo cumpre o seu papel, a Igreja se torna mais forte e o mundo vê Jesus em nós.</p>
+
+                <div className="border-l-4 border-primary p-4 bg-primary/10 rounded-r-lg">
+                    <p className="font-semibold text-foreground">Se você entende que viver a Palavra é também demonstrá-la em suas atitudes, venha servir conosco. Porque quando cada parte do corpo cumpre o seu papel, a Igreja se torna mais forte e o mundo vê Jesus em nós.</p>
+                </div>
             </div>
         )
     },
@@ -225,3 +236,5 @@ export default function NovoAquiPage() {
     </div>
   );
 }
+
+    
