@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Users, Home, Heart, Utensils, Construction, BookOpen, HandHeart, MapPin, InfinityIcon } from 'lucide-react';
 import Link from 'next/link';
+import SplitText from '@/components/SplitText';
 
 export default function MissoesPage() {
   return (
@@ -150,7 +151,19 @@ export default function MissoesPage() {
       <section className="py-16 bg-card text-card-foreground">
         <div className="container mx-auto px-4 text-center">
           <blockquote className="text-2xl md:text-3xl italic font-headline">
-            "Participe. Doe. Seja resposta. <br/> Porque servir é a forma mais bonita de amar."
+             <SplitText
+                text="Participe. Doe. Seja resposta."
+                className="text-2xl md:text-3xl italic font-headline"
+                splitType="words"
+                delay={80}
+              />
+              <br />
+               <SplitText
+                text="Porque servir é a forma mais bonita de amar."
+                className="text-2xl md:text-3xl italic font-headline"
+                splitType="words"
+                delay={80}
+              />
           </blockquote>
         </div>
       </section>
