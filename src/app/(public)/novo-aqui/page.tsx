@@ -54,13 +54,32 @@ const ministries = [
         icon: <Baby className="h-6 w-6 text-primary-foreground" />,
         title: "Kids",
         content: (
-            <div className="space-y-4 text-sm text-muted-foreground">
+            <div className="space-y-6 text-sm text-muted-foreground">
+                <blockquote className="border-l-4 border-primary/50 bg-secondary/30 p-4 rounded-r-lg italic text-center">
+                    “Ensina a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele.”
+                    <footer className="mt-2 text-xs not-italic">— Provérbios 22:6</footer>
+                </blockquote>
+
                 <p>Na Igreja Vivendo a Palavra, temos um compromisso inegociável com o futuro: formar uma geração que ama, conhece e vive a Palavra de Deus. E esse compromisso começa com os pequenos.</p>
-                <p>Por isso, investimos com excelência, intencionalidade e carinho na Casa Kids e na Igreja Kids, dois pilares que caminham juntos no propósito de edificar as crianças com fundamentos sólidos na fé. A Igreja Kids é o nosso ministério que atua semanalmente, durante os cultos, conduzindo as crianças a uma vivência espiritual profunda, com ensino bíblico acessível e cheio de alegria. Já a Casa Kids amplia esse alcance, sendo um espaço pensado especialmente para momentos de discipulado, cuidado, criatividade e conexão onde valores eternos são ensinados com amor e verdade.</p>
-                <p>Mas não paramos por aí. A Vivendo a Palavra entende que o cuidado com as crianças vai além das fronteiras da igreja. Por isso, através de ações evangelísticas como o VP Todinho, temos alcançado crianças em comunidades carentes, levando a Palavra, brincando, acolhendo e mostrando que cada criança é importante e tem um lugar no coração de Deus.</p>
-                <blockquote className="border-l-4 border-primary pl-4 italic">“Ensina a criança no caminho em que deve andar, e ainda quando for velho não se desviará dele.” — Provérbios 22:6</blockquote>
+                <p>Por isso, investimos com excelência, intencionalidade e carinho na <strong>Casa Kids</strong> e na <strong>Igreja Kids</strong>, dois pilares que caminham juntos no propósito de edificar as crianças com fundamentos sólidos na fé.</p>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-blue-100/10 p-4 rounded-lg border border-blue-200/20">
+                        <h4 className="font-bold text-blue-300 mb-2">Igreja Kids</h4>
+                        <p>Ministério semanal durante os cultos, conduzindo as crianças a uma vivência espiritual profunda, com ensino bíblico acessível e cheio de alegria.</p>
+                    </div>
+                    <div className="bg-green-100/10 p-4 rounded-lg border border-green-200/20">
+                         <h4 className="font-bold text-green-300 mb-2">Casa Kids</h4>
+                         <p>Espaço especial para discipulado, cuidado, criatividade e conexão, onde valores eternos são ensinados com amor e verdade.</p>
+                    </div>
+                </div>
+
+                <p>Através de ações evangelísticas como o <strong>VP Todinho</strong>, alcançamos crianças em comunidades carentes, levando a Palavra, brincando, acolhendo e mostrando que cada criança é importante e tem um lugar no coração de Deus.</p>
                 <p>A nossa igreja acredita, investe e trabalha ativamente para que as crianças cresçam com identidade firmada em Cristo. Mais do que um ministério, esse é um movimento geracional. Um chamado coletivo.</p>
-                <p>E agora, nós te convidamos a fazer parte disso. Ore, envolva-se, contribua. Investir nas crianças é investir no Reino.</p>
+                
+                <div className="border-l-4 border-primary p-4 bg-primary/10 rounded-r-lg">
+                    <p className="font-semibold text-foreground">E agora, nós te convidamos a fazer parte disso. Ore, envolva-se, contribua. Investir nas crianças é investir no Reino.</p>
+                </div>
             </div>
         )
     },
@@ -151,7 +170,7 @@ export default function NovoAquiPage() {
                     );
 
                     const trigger = item.href ? (
-                        <Link href={item.href} target={item.target} className="flex-1 text-left">
+                        <Link href={item.href} className="flex-1 text-left">
                             {triggerContent}
                         </Link>
                     ) : (
