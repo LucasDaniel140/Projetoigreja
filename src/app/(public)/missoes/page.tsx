@@ -1,7 +1,6 @@
 
 "use client";
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,7 +15,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Heart } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
 
 const mainMission = {
     id: 1,
@@ -30,30 +28,6 @@ const mainMission = {
     description: 'A Missão África nasceu do desejo de viver o amor de Cristo de forma prática. Em Morrumbala, Moçambique, encontramos famílias que enfrentavam a fome todos os dias. Com a ajuda da igreja e de pessoas generosas, hoje alimentamos mais de 300 pessoas diariamente e apoiamos mais de 10 bases missionárias na região.\n\nMais do que comida, levamos dignidade: construímos espaços para cozinhar com segurança, entregamos roupas, chinelos, materiais escolares e apoiamos pastores locais para que continuem levando a Palavra de Deus.\n\nEssa missão é importante porque transforma realidades e mostra que Deus cuida através de pessoas dispostas a servir. E você pode fazer parte disso!\n\nA partir de R$ 30 por mês, através do programa Adote uma Criança, você garante a alimentação de uma criança por um mês inteiro e pode contribuir com o valor que Deus colocar no seu coração.\n\nParticipe. Doe. Seja resposta. Porque servir é a forma mais bonita de amar.'
 };
 
-const otherMissionaries = [
-  {
-    id: 2,
-    name: 'Lucas e Ana',
-    location: 'Sudeste Asiático',
-    progress: 50,
-    goal: 8000,
-    raised: 4000,
-    image: 'https://placehold.co/400x300.png',
-    dataAiHint: 'asian children school',
-    description: 'Apoio a orfanatos e programas de educação infantil em áreas rurais.'
-  },
-  {
-    id: 3,
-    name: 'Projeto Amazônia',
-    location: 'Brasil',
-    progress: 90,
-    goal: 15000,
-    raised: 13500,
-    image: 'https://placehold.co/400x300.png',
-    dataAiHint: 'amazon river tribe',
-    description: 'Levando assistência médica e social para comunidades ribeirinhas isoladas.'
-  }
-];
 
 const donationFormSchema = z.object({
   amount: z.coerce.number().positive("O valor deve ser positivo."),
@@ -197,15 +171,14 @@ export default function MissoesPage() {
   return (
     <div className="container mx-auto px-4 py-12 md:px-6">
       <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline">Nossos Projetos Missionários</h1>
+        <h1 className="text-4xl md:text-5xl font-bold font-headline">Nossa Missão</h1>
         <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
           Apoiamos missionários que são as mãos e os pés de Cristo em lugares que precisam de esperança. Conheça, ore e contribua.
         </p>
       </div>
 
-      {/* Main Mission Section */}
       <Dialog>
-        <Card className="border-0 shadow-none md:border md:shadow-sm">
+        <Card className="max-w-5xl mx-auto border-0 shadow-none md:border md:shadow-sm">
             <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="relative aspect-video rounded-lg overflow-hidden">
                     <Image
@@ -233,7 +206,7 @@ export default function MissoesPage() {
                     </CardContent>
                     <CardFooter className="p-0 mt-6">
                         <DialogTrigger asChild>
-                            <Button className="w-full md:w-auto">
+                            <Button className="w-full md:w-auto" size="lg">
                                 <Heart className="mr-2 h-4 w-4"/>
                                 Apoiar este projeto
                             </Button>
@@ -247,74 +220,6 @@ export default function MissoesPage() {
         </DialogContent>
       </Dialog>
       
-      <Separator className="my-16" />
-
-      {/* Other Projects Section */}
-      <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold font-headline">Outros Projetos</h2>
-          <p className="text-muted-foreground mt-2">Conheça outras frentes missionárias que apoiamos.</p>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-8">
-        {otherMissionaries.map((missionary) => (
-          <Dialog key={missionary.id}>
-            <Card className="flex flex-col">
-              <CardHeader>
-                <div className="relative aspect-video">
-                  <Image
-                    src={missionary.image}
-                    alt={`Missão ${missionary.name}`}
-                    fill
-                    data-ai-hint={missionary.dataAiHint}
-                    className="rounded-t-lg object-cover"
-                  />
-                </div>
-                <CardTitle className="font-headline text-2xl pt-4">{missionary.name}</CardTitle>
-                <CardDescription>{missionary.location}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-muted-foreground mb-4 whitespace-pre-wrap">{missionary.description}</p>
-                <div className="space-y-2">
-                  <Progress value={missionary.progress} className="w-full" />
-                  <div className="flex justify-between text-sm">
-                    <span className="font-semibold">Arrecadado: R${missionary.raised.toLocaleString('pt-BR')}</span>
-                    <span className="text-muted-foreground">Meta: R${missionary.goal.toLocaleString('pt-BR')}</span>
-                  </div>
-                </div>
-              </CardContent>
-              <CardFooter>
-                <DialogTrigger asChild>
-                  <Button className="w-full">
-                    <Heart className="mr-2 h-4 w-4"/>
-                    Apoiar este projeto
-                  </Button>
-                </DialogTrigger>
-              </CardFooter>
-            </Card>
-            <DialogContent>
-              <DonationForm missionaryName={missionary.name} />
-            </DialogContent>
-          </Dialog>
-        ))}
-      </div>
-
-       <div id="doar" className="mt-16 text-center">
-        <h2 className="text-3xl font-bold font-headline">Faça uma Doação Geral</h2>
-        <p className="text-muted-foreground mt-2">Sua oferta ajuda a manter todos os nossos projetos.</p>
-        <Dialog>
-            <DialogTrigger asChild>
-                <Button size="lg" className="mt-4">
-                    <Heart className="mr-2 h-5 w-5"/>
-                    Doar para o Fundo Missionário
-                </Button>
-            </DialogTrigger>
-            <DialogContent>
-                <DonationForm missionaryName="Fundo Missionário Geral" />
-            </DialogContent>
-        </Dialog>
-      </div>
     </div>
   );
 }
-
-    
