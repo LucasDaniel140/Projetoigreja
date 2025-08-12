@@ -157,8 +157,8 @@ export default function MissoesPage() {
       <section className="py-16 bg-card text-card-foreground">
         <div className="container mx-auto px-4 text-center">
           <blockquote className="text-2xl md:text-3xl italic font-headline">
-             <SplitText text="Participe. Doe. Seja resposta." className="block" />
-             <SplitText text="Porque servir é a forma mais bonita de amar." className="block mt-2" delay={300}/>
+             <p>Participe. Doe. Seja resposta.</p>
+             <p className="mt-2">Porque servir é a forma mais bonita de amar.</p>
           </blockquote>
         </div>
       </section>
