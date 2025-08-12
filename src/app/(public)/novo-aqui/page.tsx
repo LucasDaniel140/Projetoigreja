@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Users, Handshake, BookOpen, CalendarDays, Coffee, Baby, Rocket, Heart, ChevronDown, Clock, UserCheck } from "lucide-react";
+import { Users, Handshake, BookOpen, CalendarDays, Coffee, Baby, Rocket, Heart, ChevronDown, Clock, UserCheck, MessageSquare } from "lucide-react";
 import Link from "next/link";
 
 
@@ -228,8 +228,12 @@ export default function NovoAquiPage() {
       <section className="bg-card py-16">
         <div className="container mx-auto px-4 md:px-6 text-center max-w-3xl">
             <h2 className="text-3xl font-bold font-headline">Pronto para dar o próximo passo?</h2>
-            <p className="text-muted-foreground mt-2">Participe do nosso Café de Boas-Vindas e conheça mais sobre nossa igreja, nossa missão e como você pode fazer parte desta família.</p>
-            <Button size="lg" className="mt-6">Quero Participar</Button>
+            <Button size="lg" className="mt-6" asChild>
+                <Link href="https://wa.me/5577998128008" target="_blank">
+                    <MessageSquare className="mr-2 h-4 w-4" />
+                    Fale conosco
+                </Link>
+            </Button>
         </div>
       </section>
 
