@@ -3,223 +3,162 @@
 
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import * as z from "zod";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "@/hooks/use-toast";
-import { Heart } from 'lucide-react';
-
-const mainMission = {
-    id: 1,
-    name: 'Missão África',
-    location: 'Morrumbala, Moçambique',
-    progress: 75,
-    goal: 10000,
-    raised: 7500,
-    image: 'https://placehold.co/600x400.png',
-    dataAiHint: 'african family mission',
-    description: 'A Missão África nasceu do desejo de viver o amor de Cristo de forma prática. Em Morrumbala, Moçambique, encontramos famílias que enfrentavam a fome todos os dias. Com a ajuda da igreja e de pessoas generosas, hoje alimentamos mais de 300 pessoas diariamente e apoiamos mais de 10 bases missionárias na região.\n\nMais do que comida, levamos dignidade: construímos espaços para cozinhar com segurança, entregamos roupas, chinelos, materiais escolares e apoiamos pastores locais para que continuem levando a Palavra de Deus.\n\nEssa missão é importante porque transforma realidades e mostra que Deus cuida através de pessoas dispostas a servir. E você pode fazer parte disso!\n\nA partir de R$ 30 por mês, através do programa Adote uma Criança, você garante a alimentação de uma criança por um mês inteiro e pode contribuir com o valor que Deus colocar no seu coração.\n\nParticipe. Doe. Seja resposta. Porque servir é a forma mais bonita de amar.'
-};
-
-
-const donationFormSchema = z.object({
-  amount: z.coerce.number().positive("O valor deve ser positivo."),
-  name: z.string().min(3, "Nome é obrigatório."),
-  email: z.string().email("Email inválido."),
-  paymentMethod: z.enum(["pix", "card", "boleto"], {
-    required_error: "Selecione um método de pagamento.",
-  }),
-  recurring: z.boolean().default(false),
-});
-
-function DonationForm({ missionaryName }: { missionaryName: string }) {
-  const { toast } = useToast();
-  const form = useForm<z.infer<typeof donationFormSchema>>({
-    resolver: zodResolver(donationFormSchema),
-    defaultValues: {
-      amount: 50,
-      name: "",
-      email: "",
-      paymentMethod: "pix",
-      recurring: false,
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof donationFormSchema>) {
-    console.log(values);
-    toast({
-      title: "Doação Processada!",
-      description: `Obrigado por sua doação de R$${values.amount} para ${missionaryName}.`,
-    });
-  }
-
-  return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <DialogHeader>
-          <DialogTitle className="font-headline">Doar para {missionaryName}</DialogTitle>
-          <DialogDescription>
-            Sua contribuição faz a diferença. Preencha os dados abaixo.
-          </DialogDescription>
-        </DialogHeader>
-        <FormField
-          control={form.control}
-          name="amount"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Valor da Doação (R$)</FormLabel>
-              <FormControl>
-                <Input type="number" placeholder="50" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Seu Nome Completo</FormLabel>
-              <FormControl>
-                <Input placeholder="Seu nome" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Seu E-mail</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="seu@email.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="paymentMethod"
-          render={({ field }) => (
-            <FormItem className="space-y-3">
-              <FormLabel>Método de Pagamento</FormLabel>
-              <FormControl>
-                <RadioGroup
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                  className="flex flex-col space-y-1"
-                >
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="pix" />
-                    </FormControl>
-                    <FormLabel className="font-normal">PIX</FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="card" />
-                    </FormControl>
-                    <FormLabel className="font-normal">Cartão de Crédito</FormLabel>
-                  </FormItem>
-                  <FormItem className="flex items-center space-x-3 space-y-0">
-                    <FormControl>
-                      <RadioGroupItem value="boleto" />
-                    </FormControl>
-                    <FormLabel className="font-normal">Boleto Bancário</FormLabel>
-                  </FormItem>
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="recurring"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-              <FormControl>
-                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel>Tornar esta uma doação recorrente</FormLabel>
-                <FormDescription>
-                  Sua doação será debitada mensalmente.
-                </FormDescription>
-              </div>
-            </FormItem>
-          )}
-        />
-        <Button type="submit" className="w-full">Confirmar Doação</Button>
-      </form>
-    </Form>
-  )
-}
+import { Card } from "@/components/ui/card";
+import { Users, Home, Heart, Utensils, Construction, BookOpen, HandHeart, MapPin, InfinityIcon } from 'lucide-react';
+import Link from 'next/link';
 
 export default function MissoesPage() {
   return (
-    <div className="container mx-auto px-4 py-12 md:px-6">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline">Nossa Missão</h1>
-        <p className="text-lg md:text-xl text-muted-foreground mt-4 max-w-3xl mx-auto">
-          Apoiamos missionários que são as mãos e os pés de Cristo em lugares que precisam de esperança. Conheça, ore e contribua.
-        </p>
-      </div>
+    <div className="bg-white text-black">
+      {/* Hero Section */}
+      <section className="relative h-[80vh] text-white">
+        <Image 
+          src="https://placehold.co/1920x1080.png" 
+          alt="Volunteers helping in Africa"
+          data-ai-hint="volunteers giving food"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+          <p className="text-lg font-headline tracking-widest text-primary uppercase">Missão África</p>
+          <h1 className="text-5xl md:text-7xl font-bold font-headline mt-2 uppercase">Transformando<br/>Vidas em África</h1>
+          <p className="mt-4 max-w-2xl text-lg">
+            Em Morrumbala, Moçambique, levamos amor de Cristo de forma prática, alimentando mais de 300 pessoas diariamente.
+          </p>
+          <Button size="lg" className="mt-8 bg-primary text-primary-foreground hover:bg-primary/90">Faça sua Doação</Button>
+        </div>
+      </section>
 
-      <Dialog>
-        <Card className="max-w-5xl mx-auto border-0 shadow-none md:border md:shadow-sm">
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div className="relative aspect-video rounded-lg overflow-hidden">
-                    <Image
-                        src={mainMission.image}
-                        alt={`Missão ${mainMission.name}`}
-                        fill
-                        data-ai-hint={mainMission.dataAiHint}
-                        className="object-cover"
-                    />
-                </div>
-                <div className="flex flex-col h-full py-4">
-                    <CardHeader className="p-0">
-                        <CardTitle className="font-headline text-3xl">{mainMission.name}</CardTitle>
-                        <CardDescription className="text-base">{mainMission.location}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-0 flex-grow mt-4">
-                        <p className="text-muted-foreground mb-4 whitespace-pre-wrap">{mainMission.description}</p>
-                         <div className="space-y-2 mt-auto">
-                            <Progress value={mainMission.progress} className="w-full" />
-                            <div className="flex justify-between text-sm">
-                                <span className="font-semibold">Arrecadado: R${mainMission.raised.toLocaleString('pt-BR')}</span>
-                                <span className="text-muted-foreground">Meta: R${mainMission.goal.toLocaleString('pt-BR')}</span>
-                            </div>
-                        </div>
-                    </CardContent>
-                    <CardFooter className="p-0 mt-6">
-                        <DialogTrigger asChild>
-                            <Button className="w-full md:w-auto" size="lg">
-                                <Heart className="mr-2 h-4 w-4"/>
-                                Apoiar este projeto
-                            </Button>
-                        </DialogTrigger>
-                    </CardFooter>
-                </div>
+      {/* Nossa História Section */}
+      <section className="py-16 lg:py-24 bg-background text-foreground">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold font-headline"><span className="text-primary">Nossa</span> História</h2>
+              <p className="text-muted-foreground">
+                A Missão África nasceu do desejo de viver o amor de Cristo de forma prática. Em Morrumbala, Moçambique, encontramos famílias que enfrentavam a fome todos os dias. Com a ajuda da igreja e de pessoas generosas, hoje alimentamos mais de 300 pessoas diariamente e apoiamos mais de 10 bases missionárias na região.
+              </p>
+              <p className="text-muted-foreground">
+                Mais do que comida, levamos dignidade: construímos espaços para cozinhar com segurança, entregamos roupas, chinelos, materiais escolares e apoiamos pastores locais para que continuem levando a Palavra de Deus.
+              </p>
             </div>
-        </Card>
-        <DialogContent>
-          <DonationForm missionaryName={mainMission.name} />
-        </DialogContent>
-      </Dialog>
-      
+            <div className="relative">
+              <Image 
+                src="https://placehold.co/600x400.png" 
+                alt="Volunteers"
+                data-ai-hint="volunteers praying"
+                width={600}
+                height={400}
+                className="rounded-lg shadow-xl"
+              />
+              <div className="absolute -bottom-4 -right-4">
+                <Button variant="secondary" className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg">
+                  <MapPin className="mr-2 h-4 w-4" />
+                  Morrumbala, Moçambique
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Nosso Impacto Section */}
+      <section className="py-16 lg:py-24 bg-card text-card-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold font-headline">Nosso <span className="text-primary">Impacto</span></h2>
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="bg-secondary p-8 flex flex-col items-center justify-center text-secondary-foreground">
+              <Users className="h-12 w-12 text-primary"/>
+              <p className="text-5xl font-bold mt-4">300+</p>
+              <p className="mt-2 text-muted-foreground">Pessoas alimentadas diariamente</p>
+            </Card>
+            <Card className="bg-secondary p-8 flex flex-col items-center justify-center text-secondary-foreground">
+              <Home className="h-12 w-12 text-primary"/>
+              <p className="text-5xl font-bold mt-4">10+</p>
+              <p className="mt-2 text-muted-foreground">Bases missionárias apoiadas</p>
+            </Card>
+            <Card className="bg-secondary p-8 flex flex-col items-center justify-center text-secondary-foreground">
+              <InfinityIcon className="h-12 w-12 text-primary"/>
+              <p className="text-5xl font-bold mt-4">∞</p>
+              <p className="mt-2 text-muted-foreground">Vidas transformadas</p>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* O Que Oferecemos Section */}
+      <section className="py-16 lg:py-24 bg-background text-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold font-headline">O Que <span className="text-primary">Oferecemos</span></h2>
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div className="flex flex-col items-center">
+              <div className="p-4 bg-primary/10 rounded-full">
+                <Utensils className="h-8 w-8 text-primary"/>
+              </div>
+              <h3 className="mt-4 font-bold text-lg font-headline">Alimentação</h3>
+              <p className="text-muted-foreground text-sm mt-1">Refeições nutritivas para famílias necessitadas</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="p-4 bg-primary/10 rounded-full">
+                <Construction className="h-8 w-8 text-primary"/>
+              </div>
+              <h3 className="mt-4 font-bold text-lg font-headline">Infraestrutura</h3>
+              <p className="text-muted-foreground text-sm mt-1">Espaços seguros para cozinhar e viver</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="p-4 bg-primary/10 rounded-full">
+                 <BookOpen className="h-8 w-8 text-primary"/>
+              </div>
+              <h3 className="mt-4 font-bold text-lg font-headline">Educação</h3>
+              <p className="text-muted-foreground text-sm mt-1">Materiais escolares e apoio educacional</p>
+            </div>
+            <div className="flex flex-col items-center">
+               <div className="p-4 bg-primary/10 rounded-full">
+                 <HandHeart className="h-8 w-8 text-primary"/>
+              </div>
+              <h3 className="mt-4 font-bold text-lg font-headline">Dignidade</h3>
+              <p className="text-muted-foreground text-sm mt-1">Roupas, chinelos e cuidado integral</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Seja Parte Desta Missão Section */}
+      <section className="py-16 lg:py-24 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold font-headline">Seja Parte Desta Missão</h2>
+          <p className="mt-4 max-w-3xl mx-auto">
+            Essa missão é importante porque transforma realidades e mostra que Deus cuida através de pessoas dispostas a servir. E você pode fazer parte disso!
+          </p>
+          <div className="mt-8 bg-black/10 rounded-lg p-8 max-w-2xl mx-auto">
+            <h3 className="font-bold text-2xl font-headline">ADOTE UMA CRIANÇA</h3>
+            <p className="mt-2">A partir de <span className="font-bold">R$ 30 por mês</span>, você garante a alimentação de uma criança por um mês inteiro.</p>
+            <p className="mt-1 text-sm opacity-80">Você pode contribuir com o valor que Deus colocar no seu coração.</p>
+          </div>
+          <div className="mt-8 flex justify-center gap-4">
+            <Button size="lg" className="bg-foreground text-background hover:bg-foreground/80">Doar Agora</Button>
+            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">Saiba Mais</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Citação Section */}
+      <section className="py-16 bg-card text-card-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <blockquote className="text-2xl md:text-3xl italic font-headline">
+            "Participe. Doe. Seja resposta. <br/> Porque servir é a forma mais bonita de amar."
+          </blockquote>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 bg-black text-center text-sm text-gray-400">
+        <p className="font-bold font-headline text-primary">MISSÃO ÁFRICA</p>
+        <p className="text-xs">Transformando vidas através do amor de Cristo em Moçambique.</p>
+        <p className="mt-4 text-xs">&copy; {new Date().getFullYear()} Missão África. Todos os direitos reservados.</p>
+      </footer>
     </div>
   );
 }
+
