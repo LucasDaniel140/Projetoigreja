@@ -9,6 +9,7 @@ import { Users, Home, Construction, BookOpen, HandHeart } from 'lucide-react';
 import SplitText from '@/components/SplitText';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Link from 'next/link';
 
 const missionImages = [
   { src: "https://placehold.co/600x400.png", alt: "Voluntários em Moçambique", dataAiHint: "volunteers africa" },
@@ -207,7 +208,9 @@ export default function MissoesPage() {
             <p className="mt-1 text-sm opacity-80">Você pode contribuir com o valor que Deus colocar no seu coração.</p>
           </div>
           <div className="mt-8 flex justify-center gap-4">
-            <Button size="lg" className="bg-foreground text-background hover:bg-foreground/80">Doar Agora</Button>
+            <Link href="https://wa.me/5577999567768" target="_blank">
+              <Button size="lg" className="bg-foreground text-background hover:bg-foreground/80">Doar Agora</Button>
+            </Link>
           </div>
         </div>
       </section>
