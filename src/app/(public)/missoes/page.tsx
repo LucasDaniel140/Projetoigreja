@@ -149,7 +149,6 @@ export default function MissoesPage() {
           </div>
           <div className="mt-8 flex justify-center gap-4">
             <Button size="lg" className="bg-foreground text-background hover:bg-foreground/80">Doar Agora</Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">Saiba Mais</Button>
           </div>
         </div>
       </section>
