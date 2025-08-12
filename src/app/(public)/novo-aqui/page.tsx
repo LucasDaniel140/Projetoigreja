@@ -110,6 +110,21 @@ const ministries = [
         )
     },
     {
+        icon: <Users className="h-6 w-6 text-primary-foreground" />,
+        title: "Living e Neon Teens",
+        content: (
+            <div className="space-y-6 text-sm text-muted-foreground">
+                <p>O <strong>Neon Teens</strong> é o ministério de adolescentes da Igreja Vivendo a Palavra, criado para alcançar e discipular a nova geração com base sólida na Palavra de Deus. É um espaço onde adolescentes encontram amizades saudáveis, vivenciam experiências com Deus e descobrem sua identidade em Cristo. Por meio de cultos, eventos e momentos de comunhão, eles são encorajados a viver uma fé verdadeira, vibrante e relevante para sua idade.</p>
+
+                <p>Já a <strong>Living</strong> é o ministério de jovens da igreja, voltado para aqueles que estão construindo sua vida adulta com propósito. É um lugar para crescer espiritualmente, desenvolver dons e talentos, e se conectar com outros jovens que compartilham da mesma fé. Na Living, cada encontro é uma oportunidade para aprofundar o relacionamento com Deus e assumir um papel ativo no Reino, influenciando o mundo ao redor com amor e verdade.</p>
+
+                <div className="border-l-4 border-primary p-4 bg-primary/10 rounded-r-lg">
+                    <p className="font-semibold text-foreground">Tanto o Neon Teens quanto a Living existem para formar uma geração apaixonada por Jesus, que vive a Palavra e a manifesta em cada área da vida.</p>
+                </div>
+            </div>
+        )
+    },
+    {
         icon: <Handshake className="h-6 w-6 text-primary-foreground" />,
         title: "Voluntários",
         content: (
@@ -240,5 +255,3 @@ export default function NovoAquiPage() {
     </div>
   );
 }
-
-    
