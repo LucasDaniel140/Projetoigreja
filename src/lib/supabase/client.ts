@@ -7,12 +7,12 @@ import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'SUA_URL_AQUI';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'SUA_CHAVE_ANON_AQUI';
 
-if (!supabaseUrl || supabaseUrl === 'SUA_URL_AQUI') {
-  console.warn('Supabase URL não foi definida. Por favor, adicione NEXT_PUBLIC_SUPABASE_URL ao seu arquivo .env.local ou substitua no código.');
+let supabaseInstance: ReturnType<typeof createClient> | null = null;
+
+if (supabaseUrl && supabaseUrl !== 'SUA_URL_AQUI' && supabaseAnonKey && supabaseAnonKey !== 'SUA_CHAVE_ANON_AQUI') {
+  supabaseInstance = createClient(supabaseUrl, supabaseAnonKey);
+} else {
+  console.warn('As credenciais do Supabase não foram definidas. Por favor, adicione NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY ao seu ambiente ou substitua os valores em src/lib/supabase/client.ts. O cliente Supabase não foi inicializado.');
 }
 
-if (!supabaseAnonKey || supabaseAnonKey === 'SUA_CHAVE_ANON_AQUI') {
-   console.warn('Supabase Anon Key não foi definida. Por favor, adicione NEXT_PUBLIC_SUPABASE_ANON_KEY ao seu arquivo .env.local ou substitua no código.');
-}
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = supabaseInstance;

@@ -12,8 +12,16 @@ type UserData = {
   password?: string;
 };
 
+// Função auxiliar para verificar se o Supabase está disponível
+function checkSupabase() {
+    if (!supabase) {
+        throw new Error('O cliente Supabase não está inicializado. Verifique suas credenciais.');
+    }
+}
+
 // Buscar todos os usuários
 export async function getUsers() {
+  checkSupabase();
   const { data, error } = await supabase
     .from('users')
     .select('*')
@@ -29,6 +37,7 @@ export async function getUsers() {
 
 // Adicionar um novo usuário
 export async function addUser(userData: UserData) {
+  checkSupabase();
   const { name, email, role, password } = userData;
 
   if (!password) {
@@ -72,6 +81,7 @@ export async function addUser(userData: UserData) {
 
 // Atualizar um usuário existente
 export async function updateUser(userId: string, userData: Partial<UserData>) {
+    checkSupabase();
     // Remove a senha do objeto para não tentar atualizá-la no banco
     const { password, ...updateData } = userData;
 
@@ -93,6 +103,7 @@ export async function updateUser(userId: string, userData: Partial<UserData>) {
 
 // Remover um usuário
 export async function deleteUser(userId: string) {
+  checkSupabase();
   // Primeiro, remove da tabela 'users'
   const { error: dbError } = await supabase
     .from('users')
