@@ -16,19 +16,21 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Heart } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
-const missionaries = [
-  {
+const mainMission = {
     id: 1,
     name: 'Missão África',
     location: 'Morrumbala, Moçambique',
     progress: 75,
     goal: 10000,
     raised: 7500,
-    image: 'https://placehold.co/400x300.png',
+    image: 'https://placehold.co/600x400.png',
     dataAiHint: 'african family mission',
     description: 'A Missão África nasceu do desejo de viver o amor de Cristo de forma prática. Em Morrumbala, Moçambique, encontramos famílias que enfrentavam a fome todos os dias. Com a ajuda da igreja e de pessoas generosas, hoje alimentamos mais de 300 pessoas diariamente e apoiamos mais de 10 bases missionárias na região.\n\nMais do que comida, levamos dignidade: construímos espaços para cozinhar com segurança, entregamos roupas, chinelos, materiais escolares e apoiamos pastores locais para que continuem levando a Palavra de Deus.\n\nEssa missão é importante porque transforma realidades e mostra que Deus cuida através de pessoas dispostas a servir. E você pode fazer parte disso!\n\nA partir de R$ 30 por mês, através do programa Adote uma Criança, você garante a alimentação de uma criança por um mês inteiro e pode contribuir com o valor que Deus colocar no seu coração.\n\nParticipe. Doe. Seja resposta. Porque servir é a forma mais bonita de amar.'
-  },
+};
+
+const otherMissionaries = [
   {
     id: 2,
     name: 'Lucas e Ana',
@@ -192,8 +194,6 @@ function DonationForm({ missionaryName }: { missionaryName: string }) {
 }
 
 export default function MissoesPage() {
-  const [openDialog, setOpenDialog] = useState(false);
-
   return (
     <div className="container mx-auto px-4 py-12 md:px-6">
       <div className="text-center mb-12">
@@ -203,8 +203,60 @@ export default function MissoesPage() {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {missionaries.map((missionary) => (
+      {/* Main Mission Section */}
+      <Dialog>
+        <Card className="border-0 shadow-none md:border md:shadow-sm">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+                <div className="relative aspect-video rounded-lg overflow-hidden">
+                    <Image
+                        src={mainMission.image}
+                        alt={`Missão ${mainMission.name}`}
+                        fill
+                        data-ai-hint={mainMission.dataAiHint}
+                        className="object-cover"
+                    />
+                </div>
+                <div className="flex flex-col h-full py-4">
+                    <CardHeader className="p-0">
+                        <CardTitle className="font-headline text-3xl">{mainMission.name}</CardTitle>
+                        <CardDescription className="text-base">{mainMission.location}</CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-0 flex-grow mt-4">
+                        <p className="text-muted-foreground mb-4 whitespace-pre-wrap">{mainMission.description}</p>
+                         <div className="space-y-2 mt-auto">
+                            <Progress value={mainMission.progress} className="w-full" />
+                            <div className="flex justify-between text-sm">
+                                <span className="font-semibold">Arrecadado: R${mainMission.raised.toLocaleString('pt-BR')}</span>
+                                <span className="text-muted-foreground">Meta: R${mainMission.goal.toLocaleString('pt-BR')}</span>
+                            </div>
+                        </div>
+                    </CardContent>
+                    <CardFooter className="p-0 mt-6">
+                        <DialogTrigger asChild>
+                            <Button className="w-full md:w-auto">
+                                <Heart className="mr-2 h-4 w-4"/>
+                                Apoiar este projeto
+                            </Button>
+                        </DialogTrigger>
+                    </CardFooter>
+                </div>
+            </div>
+        </Card>
+        <DialogContent>
+          <DonationForm missionaryName={mainMission.name} />
+        </DialogContent>
+      </Dialog>
+      
+      <Separator className="my-16" />
+
+      {/* Other Projects Section */}
+      <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold font-headline">Outros Projetos</h2>
+          <p className="text-muted-foreground mt-2">Conheça outras frentes missionárias que apoiamos.</p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {otherMissionaries.map((missionary) => (
           <Dialog key={missionary.id}>
             <Card className="flex flex-col">
               <CardHeader>
