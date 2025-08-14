@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Users, Home, Construction, BookOpen, HandHeart } from 'lucide-react';
-import SplitText from '@/components/SplitText';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import Link from 'next/link';
@@ -60,23 +59,9 @@ export default function MissoesPage() {
         />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <p className="text-lg font-headline tracking-widest text-primary uppercase">Missão África</p>
-          <div className="text-5xl md:text-7xl font-bold font-headline mt-2 uppercase">
-              <SplitText
-                text="Transformando"
-                className="text-5xl md:text-7xl font-bold font-headline uppercase"
-                splitType="chars"
-                delay={80}
-              />
-              <span className="block mt-2">
-                 <SplitText
-                  text="Vidas em África"
-                  className="text-5xl md:text-7xl font-bold font-headline uppercase"
-                  splitType="chars"
-                  delay={100}
-                />
-              </span>
-          </div>
+          <h1 className="text-5xl md:text-7xl font-bold font-headline uppercase">
+            Missão África
+          </h1>
           <p className="mt-4 max-w-2xl text-lg">
             Em Morrumbala, Moçambique, levamos amor de Cristo de forma prática, alimentando mais de 300 pessoas diariamente.
           </p>
