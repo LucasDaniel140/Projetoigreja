@@ -19,7 +19,7 @@ const heroImages = [
 
 export default function MissoesPage() {
     const autoplayPlugin = React.useRef(
-        Autoplay({ delay: 1500, stopOnInteraction: false, stopOnMouseEnter: false })
+        Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: false })
     );
 
   return (
