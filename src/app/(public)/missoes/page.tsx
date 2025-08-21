@@ -49,7 +49,7 @@ export default function MissoesPage() {
             </CarouselContent>
         </Carousel>
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-5xl md:text-7xl font-bold font-headline uppercase">
             Missão África
           </h1>
