@@ -7,19 +7,47 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Users, Home, Construction, BookOpen, HandHeart } from 'lucide-react';
 import Link from 'next/link';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+
+const heroImages = [
+    { src: "https://i.imgur.com/xxngkjX.png", alt: "Crianças em Moçambique", dataAiHint: "african children" },
+    { src: "https://i.imgur.com/deeqOsh.png", alt: "Comunidade em Moçambique", dataAiHint: "african community" },
+    { src: "https://i.imgur.com/MaW2zJm.png", alt: "Voluntários da missão", dataAiHint: "mission volunteers" },
+    { src: "https://i.imgur.com/aF7CFYC.png", alt: "Criança sorrindo", dataAiHint: "smiling african child" },
+];
 
 export default function MissoesPage() {
+    const autoplayPlugin = React.useRef(
+        Autoplay({ delay: 1500, stopOnInteraction: false, stopOnMouseEnter: false })
+    );
+
   return (
     <div className="bg-white text-black">
       {/* Hero Section */}
       <section className="relative h-[80vh] text-white">
-        <Image 
-          src="https://placehold.co/1920x1080.png" 
-          alt="Volunteers helping in Africa"
-          data-ai-hint="volunteers giving food"
-          fill
-          className="object-cover"
-        />
+        <Carousel
+            plugins={[autoplayPlugin.current]}
+            className="w-full h-full"
+            opts={{ align: "start", loop: true }}
+        >
+            <CarouselContent>
+                {heroImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                    <div className="relative w-full h-[80vh]">
+                        <Image 
+                            src={image.src} 
+                            alt={image.alt}
+                            data-ai-hint={image.dataAiHint}
+                            fill
+                            className="object-cover"
+                            priority={index === 0} // Prioritize loading the first image
+                        />
+                    </div>
+                    </CarouselItem>
+                ))}
+            </CarouselContent>
+        </Carousel>
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
           <h1 className="text-5xl md:text-7xl font-bold font-headline uppercase">
