@@ -6,46 +6,9 @@ import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Users, Home, Construction, BookOpen, HandHeart } from 'lucide-react';
-import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 import Link from 'next/link';
 
-const missionImages = [
-  { src: "https://placehold.co/600x400.png", alt: "Voluntários em Moçambique", dataAiHint: "volunteers africa" },
-  { src: "https://placehold.co/600x400.png", alt: "Crianças sorrindo", dataAiHint: "african children smiling" },
-  { src: "https://placehold.co/600x400.png", alt: "Construção de cozinha comunitária", dataAiHint: "community kitchen building" },
-  { src: "https://placehold.co/600x400.png", alt: "Distribuição de material escolar", dataAiHint: "school supplies distribution" },
-  { src: "https://placehold.co/600x400.png", alt: "Pastor local pregando", dataAiHint: "local pastor preaching" },
-  { src: "https://placehold.co/600x400.png", alt: "Família recebendo doações", dataAiHint: "family receiving donations" },
-  { src: "https://placehold.co/600x400.png", alt: "Voluntários cozinhando", dataAiHint: "volunteers cooking" },
-  { src: "https://placehold.co/600x400.png", alt: "Crianças estudando", dataAiHint: "children studying" },
-  { src: "https://placehold.co/600x400.png", alt: "Momento de oração comunitária", dataAiHint: "community prayer" },
-  { src: "https://placehold.co/600x400.png", alt: "Visão aérea da comunidade", dataAiHint: "aerial view community" },
-];
-
 export default function MissoesPage() {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
-
-  const autoplayPlugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true })
-  );
-
-  React.useEffect(() => {
-    if (!api) {
-      return
-    }
-
-    setCount(api.scrollSnapList().length)
-    setCurrent(api.selectedScrollSnap() + 1)
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1)
-    })
-  }, [api])
-
-
   return (
     <div className="bg-white text-black">
       {/* Hero Section */}
@@ -84,43 +47,18 @@ export default function MissoesPage() {
                 Mais do que comida, levamos dignidade: construímos espaços para cozinhar com segurança, entregamos roupas, chinelos, materiais escolares e apoiamos pastores locais para que continuem levando a Palavra de Deus.
               </p>
             </div>
-            <div className="relative">
-              <Carousel
-                setApi={setApi}
-                plugins={[autoplayPlugin.current]}
-                className="w-full max-w-lg mx-auto"
-                opts={{ align: "start", loop: true }}
-                onMouseEnter={autoplayPlugin.current.stop}
-                onMouseLeave={autoplayPlugin.current.reset}
-              >
-                <CarouselContent>
-                  {missionImages.map((image, index) => (
-                    <CarouselItem key={index}>
-                      <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
-                        <Image
-                          src={image.src}
-                          alt={image.alt}
-                          data-ai-hint={image.dataAiHint}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-              </Carousel>
-               <div className="py-2 text-center text-sm text-muted-foreground">
-                  <div className="flex gap-2 justify-center mt-4">
-                      {Array.from({ length: count }).map((_, i) => (
-                          <button
-                              key={i}
-                              onClick={() => api?.scrollTo(i)}
-                              className={`h-2 w-2 rounded-full ${current === i + 1 ? "bg-primary" : "bg-muted"}`}
-                              aria-label={`Ir para o slide ${i + 1}`}
-                          />
-                      ))}
-                  </div>
-              </div>
+            <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg">
+              <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/Mtx4_XQpJ2c?si=aUGxVPWrOqYKb6Mu" 
+                title="YouTube video player" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full"
+              ></iframe>
             </div>
           </div>
         </div>
