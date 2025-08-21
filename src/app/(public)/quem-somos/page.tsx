@@ -10,14 +10,10 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/com
 import Autoplay from "embla-carousel-autoplay";
 
 const leadership = [
-  { name: "Pr. Samuel Souza", role: "Pastor Sênior", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
-  { name: "Pra. Rafaelle Souza", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "pastor portrait" },
-  { name: "Pr. Everton Araújo", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
-  { name: "Pra. Leticia Araújo", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
-  { name: "Pr. Welliton Moraes", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
-  { name: "Pra. Calliiny Moraes", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
-  { name: "Pr. Clisman Rocha", role: "Pastor", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
-  { name: "Pra. Regina Rocha", role: "Pastora", image: "https://placehold.co/100x100.png", dataAiHint: "church leader portrait" },
+  { name: "Pr. Samuel e Pra. Rafaelle Souza", role: "Pastores Sêniores", image: "https://placehold.co/100x100.png", dataAiHint: "pastor couple portrait" },
+  { name: "Pr. Everton e Pra. Leticia Araújo", role: "Pastores", image: "https://placehold.co/100x100.png", dataAiHint: "pastor couple portrait" },
+  { name: "Pr. Welliton e Pra. Calliiny Moraes", role: "Pastores", image: "https://placehold.co/100x100.png", dataAiHint: "pastor couple portrait" },
+  { name: "Pr. Clisman e Pra. Regina Rocha", role: "Pastores", image: "https://placehold.co/100x100.png", dataAiHint: "pastor couple portrait" },
 ];
 
 const historyImages = [
@@ -157,7 +153,7 @@ export default function QuemSomosPage() {
               <div key={leader.name} className="flex flex-col items-center space-y-2">
                 <Avatar className="h-24 w-24">
                   <AvatarImage src={leader.image} alt={leader.name} data-ai-hint={leader.dataAiHint} />
-                  <AvatarFallback>{leader.name.charAt(0)}</AvatarFallback>
+                  <AvatarFallback>{leader.name.split(' ').map(n => n[0]).slice(0, 2).join('')}</AvatarFallback>
                 </Avatar>
                 <h3 className="font-bold">{leader.name}</h3>
                 <p className="text-sm text-muted-foreground">{leader.role}</p>
