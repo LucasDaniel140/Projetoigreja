@@ -11,10 +11,10 @@ import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/com
 import Autoplay from "embla-carousel-autoplay";
 
 const leadership = [
-  { name: "Pr. Samuel e Pra. Rafaelle Souza", role: "Pastores Sêniores", image: "/images/pastor-samuel-e-rafaelle.png", dataAiHint: "pastor couple portrait" },
-  { name: "Pr. Everton e Pra. Leticia Araújo", role: "Pastores", image: "/images/pastor-everton-e-leticia.png", dataAiHint: "pastor couple portrait" },
-  { name: "Pr. Welliton e Pra. Calliiny Moraes", role: "Pastores", image: "/images/pastor-welliton-e-calliiny.png", dataAiHint: "pastor couple portrait" },
-  { name: "Pr. Clisman e Pra. Regina Rocha", role: "Pastores", image: "/images/pastor-clisman-e-regina.png", dataAiHint: "pastor couple portrait" },
+  { name: "Pr. Samuel e Pra. Rafaelle Souza", role: "Pastores Sêniores", image: "https://i.imgur.com/lzZbMHB.jpeg", dataAiHint: "pastor couple portrait" },
+  { name: "Pr. Everton e Pra. Leticia Araújo", role: "Pastores", image: "https://i.imgur.com/nrm0X1e.jpeg", dataAiHint: "pastor couple portrait" },
+  { name: "Pr. Welliton e Pra. Calliiny Moraes", role: "Pastores", image: "https://i.imgur.com/Pg5iUz7.jpeg", dataAiHint: "pastor couple portrait" },
+  { name: "Pr. Clisman e Pra. Regina Rocha", role: "Pastores", image: "https://i.imgur.com/4tqIh6D.jpeg", dataAiHint: "pastor couple portrait" },
 ];
 
 const historyImages = [
