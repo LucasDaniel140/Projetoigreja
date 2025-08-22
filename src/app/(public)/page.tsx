@@ -159,10 +159,10 @@ export default function Home() {
                     Baixe nosso aplicativo para ter acesso a mensagens, estudos, agenda de eventos e muito mais. Fique conectado com a nossa comunidade onde quer que esteja.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 mt-4 justify-center md:justify-start">
-                    <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank">
+                    <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank" className="mx-auto md:mx-0">
                         <Image src="https://i.imgur.com/juZArY5.png" alt="Download on the App Store" width={160} height={53} />
                     </Link>
-                    <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank">
+                    <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank" className="mx-auto md:mx-0">
                        <Image src="https://i.imgur.com/Qpz1saX.png" alt="Get it on Google Play" width={160} height={53} />
                     </Link>
                     </div>
@@ -215,5 +215,7 @@ export default function Home() {
   );
 }
 
+
+    
 
     
