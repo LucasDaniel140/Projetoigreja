@@ -17,7 +17,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "./ui/button";
 
 export function Footer() {
   return (
@@ -67,32 +66,20 @@ export function Footer() {
                             <Image src="https://i.imgur.com/gotyp5h.png" alt="App da Igreja" width={24} height={24} className="hover:opacity-80 transition-opacity" />
                         </button>
                     </DialogTrigger>
-                    <DialogContent className="sm:max-w-[425px]">
+                    <DialogContent className="sm:max-w-md">
                         <DialogHeader>
                         <DialogTitle className="font-headline text-center">Baixe nosso App</DialogTitle>
                         <DialogDescription className="text-center">
                             Tenha acesso a tudo na palma da sua mão.
                         </DialogDescription>
                         </DialogHeader>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 py-4">
-                            <Button asChild>
-                                <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank" className="flex items-center gap-2">
-                                    <Image src="https://i.imgur.com/wyj5M5q.png" alt="App Store" width={24} height={24} className="dark:invert"/>
-                                    <div>
-                                        <p className="text-xs">Baixar na</p>
-                                        <p className="text-lg font-semibold -mt-1">App Store</p>
-                                    </div>
-                                </Link>
-                            </Button>
-                             <Button asChild>
-                                <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank" className="flex items-center gap-2">
-                                    <Image src="https://www.clker.com/cliparts/J/J/B/Y/A/M/google-play-logo-md.png" alt="Google Play" width={24} height={24} />
-                                     <div>
-                                        <p className="text-xs">Disponível na</p>
-                                        <p className="text-lg font-semibold -mt-1">Google Play</p>
-                                    </div>
-                                </Link>
-                            </Button>
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 py-4">
+                           <Link href="https://apps.apple.com/br/app/igreja-vivendo-a-palavra/id6473058010" target="_blank">
+                                <Image src="https://i.imgur.com/juZArY5.png" alt="Download on the App Store" width={160} height={53} />
+                            </Link>
+                            <Link href="https://play.google.com/store/apps/details?id=br.com.sistemaprover.igrejavivendoapalavra&pcampaignid=web_share" target="_blank">
+                               <Image src="https://i.imgur.com/Qpz1saX.png" alt="Get it on Google Play" width={160} height={53} />
+                            </Link>
                         </div>
                     </DialogContent>
                     </Dialog>
