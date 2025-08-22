@@ -175,7 +175,7 @@ export default function Home() {
       </section>
       
        <section className="w-full py-12">
-        <div className="container px-4 md:px-6 grid grid-cols-1 gap-16 items-center max-w-4xl mx-auto">
+        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-start max-w-5xl mx-auto">
             <div className="flex flex-col items-center text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mb-6">Visite-nos</h2>
@@ -214,8 +214,3 @@ export default function Home() {
     </div>
   );
 }
-
-
-    
-
-    
