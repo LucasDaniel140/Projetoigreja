@@ -175,11 +175,11 @@ export default function Home() {
       </section>
       
        <section className="w-full py-12">
-        <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center">
+        <div className="container px-4 md:px-6 grid grid-cols-1 gap-16 items-center max-w-4xl mx-auto">
             <div className="flex flex-col items-center text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline mb-4">Onde nos encontrar</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mb-6">Visite-nos</h2>
-                <div className="h-full w-full rounded-lg overflow-hidden">
+                <div className="h-full w-full rounded-lg overflow-hidden max-w-2xl">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7802.747970446119!2d-45.80001752432361!3d-12.086529888153335!2m3!1f0!2f0!3f0!3m2!i1024!2i768!4f13.1!3m3!1m2!1s0x934a713399ab35a1%3A0xf279243579f3a83b!2sMinist%C3%A9rio%20Vivendo%20a%20Palavra!5e0!3m2!1spt-PT!2sus!4v1754596320009!5m2!1spt-PT!2sus"
                         width="100%"
                         height="100%"
@@ -193,7 +193,7 @@ export default function Home() {
             <div className="flex flex-col items-center text-center">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4 mb-6">Nossos Momentos</h2>
-                 <div className="grid grid-cols-2 gap-4 mt-4">
+                 <div className="grid grid-cols-2 gap-4 mt-4 max-w-2xl w-full">
                   {videos.map((video, index) => (
                     <div key={index} className="aspect-video rounded-lg overflow-hidden">
                       <iframe 
