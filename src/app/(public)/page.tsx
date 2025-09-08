@@ -133,7 +133,7 @@ export default function Home() {
               <Rocket className="h-8 w-8 text-primary mb-2" />
               <h3 className="font-headline text-2xl uppercase">Visionários</h3>
               <p className="flex-grow text-muted-foreground mt-2">Uma plataforma para visionários que querem expandir o Reino.</p>
-               <Link href="#" target="_blank" className="mt-4 inline-block">
+               <Link href="/visionarios" className="mt-4 inline-block">
                 <Button variant="link" className="px-0 text-primary transition-transform duration-200 hover:scale-105">Acessar Plataforma <ArrowRight className="ml-2 h-4 w-4" /></Button>
               </Link>
             </InteractiveCard>

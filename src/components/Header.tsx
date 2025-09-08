@@ -17,7 +17,7 @@ const navLinks = [
   { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
   { href: "/novo-aqui", label: "É Novo Aqui?" },
-  { href: "#", label: "Visionários", target: "_blank" },
+  { href: "/visionarios", label: "Visionários" },
 ];
 
 export function Header() {
