@@ -42,7 +42,6 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              target={link.target}
               className={cn(
                 "transition-colors hover:text-primary whitespace-nowrap",
                 pathname === link.href ? "text-primary font-bold" : "text-foreground/60"
@@ -71,7 +70,6 @@ export function Header() {
                     <Link
                     key={link.href}
                     href={link.href}
-                    target={link.target}
                     onClick={handleLinkClick}
                     className={cn(
                         "text-lg",
