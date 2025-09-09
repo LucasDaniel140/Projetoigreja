@@ -1,3 +1,4 @@
+
 'use server';
 
 import { google } from 'googleapis';
@@ -12,6 +13,18 @@ const beneficiarySchema = z.object({
   familySize: z.coerce.number(),
   phone: z.string(),
 });
+
+// Função para obter as credenciais de forma segura
+function getCredentials() {
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY;
+  if (!privateKey) {
+    throw new Error("A variável de ambiente GOOGLE_PRIVATE_KEY não está definida.");
+  }
+  // A chave privada vem como uma string, precisamos fazer o parse para remover escapes
+  // e garantir que as quebras de linha sejam interpretadas corretamente.
+  return privateKey.replace(/\\n/g, '\n');
+}
+
 
 // Essa é a função principal que será chamada pelo formulário.
 // Ela recebe os dados, valida, e envia para a planilha.
@@ -35,7 +48,7 @@ export async function addBeneficiaryToSheet(formData: FormData) {
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        private_key: getCredentials(),
       },
       scopes: [
         'https://www.googleapis.com/auth/spreadsheets',
@@ -77,11 +90,13 @@ export async function addBeneficiaryToSheet(formData: FormData) {
     return { success: true, message: 'Cadastro enviado com sucesso!' };
 
   } catch (error) {
-    console.error('Erro ao adicionar na planilha:', error);
+    // Log detalhado do erro no servidor para facilitar a depuração
+    console.error('Erro detalhado ao adicionar na planilha:', error);
+    
     // Retorna uma mensagem de erro genérica para o usuário
     if (error instanceof z.ZodError) {
         return { success: false, message: 'Erro de validação nos dados enviados.' };
     }
-    return { success: false, message: 'Ocorreu um erro ao enviar seu cadastro. Tente novamente.' };
+    return { success: false, message: 'Ocorreu um erro ao enviar seu cadastro. Verifique as configurações da API.' };
   }
 }
