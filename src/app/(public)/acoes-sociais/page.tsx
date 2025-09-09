@@ -4,7 +4,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +16,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { addBeneficiaryToSheet } from "./actions";
 
 // Adiciona a tipagem para o custom element do Stripe
 declare global {
@@ -52,6 +53,7 @@ function StripeDonationButton() {
 
 export default function AcoesSociaisPage() {
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
   
   const beneficiaryForm = useForm<z.infer<typeof beneficiaryFormSchema>>({
     resolver: zodResolver(beneficiaryFormSchema),
@@ -64,13 +66,28 @@ export default function AcoesSociaisPage() {
     },
   });
 
-  function onBeneficiarySubmit(values: z.infer<typeof beneficiaryFormSchema>) {
-    console.log("Beneficiary:", values);
-    toast({
-      title: "Cadastro enviado!",
-      description: "Seu pré-cadastro foi realizado com sucesso. Aguarde nosso contato.",
-    });
-    beneficiaryForm.reset();
+  const onBeneficiarySubmit = async (values: z.infer<typeof beneficiaryFormSchema>) => {
+    if (!formRef.current) return;
+    
+    // FormData é uma forma moderna de coletar dados de formulários
+    const formData = new FormData(formRef.current);
+    
+    // Chama a Server Action, que vai rodar no servidor
+    const result = await addBeneficiaryToSheet(formData);
+
+    if (result.success) {
+        toast({
+            title: "Cadastro enviado!",
+            description: "Seu pré-cadastro foi realizado com sucesso. Aguarde nosso contato.",
+        });
+        beneficiaryForm.reset();
+    } else {
+        toast({
+            title: "Erro no envio",
+            description: result.message,
+            variant: "destructive",
+        });
+    }
   }
 
 
@@ -93,7 +110,11 @@ export default function AcoesSociaisPage() {
           </CardHeader>
           <CardContent>
             <Form {...beneficiaryForm}>
-              <form onSubmit={beneficiaryForm.handleSubmit(onBeneficiarySubmit)} className="space-y-6">
+              <form 
+                ref={formRef} 
+                onSubmit={beneficiaryForm.handleSubmit(onBeneficiarySubmit)} 
+                className="space-y-6"
+              >
                 <FormField
                   control={beneficiaryForm.control}
                   name="fullName"
@@ -202,7 +223,13 @@ export default function AcoesSociaisPage() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">Enviar Pré-cadastro</Button>
+                <Button 
+                    type="submit" 
+                    className="w-full"
+                    disabled={beneficiaryForm.formState.isSubmitting}
+                >
+                    {beneficiaryForm.formState.isSubmitting ? 'Enviando...' : 'Enviar Pré-cadastro'}
+                </Button>
               </form>
             </Form>
           </CardContent>
