@@ -190,6 +190,9 @@ export default function AcoesSociaisPage() {
                               date > new Date() || date < new Date("1900-01-01")
                             }
                             initialFocus
+                            captionLayout="dropdown-buttons"
+                            fromYear={1900}
+                            toYear={new Date().getFullYear()}
                           />
                         </PopoverContent>
                       </Popover>
