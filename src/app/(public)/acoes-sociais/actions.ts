@@ -20,8 +20,7 @@ function getCredentials() {
   if (!privateKey) {
     throw new Error("A variável de ambiente GOOGLE_PRIVATE_KEY não está definida.");
   }
-  // A chave privada vem como uma string, precisamos fazer o parse para remover escapes
-  // e garantir que as quebras de linha sejam interpretadas corretamente.
+  // Garante que as quebras de linha na chave privada sejam interpretadas corretamente.
   return privateKey.replace(/\\n/g, '\n');
 }
 
