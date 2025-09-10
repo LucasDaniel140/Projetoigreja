@@ -162,23 +162,22 @@ export default function AcoesSociaisPage() {
                   render={({ field }) => (
                     <FormItem className="flex flex-col">
                       <FormLabel>Data de Nascimento</FormLabel>
-                      <Popover>
+                       <Popover>
                         <PopoverTrigger asChild>
                           <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                "w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "dd/MM/yyyy")
-                              ) : (
-                                <span>Escolha uma data</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
+                             <div className="relative">
+                                <Input
+                                  placeholder="dd/mm/aaaa"
+                                  value={field.value ? format(field.value, "dd/MM/yyyy") : ""}
+                                  onChange={(e) => {
+                                      const date = new Date(e.target.value)
+                                      if (!isNaN(date.getTime())) {
+                                          field.onChange(date)
+                                      }
+                                  }}
+                                />
+                                <CalendarIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 opacity-50" />
+                            </div>
                           </FormControl>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
