@@ -91,6 +91,7 @@ export default function QuemSomosPage() {
                         data-ai-hint={image.dataAiHint}
                         width={1280}
                         height={720}
+                        priority={index === 0}
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
