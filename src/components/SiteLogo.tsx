@@ -3,28 +3,14 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { getSiteIdentity } from '@/app/admin/settings/actions';
 import { cn } from '@/lib/utils';
 
 export function SiteLogo({ className }: { className?: string }) {
   const [logo, setLogo] = useState('https://i.imgur.com/OxjotEv.png');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Changed to false as we have a default
 
-  useEffect(() => {
-    async function fetchLogo() {
-      try {
-        const identity = await getSiteIdentity();
-        if (identity.logo) {
-          setLogo(identity.logo);
-        }
-      } catch (error) {
-        console.error("Failed to fetch site logo.", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchLogo();
-  }, []);
+  // In a real application, you might fetch this from a CMS or a static config file.
+  // For now, it's hardcoded but prepared for dynamic fetching.
 
   if (loading) {
     return <div className={cn("h-7 w-[200px] bg-muted animate-pulse rounded", className)}></div>;
