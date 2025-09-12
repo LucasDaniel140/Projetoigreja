@@ -39,7 +39,7 @@ export function Footer() {
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Link href="https://www.youtube.com/@VivendoaPalavra" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <Image src="https://i.imgur.com/NLlGcqp.png" alt="YouTube" width={28} height={28} className="hover:opacity-80 transition-opacity" />
+                    <Image src="https://i.imgur.com/NLlGcqp.png" alt="YouTube" width={24} height={24} className="hover:opacity-80 transition-opacity" />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>

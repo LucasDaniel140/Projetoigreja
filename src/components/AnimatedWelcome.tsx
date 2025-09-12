@@ -14,7 +14,7 @@ const WelcomeText = ({ text, isVisible, className, children }: { text?: string; 
                 if (node.textContent) {
                     const newHtml = node.textContent.replace(
                         /\S/g,
-                        "<span class='letter-wrapper' style='display: inline-block; overflow: hidden;'><span class='letter' style='display: inline-block;'>$&</span></span>"
+                        "<span class='letter-wrapper' style='display: inline-block; overflow: hidden; padding: 0 2px;'><span class='letter' style='display: inline-block;'>$&</span></span>"
                     );
                     const span = document.createElement('span');
                     span.innerHTML = newHtml;
