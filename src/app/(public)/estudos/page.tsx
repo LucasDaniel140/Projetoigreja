@@ -108,7 +108,7 @@ export default function EstudosPage() {
                                 <CardTitle className="font-headline text-xl">{study.title}</CardTitle>
                             </div>
                             <CardFooter className="p-0 pl-4">
-                                {study.paid && <Badge variant="secondary">Pago</Badge>}
+                                {study.paid ? <Badge variant="destructive">Pago</Badge> : <Badge variant="outline">Free</Badge>}
                             </CardFooter>
                         </CardHeader>
                     </AccordionTrigger>
