@@ -22,7 +22,7 @@ const historyImages = [
     { src: "/2.png", alt: "Momento da igreja 2", dataAiHint: "church moment" },
     { src: "/3.png", alt: "Momento da igreja 3", dataAiHint: "church moment" },
     { src: "/4.png", alt: "Momento da igreja 4", dataAiHint: "church moment" },
-    { src: "/5.png", alt: "Momento da igreja 5", dataAiHint: "church moment" },
+    { src: "/5.jpeg", alt: "Momento da igreja 5", dataAiHint: "church moment" },
 ];
 
 export default function QuemSomosPage() {
