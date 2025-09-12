@@ -1,14 +1,76 @@
 
 "use client";
 
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ShoppingBasket, MessageSquare } from "lucide-react";
+import { ShoppingBasket, MessageSquare, CalendarIcon } from "lucide-react";
 import Link from 'next/link';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { addBeneficiaryToSheet } from './actions';
+import { useToast } from '@/hooks/use-toast';
+
+const beneficiarySchema = z.object({
+  fullName: z.string().min(3, "Nome completo é obrigatório."),
+  cpf: z.string().length(11, "CPF deve ter 11 dígitos."),
+  birthDate: z.date({ required_error: "Data de nascimento é obrigatória." }),
+  address: z.string().min(5, "Endereço é obrigatório."),
+  familySize: z.coerce.number().min(1, "O tamanho da família deve ser pelo menos 1."),
+  phone: z.string().min(10, "Telefone é obrigatório."),
+});
 
 export default function AcoesSociaisPage() {
   const whatsappLink = "https://wa.me/5577999567768";
+  const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const beneficiaryForm = useForm<z.infer<typeof beneficiarySchema>>({
+    resolver: zodResolver(beneficiarySchema),
+    defaultValues: {
+        fullName: "",
+        cpf: "",
+        address: "",
+        familySize: 1,
+        phone: ""
+    }
+  });
+
+  async function onBeneficiarySubmit(values: z.infer<typeof beneficiarySchema>) {
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, value]) => {
+      if (value instanceof Date) {
+        formData.append(key, value.toISOString());
+      } else {
+        formData.append(key, String(value));
+      }
+    });
+
+    const result = await addBeneficiaryToSheet(formData);
+
+    if (result.success) {
+      toast({
+        title: "Sucesso!",
+        description: result.message,
+      });
+      beneficiaryForm.reset();
+      formRef.current?.reset();
+    } else {
+      toast({
+        title: "Erro",
+        description: result.message,
+        variant: "destructive",
+      });
+    }
+  }
+
 
   return (
     <div className="container mx-auto px-4 py-12 md:px-6">
@@ -176,3 +238,5 @@ export default function AcoesSociaisPage() {
     </div>
   );
 }
+
+    
