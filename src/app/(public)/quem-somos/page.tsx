@@ -18,12 +18,11 @@ const leadership = [
 ];
 
 const historyImages = [
-    { src: "https://i.imgur.com/xVtQ8zG.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
-    { src: "https://i.imgur.com/U9btjTV.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
-    { src: "https://i.imgur.com/vgQUXh7.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
-    { src: "https://i.imgur.com/65HSikK.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
-    { src: "https://i.imgur.com/Nqef2Od.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
-    { src: "https://i.imgur.com/E54k9Yk.jpeg", alt: "Momento da igreja", dataAiHint: "church moment" },
+    { src: "/1.png", alt: "Momento da igreja 1", dataAiHint: "church moment" },
+    { src: "/2.png", alt: "Momento da igreja 2", dataAiHint: "church moment" },
+    { src: "/3.png", alt: "Momento da igreja 3", dataAiHint: "church moment" },
+    { src: "/4.png", alt: "Momento da igreja 4", dataAiHint: "church moment" },
+    { src: "/5.png", alt: "Momento da igreja 5", dataAiHint: "church moment" },
 ];
 
 export default function QuemSomosPage() {
@@ -90,7 +89,8 @@ export default function QuemSomosPage() {
                         src={image.src}
                         alt={image.alt}
                         data-ai-hint={image.dataAiHint}
-                        fill
+                        width={1280}
+                        height={720}
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
