@@ -11,20 +11,16 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const oswald = Oswald({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-headline' });
 
 export async function generateMetadata(
-  parent: ResolvingMetadata
+  _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const identity = await getSiteIdentity();
  
-  const previousIcons = (await parent).icons || {}
- 
-  const newIcons = identity.favicon
-    ? { icon: identity.favicon, apple: identity.favicon }
-    : previousIcons;
+  const icons = identity.favicon ? { icon: identity.favicon, apple: identity.favicon } : {};
 
   return {
     title: 'Igreja Vivendo a Palavra',
     description: 'Conectando corações, transformando vidas.',
-    icons: newIcons
+    icons,
   }
 }
 
