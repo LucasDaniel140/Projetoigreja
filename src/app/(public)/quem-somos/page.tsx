@@ -86,12 +86,12 @@ export default function QuemSomosPage() {
                   <CarouselItem key={index}>
                     <div className="relative aspect-video rounded-lg overflow-hidden shadow-lg group">
                       <Image
+                        priority={index === 0}
                         src={image.src}
                         alt={image.alt}
                         data-ai-hint={image.dataAiHint}
                         width={1280}
                         height={720}
-                        priority={index === 0}
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
