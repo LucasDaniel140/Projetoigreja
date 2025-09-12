@@ -9,7 +9,6 @@ import Link from "next/link";
 import { AnimatedWelcome } from "@/components/AnimatedWelcome";
 import { InteractivePhone } from "@/components/InteractivePhone";
 import { InteractiveCard } from '@/components/InteractiveCard';
-import { getVideoUrls, getBackgroundVideoUrl } from '../admin/media/actions';
 
 export default function Home() {
   const [transform, setTransform] = useState('perspective(1000px) rotateX(0deg) rotateY(0deg)');
@@ -24,16 +23,8 @@ export default function Home() {
   const appLocationRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    async function fetchMedia() {
-      const [videoUrls, bgUrl] = await Promise.all([getVideoUrls(), getBackgroundVideoUrl()]);
-      if (videoUrls && videoUrls.length === 4 && videoUrls.every(url => url)) {
-        setVideos(videoUrls);
-      }
-      if (bgUrl) {
-        setBackgroundVideo(bgUrl);
-      }
-    }
-    fetchMedia();
+    // Media is now hardcoded as per user request to remove admin/media page.
+    // In a real scenario, this would come from a CMS or other data source.
   }, []);
 
   useEffect(() => {
@@ -194,7 +185,12 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-headline">Fique por dentro</div>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl mt-4 mb-6">Nossos Momentos</h2>
                  <div className="grid grid-cols-2 gap-4 mt-4 max-w-2xl w-full">
-                  {videos.map((video, index) => (
+                  {[
+                    '<iframe class="w-full h-full" src="https://www.youtube.com/embed/vGohlJdcGvE?si=SOirILXR5lEz-LLv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                    '<iframe class="w-full h-full" src="https://www.youtube.com/embed/WwaS9A4c0YM?si=8jRVGh4rG0Cprg3n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                    '<iframe class="w-full h-full" src="https://www.youtube.com/embed/_a2gUBNM0dE?si=SsU_bSkgAk94UTLz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>',
+                    '<iframe class="w-full h-full" src="https://www.youtube.com/embed/2tSS_lGQCQ0?si=efV3Mo5lqPCA7MkB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+                  ].map((video, index) => (
                     <div key={index} className="aspect-video rounded-lg overflow-hidden">
                       <iframe 
                         className="w-full h-full" 

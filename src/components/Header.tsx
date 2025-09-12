@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -7,8 +8,8 @@ import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Image from "next/image";
 import { useState } from "react";
+import { SiteLogo } from "./SiteLogo";
 
 const navLinks = [
   { href: "/", label: "Início" },
@@ -33,7 +34,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-2">
-          <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-7 w-auto" />
+          <SiteLogo className="h-7 w-auto" />
         </Link>
         
         {/* Desktop Navigation */}
@@ -63,7 +64,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="bg-background">
                 <Link href="/" className="flex items-center" onClick={handleLinkClick}>
-                <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={200} height={40} className="h-7 w-auto" />
+                  <SiteLogo className="h-7 w-auto" />
                 </Link>
                 <div className="flex flex-col space-y-4 mt-6">
                 {navLinks.map((link) => (

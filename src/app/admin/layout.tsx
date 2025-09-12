@@ -7,15 +7,6 @@ import {
   Settings,
   PanelLeft,
   Users,
-  File,
-  LayoutDashboard,
-  HeartHandshake,
-  Globe,
-  Calendar,
-  Rss,
-  Image as ImageIcon,
-  MessageCircle,
-  BarChart,
   LogOut,
 } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
@@ -29,22 +20,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { AuthProvider, useAuth } from "@/contexts/auth-context"
 import { AuthGuard } from "@/components/auth-guard"
+import { SiteLogo } from "@/components/SiteLogo"
 
 const navItems = [
-    { label: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
-    { label: "Páginas", href: "/admin/pages", icon: File },
-    { label: "Blog", href: "/admin/blog", icon: Rss },
-    { label: "Mídia", href: "/admin/media", icon: ImageIcon },
-    { label: "Programações", href: "/admin/schedule", icon: Calendar },
-    { label: "Missões", href: "/admin/missions", icon: Globe },
-    { label: "Ações Sociais", href: "/admin/social", icon: HeartHandshake },
-    { label: "Comunicação", href: "/admin/communication", icon: MessageCircle },
-    { label: "Relatórios", href: "/admin/reports", icon: BarChart },
-    { label: "Usuários", href: "/admin/users", icon: Users },
     { label: "Configurações", href: "/admin/settings", icon: Settings },
 ];
 
@@ -53,7 +34,6 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { logout } = useAuth();
   
-  // Don't render sidebar for login page
   if (pathname === '/admin') {
     return (
         <div className="bg-background min-h-screen">
@@ -74,7 +54,7 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
             <div className="flex h-full max-h-screen flex-col gap-2">
             <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
                 <Link href="/" className="flex items-center gap-2 font-semibold">
-                <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={150} height={30} className="h-6 w-auto" />
+                  <SiteLogo className="h-6 w-auto" />
                 </Link>
             </div>
             <div className="flex-1">
@@ -84,7 +64,7 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
                     key={item.label}
                     href={item.href}
                     className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary", {
-                        "bg-muted text-primary": pathname === item.href
+                        "bg-muted text-primary": pathname.startsWith(item.href)
                     })}
                     >
                     <item.icon className="h-4 w-4" />
@@ -111,17 +91,17 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
                 <SheetContent side="left" className="flex flex-col">
                 <nav className="grid gap-2 text-lg font-medium">
                     <Link
-                    href="/"
-                    className="flex items-center gap-2 text-lg font-semibold mb-4"
+                      href="/"
+                      className="flex items-center gap-2 text-lg font-semibold mb-4"
                     >
-                    <Image src="https://i.imgur.com/OxjotEv.png" alt="Igreja Vivendo a Palavra Logo" width={150} height={30} className="h-6 w-auto" />
+                      <SiteLogo className="h-6 w-auto" />
                     </Link>
                     {navItems.map(item => (
                         <Link
                         key={item.label}
                         href={item.href}
                         className={cn("mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground", {
-                            "bg-muted text-foreground": pathname === item.href,
+                            "bg-muted text-foreground": pathname.startsWith(item.href),
                         })}
                         >
                             <item.icon className="h-5 w-5" />
@@ -144,7 +124,7 @@ function AdminLayoutContent({ children }: { children: React.ReactNode }) {
                 <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Configurações</DropdownMenuItem>
+                <DropdownMenuItem onClick={() => router.push('/admin/settings')}>Configurações</DropdownMenuItem>
                 <DropdownMenuItem>Suporte</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleLogout}>

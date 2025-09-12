@@ -1,19 +1,32 @@
-import type { Metadata } from 'next';
+
+import type { Metadata, ResolvingMetadata } from 'next';
 import { cn } from "@/lib/utils";
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Inter, Oswald } from 'next/font/google';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import Script from 'next/script';
+import { getSiteIdentity } from './admin/settings/actions';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const oswald = Oswald({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-headline' });
 
-export const metadata: Metadata = {
-  title: 'Igreja Vivendo a Palavra',
-  description: 'Conectando corações, transformando vidas.',
-};
+export async function generateMetadata(
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const identity = await getSiteIdentity();
+ 
+  const previousIcons = (await parent).icons || {}
+ 
+  const newIcons = identity.favicon
+    ? { icon: identity.favicon, apple: identity.favicon }
+    : previousIcons;
+
+  return {
+    title: 'Igreja Vivendo a Palavra',
+    description: 'Conectando corações, transformando vidas.',
+    icons: newIcons
+  }
+}
 
 export default function RootLayout({
   children,
