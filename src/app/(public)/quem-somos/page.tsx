@@ -73,19 +73,6 @@ export default function QuemSomosPage() {
             </div>
           </div>
           <div>
-            {/* DIAGNOSTIC CODE: Display a single image */}
-            <div className="border-4 border-red-500 p-4">
-                <p className="text-white mb-2">Teste de Imagem:</p>
-                <Image
-                    src="/1.png"
-                    alt="Teste de imagem 1"
-                    width={500}
-                    height={281}
-                    className="object-cover"
-                />
-            </div>
-            
-            {/* Original Carousel code commented out for diagnostics 
             <Carousel
               setApi={setApi}
               plugins={[autoplayPlugin.current]}
@@ -103,9 +90,8 @@ export default function QuemSomosPage() {
                         src={image.src}
                         alt={image.alt}
                         data-ai-hint={image.dataAiHint}
-                        width={1280}
-                        height={720}
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        fill
                       />
                     </div>
                   </CarouselItem>
@@ -124,7 +110,6 @@ export default function QuemSomosPage() {
                     ))}
                 </div>
             </div>
-            */}
           </div>
         </section>
 
