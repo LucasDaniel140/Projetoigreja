@@ -18,11 +18,12 @@ const leadership = [
 ];
 
 const historyImages = [
-    { src: "/1.png", alt: "Momento da igreja 1", dataAiHint: "church moment" },
-    { src: "/2.png", alt: "Momento da igreja 2", dataAiHint: "church moment" },
-    { src: "/3.png", alt: "Momento da igreja 3", dataAiHint: "church moment" },
-    { src: "/4.png", alt: "Momento da igreja 4", dataAiHint: "church moment" },
-    { src: "/5.jpeg", alt: "Momento da igreja 5", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/duxANBh.png", alt: "Momento da igreja 1", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/lCshHFf.png", alt: "Momento da igreja 2", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/0bORYwu.png", alt: "Momento da igreja 3", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/800HKsd.png", alt: "Momento da igreja 4", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/m4ysaFC.png", alt: "Momento da igreja 5", dataAiHint: "church moment" },
+    { src: "https://i.imgur.com/rJtzoYO.png", alt: "Momento da igreja 6", dataAiHint: "church moment" },
 ];
 
 export default function QuemSomosPage() {
