@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -38,8 +39,8 @@ export function Header() {
       <div className="container flex h-14 items-center justify-center">
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex w-full max-w-4xl mx-auto items-center justify-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4">
-          <div className="flex flex-1 justify-end space-x-6">
+        <nav className="hidden md:flex items-center justify-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4">
+          <div className="flex justify-end items-center space-x-6">
             {leftNavLinks.map((link) => (
               <Link
                 key={link.href}
@@ -60,7 +61,7 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="flex flex-1 justify-start items-center space-x-6">
+          <div className="flex justify-start items-center space-x-6">
             {rightNavLinks.map((link) => (
               <Link
                 key={link.href}
