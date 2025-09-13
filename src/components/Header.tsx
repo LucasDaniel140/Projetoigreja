@@ -38,53 +38,53 @@ export function Header() {
       <div className="container flex h-14 items-center">
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex w-full bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4">
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full max-w-5xl mx-auto">
-            
-            {/* Left Links */}
-            <div className="flex justify-end items-center gap-6">
-              {leftNavLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "transition-colors hover:text-primary whitespace-nowrap text-sm",
-                    pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
+        <nav className="hidden md:flex relative w-full items-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4">
+            {/* Links Container */}
+            <div className="grid grid-cols-2 w-full items-center">
+                {/* Left Links */}
+                <div className="flex justify-start items-center gap-6">
+                {leftNavLinks.map((link) => (
+                    <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                        "transition-colors hover:text-primary whitespace-nowrap text-sm",
+                        pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
+                    )}
+                    >
+                    {link.label}
+                    </Link>
+                ))}
+                </div>
+                
+                {/* Right Links */}
+                <div className="flex justify-end items-center gap-6">
+                {rightNavLinks.map((link) => (
+                    <Link
+                    key={link.href}
+                    href={link.href}
+                    className={cn(
+                        "transition-colors hover:text-primary whitespace-nowrap text-sm",
+                        pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
+                    )}
+                    >
+                    {link.label}
+                    </Link>
+                ))}
+                <Button asChild size="sm" className="rounded-full font-bold">
+                    <Link href={mainActionLink.href}>
+                    {mainActionLink.label}
+                    </Link>
+                </Button>
+                </div>
             </div>
 
-            {/* Center Logo */}
-            <div className="px-6">
-              <Link href="/" className="flex-shrink-0">
-                <SiteLogo className="h-7 w-auto" />
-              </Link>
-            </div>
-
-            {/* Right Links */}
-            <div className="flex justify-start items-center gap-6">
-              {rightNavLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={cn(
-                    "transition-colors hover:text-primary whitespace-nowrap text-sm",
-                    pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
-                  )}
-                >
-                  {link.label}
+            {/* Center Logo - Absolutely Positioned */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6">
+                <Link href="/" className="flex-shrink-0">
+                    <SiteLogo className="h-7 w-auto" />
                 </Link>
-              ))}
-              <Button asChild size="sm" className="rounded-full font-bold">
-                <Link href={mainActionLink.href}>
-                  {mainActionLink.label}
-                </Link>
-              </Button>
             </div>
-          </div>
         </nav>
 
         {/* Mobile Menu */}
