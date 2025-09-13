@@ -39,47 +39,52 @@ export function Header() {
       <div className="container flex h-14 items-center justify-center">
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4">
-          <div className="flex justify-end items-center space-x-6">
-            {leftNavLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "transition-colors hover:text-primary whitespace-nowrap text-sm",
-                  pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        <nav className="hidden md:flex items-center justify-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4 w-full max-w-5xl">
+            <div className="grid grid-cols-3 items-center w-full">
+                {/* Left Links */}
+                <div className="flex justify-end items-center space-x-6">
+                    {leftNavLinks.map((link) => (
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className={cn(
+                        "transition-colors hover:text-primary whitespace-nowrap text-sm",
+                        pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
+                        )}
+                    >
+                        {link.label}
+                    </Link>
+                    ))}
+                </div>
 
-          <div className="px-6">
-            <Link href="/" className="flex-shrink-0">
-              <SiteLogo className="h-7 w-auto" />
-            </Link>
-          </div>
+                {/* Center Logo */}
+                <div className="flex justify-center">
+                    <Link href="/" className="flex-shrink-0">
+                        <SiteLogo className="h-7 w-auto" />
+                    </Link>
+                </div>
 
-          <div className="flex justify-start items-center space-x-6">
-            {rightNavLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "transition-colors hover:text-primary whitespace-nowrap text-sm",
-                  pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-             <Button asChild size="sm" className="rounded-full font-bold">
-                <Link href={mainActionLink.href}>
-                    {mainActionLink.label}
-                </Link>
-             </Button>
-          </div>
+                {/* Right Links */}
+                <div className="flex justify-start items-center space-x-6">
+                    {rightNavLinks.map((link) => (
+                    <Link
+                        key={link.href}
+                        href={link.href}
+                        className={cn(
+                        "transition-colors hover:text-primary whitespace-nowrap text-sm",
+                        pathname === link.href ? "text-primary font-semibold" : "text-foreground/80"
+                        )}
+                    >
+                        {link.label}
+                    </Link>
+                    ))}
+                    <Button asChild size="sm" className="rounded-full font-bold">
+                        <Link href={mainActionLink.href}>
+                            {mainActionLink.label}
+                        </Link>
+                    </Button>
+                </div>
+            </div>
         </nav>
 
         {/* Mobile Menu */}
