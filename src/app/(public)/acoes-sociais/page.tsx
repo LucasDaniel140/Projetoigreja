@@ -8,7 +8,7 @@ import { ShoppingBasket, MessageSquare } from "lucide-react";
 import Link from 'next/link';
 
 export default function AcoesSociaisPage() {
-  const whatsappLink = "https://wa.me/5577999567768";
+  const whatsappLink = "https://wa.me/5577999982750";
 
   return (
     <div className="container mx-auto px-4 py-12 md:px-6">
