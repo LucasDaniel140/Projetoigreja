@@ -40,47 +40,49 @@ export function Header() {
       <div className="container flex h-16 items-center justify-center">
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center gap-8 w-full max-w-5xl bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-8 py-3">
-          {/* Left Links */}
-          <div className="flex items-center justify-end flex-1 space-x-6 text-sm font-medium">
-            {leftNavLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "transition-colors hover:text-primary whitespace-nowrap",
-                  pathname === link.href ? "text-primary font-bold" : "text-foreground/80"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        <nav className="hidden md:flex w-full bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-8 py-3">
+          <div className="flex items-center justify-center w-full max-w-5xl mx-auto">
+            {/* Left Links */}
+            <div className="flex items-center justify-end flex-1 space-x-6 text-sm font-medium">
+              {leftNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "transition-colors hover:text-primary whitespace-nowrap",
+                    pathname === link.href ? "text-primary font-bold" : "text-foreground/80"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
 
-          {/* Logo */}
-          <Link href="/" className="flex-shrink-0 mx-4">
-            <SiteLogo className="h-7 w-auto" />
-          </Link>
-
-          {/* Right Links & Action Button */}
-          <div className="flex items-center justify-start flex-1 space-x-6 text-sm font-medium">
-             {rightNavLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "transition-colors hover:text-primary whitespace-nowrap",
-                  pathname === link.href ? "text-primary font-bold" : "text-foreground/80"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
-             <Link href={mainActionLink.href}>
-                <Button size="sm" className="rounded-full">
-                    {mainActionLink.label}
-                </Button>
+            {/* Logo */}
+            <Link href="/" className="flex-shrink-0 mx-4">
+              <SiteLogo className="h-7 w-auto" />
             </Link>
+
+            {/* Right Links & Action Button */}
+            <div className="flex items-center justify-start flex-1 space-x-6 text-sm font-medium">
+              {rightNavLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "transition-colors hover:text-primary whitespace-nowrap",
+                    pathname === link.href ? "text-primary font-bold" : "text-foreground/80"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link href={mainActionLink.href}>
+                  <Button size="sm" className="rounded-full">
+                      {mainActionLink.label}
+                  </Button>
+              </Link>
+            </div>
           </div>
         </nav>
 
