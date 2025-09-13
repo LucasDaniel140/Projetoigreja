@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -26,7 +25,6 @@ const mainActionLink = { href: "/novo-aqui", label: "É Novo Aqui?" };
 
 const allLinksForMobile = [...leftNavLinks, ...rightNavLinks, mainActionLink];
 
-
 export function Header() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,12 +36,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full py-4">
       <div className="container flex h-16 items-center justify-center">
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden md:flex w-full bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-8 py-3">
-          <div className="flex items-center justify-center w-full max-w-5xl mx-auto">
+          <div className="grid grid-cols-3 items-center w-full max-w-5xl mx-auto">
+            
             {/* Left Links */}
-            <div className="flex items-center justify-end flex-1 space-x-6 text-sm font-medium">
+            <div className="flex justify-end space-x-6 text-sm font-medium">
               {leftNavLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -58,13 +57,15 @@ export function Header() {
               ))}
             </div>
 
-            {/* Logo */}
-            <Link href="/" className="flex-shrink-0 mx-4">
-              <SiteLogo className="h-7 w-auto" />
-            </Link>
+            {/* Logo centralizado */}
+            <div className="flex justify-center">
+              <Link href="/" className="flex-shrink-0">
+                <SiteLogo className="h-7 w-auto" />
+              </Link>
+            </div>
 
             {/* Right Links & Action Button */}
-            <div className="flex items-center justify-start flex-1 space-x-6 text-sm font-medium">
+            <div className="flex justify-start items-center space-x-6 text-sm font-medium">
               {rightNavLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -78,9 +79,9 @@ export function Header() {
                 </Link>
               ))}
               <Link href={mainActionLink.href}>
-                  <Button size="sm" className="rounded-full">
-                      {mainActionLink.label}
-                  </Button>
+                <Button size="sm" className="rounded-full">
+                  {mainActionLink.label}
+                </Button>
               </Link>
             </div>
           </div>
@@ -88,37 +89,37 @@ export function Header() {
 
         {/* Mobile Menu */}
         <div className="md:hidden flex items-center justify-between w-full">
-            <Link href="/" className="flex items-center">
-              <SiteLogo className="h-7 w-auto" />
-            </Link>
-            <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+          <Link href="/" className="flex items-center">
+            <SiteLogo className="h-7 w-auto" />
+          </Link>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle Menu</span>
-                </Button>
+              </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-background">
-                <Link href="/" className="flex items-center" onClick={handleLinkClick}>
-                  <SiteLogo className="h-7 w-auto" />
-                </Link>
-                <div className="flex flex-col space-y-4 mt-6">
+              <Link href="/" className="flex items-center" onClick={handleLinkClick}>
+                <SiteLogo className="h-7 w-auto" />
+              </Link>
+              <div className="flex flex-col space-y-4 mt-6">
                 {allLinksForMobile.map((link) => (
-                    <Link
+                  <Link
                     key={link.href}
                     href={link.href}
                     onClick={handleLinkClick}
                     className={cn(
-                        "text-lg",
-                        pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
+                      "text-lg",
+                      pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
                     )}
-                    >
+                  >
                     {link.label}
-                    </Link>
+                  </Link>
                 ))}
-                </div>
+              </div>
             </SheetContent>
-            </Sheet>
+          </Sheet>
         </div>
       </div>
     </header>
