@@ -39,10 +39,10 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex w-full bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-8 py-3">
-          <div className="grid grid-cols-3 items-center w-full max-w-5xl mx-auto">
+          <div className="flex items-center w-full max-w-5xl mx-auto">
             
             {/* Left Links */}
-            <div className="flex justify-end space-x-6 text-sm font-medium">
+            <div className="flex flex-1 justify-end space-x-6 text-sm font-medium">
               {leftNavLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -58,14 +58,14 @@ export function Header() {
             </div>
 
             {/* Logo centralizado */}
-            <div className="flex justify-center">
+            <div className="flex justify-center px-6">
               <Link href="/" className="flex-shrink-0">
                 <SiteLogo className="h-7 w-auto" />
               </Link>
             </div>
 
             {/* Right Links & Action Button */}
-            <div className="flex justify-start items-center space-x-6 text-sm font-medium">
+            <div className="flex flex-1 justify-start items-center space-x-6 text-sm font-medium">
               {rightNavLinks.map((link) => (
                 <Link
                   key={link.href}
