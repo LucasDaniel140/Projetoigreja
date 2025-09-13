@@ -11,13 +11,21 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
 import { SiteLogo } from "./SiteLogo";
 
-const navLinks = [
+const leftNavLinks = [
   { href: "/quem-somos", label: "Quem Somos" },
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Reação" },
 ];
 
+const rightNavLinks = [
+  { href: "/estudos", label: "Estudos" },
+  { href: "/visionarios", label: "Visionários" },
+];
+
 const mainActionLink = { href: "/novo-aqui", label: "É Novo Aqui?" };
+
+const allLinksForMobile = [...leftNavLinks, ...rightNavLinks, mainActionLink];
+
 
 export function Header() {
   const pathname = usePathname();
@@ -27,18 +35,15 @@ export function Header() {
     setMobileMenuOpen(false);
   };
 
-  const allLinksForMobile = [...navLinks, { href: "/estudos", label: "Estudos" }, { href: "/visionarios", label: "Visionários" }];
-
-
   return (
     <header className="sticky top-0 z-50 w-full py-4">
       <div className="container flex h-16 items-center justify-center">
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-between gap-8 w-full max-w-4xl bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-8 py-3">
+        <nav className="hidden md:flex items-center justify-between gap-8 w-full max-w-5xl bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-8 py-3">
           {/* Left Links */}
-          <div className="flex items-center space-x-6 text-sm font-medium">
-            {navLinks.map((link) => (
+          <div className="flex items-center justify-start flex-1 space-x-6 text-sm font-medium">
+            {leftNavLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -57,8 +62,20 @@ export function Header() {
             <SiteLogo className="h-7 w-auto" />
           </Link>
 
-          {/* Right Action Button */}
-          <div className="flex items-center justify-end flex-1">
+          {/* Right Links & Action Button */}
+          <div className="flex items-center justify-end flex-1 space-x-6 text-sm font-medium">
+             {rightNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "transition-colors hover:text-primary whitespace-nowrap",
+                  pathname === link.href ? "text-primary font-bold" : "text-foreground/80"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
              <Link href={mainActionLink.href}>
                 <Button size="sm" className="rounded-full">
                     {mainActionLink.label}
@@ -97,11 +114,6 @@ export function Header() {
                     {link.label}
                     </Link>
                 ))}
-                 <Link href={mainActionLink.href} onClick={handleLinkClick} className="pt-4">
-                    <Button className="w-full rounded-full">
-                        {mainActionLink.label}
-                    </Button>
-                </Link>
                 </div>
             </SheetContent>
             </Sheet>
