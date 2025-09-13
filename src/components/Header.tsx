@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -36,13 +35,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full py-4">
-      <div className="container flex h-14 items-center justify-center">
+      <div className="container flex h-14 items-center">
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4 w-full max-w-5xl">
+        <nav className="hidden md:flex items-center justify-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4 w-full">
             <div className="grid grid-cols-3 items-center w-full">
                 {/* Left Links */}
-                <div className="flex justify-end items-center space-x-6">
+                <div className="flex justify-end items-center gap-6">
                     {leftNavLinks.map((link) => (
                     <Link
                         key={link.href}
@@ -65,7 +64,7 @@ export function Header() {
                 </div>
 
                 {/* Right Links */}
-                <div className="flex justify-start items-center space-x-6">
+                <div className="flex justify-start items-center gap-6">
                     {rightNavLinks.map((link) => (
                     <Link
                         key={link.href}
@@ -89,7 +88,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         <div className="md:hidden flex items-center justify-between w-full px-4">
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" onClick={handleLinkClick}>
             <SiteLogo className="h-7 w-auto" />
           </Link>
           <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
@@ -100,10 +99,12 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="left" className="bg-background">
-              <Link href="/" className="flex items-center" onClick={handleLinkClick}>
-                <SiteLogo className="h-7 w-auto" />
-              </Link>
-              <div className="flex flex-col space-y-4 mt-6">
+              <div className="mb-6">
+                <Link href="/" className="flex items-center" onClick={handleLinkClick}>
+                  <SiteLogo className="h-7 w-auto" />
+                </Link>
+              </div>
+              <div className="flex flex-col items-start gap-4">
                 {allLinksForMobile.map((link) => (
                   <Link
                     key={link.href}
