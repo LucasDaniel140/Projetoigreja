@@ -39,8 +39,16 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex relative w-full items-center bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4">
+            
+            {/* Center Logo - Absolutely Positioned */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6">
+                <Link href="/" className="flex-shrink-0">
+                    <SiteLogo className="h-7 w-auto" />
+                </Link>
+            </div>
+
             {/* Links Container */}
-            <div className="grid grid-cols-2 w-full items-center">
+            <div className="flex justify-between items-center w-full">
                 {/* Left Links */}
                 <div className="flex justify-start items-center gap-6">
                 {leftNavLinks.map((link) => (
@@ -77,13 +85,6 @@ export function Header() {
                     </Link>
                 </Button>
                 </div>
-            </div>
-
-            {/* Center Logo - Absolutely Positioned */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-6">
-                <Link href="/" className="flex-shrink-0">
-                    <SiteLogo className="h-7 w-auto" />
-                </Link>
             </div>
         </nav>
 
