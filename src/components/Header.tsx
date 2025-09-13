@@ -39,10 +39,10 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex w-full bg-black/30 backdrop-blur-lg rounded-full border border-white/10 px-4">
-          <div className="flex items-center w-full max-w-5xl mx-auto">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center w-full max-w-5xl mx-auto">
             
             {/* Left Links */}
-            <div className="flex-1 flex justify-end items-center gap-6">
+            <div className="flex justify-end items-center gap-6">
               {leftNavLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -65,7 +65,7 @@ export function Header() {
             </div>
 
             {/* Right Links */}
-            <div className="flex-1 flex justify-start items-center gap-6">
+            <div className="flex justify-start items-center gap-6">
               {rightNavLinks.map((link) => (
                 <Link
                   key={link.href}
