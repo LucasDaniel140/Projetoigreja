@@ -6,24 +6,31 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { updateSiteData } from "./actions";
+import { updateSiteData, getSiteData } from "./actions";
 import { useToast } from "@/hooks/use-toast";
-import { siteDataStore } from "@/lib/site-data";
 import Image from "next/image";
+import type { SiteData } from "@/lib/site-data";
 
 export default function SettingsPage() {
     const { toast } = useToast();
     const formRef = React.useRef<HTMLFormElement>(null);
     const [isLoading, setIsLoading] = React.useState(false);
+    const [initialData, setInitialData] = React.useState<SiteData>({ logo: '', favicon: '' });
     
-    // We get the initial data directly from the store.
-    // Note: This won't update automatically if the data changes on the server
-    // after the page is loaded. A full page reload would be needed.
-    const initialData = siteDataStore.get();
-    const [logoPreview, setLogoPreview] = React.useState(initialData.logo);
-    const [faviconPreview, setFaviconPreview] = React.useState(initialData.favicon);
+    const [logoPreview, setLogoPreview] = React.useState<string | null>(null);
+    const [faviconPreview, setFaviconPreview] = React.useState<string | null>(null);
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, setPreview: React.Dispatch<React.SetStateAction<string>>) => {
+    React.useEffect(() => {
+        async function loadData() {
+            const data = await getSiteData();
+            setInitialData(data);
+            setLogoPreview(data.logo);
+            setFaviconPreview(data.favicon);
+        }
+        loadData();
+    }, []);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, setPreview: React.Dispatch<React.SetStateAction<string | null>>) => {
         const file = e.target.files?.[0];
         if (file) {
             const reader = new FileReader();

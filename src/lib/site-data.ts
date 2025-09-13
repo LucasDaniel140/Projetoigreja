@@ -1,8 +1,9 @@
 
-import fs from 'fs';
+// This file must only be used on the server.
+import fs from 'node:fs/promises';
 import path from 'path';
 
-interface SiteData {
+export interface SiteData {
   logo: string;
   favicon: string;
 }
@@ -14,34 +15,30 @@ const defaultData: SiteData = {
 
 const dataFilePath = path.join(process.cwd(), 'src', 'lib', 'site-data.json');
 
-function readData(): SiteData {
+async function readData(): Promise<SiteData> {
   try {
-    if (fs.existsSync(dataFilePath)) {
-      const json = fs.readFileSync(dataFilePath, 'utf-8');
-      const data = JSON.parse(json);
-      return { ...defaultData, ...data };
-    }
+    await fs.access(dataFilePath);
+    const json = await fs.readFile(dataFilePath, 'utf-8');
+    const data = JSON.parse(json);
+    return { ...defaultData, ...data };
   } catch (error) {
-    console.error('Error reading site data, falling back to defaults:', error);
+    // File doesn't exist or other error, return default
+    return defaultData;
   }
-  return defaultData;
 }
 
-function writeData(data: SiteData) {
+async function writeData(data: SiteData): Promise<void> {
   try {
-    fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), 'utf-8');
+    await fs.writeFile(dataFilePath, JSON.stringify(data, null, 2), 'utf-8');
   } catch (error) {
     console.error('Error writing site data:', error);
   }
 }
 
 class SiteDataStore {
-  private data: SiteData;
   private static instance: SiteDataStore;
 
-  private constructor() {
-    this.data = readData();
-  }
+  private constructor() {}
 
   public static getInstance(): SiteDataStore {
     if (!SiteDataStore.instance) {
@@ -50,19 +47,14 @@ class SiteDataStore {
     return SiteDataStore.instance;
   }
 
-  public get(): SiteData {
-    // Re-read data in development to catch manual changes
-    if (process.env.NODE_ENV === 'development') {
-        return readData();
-    }
-    return this.data;
+  public async get(): Promise<SiteData> {
+    return await readData();
   }
 
-  public set(newData: Partial<SiteData>) {
-    const currentData = readData();
+  public async set(newData: Partial<SiteData>): Promise<void> {
+    const currentData = await readData();
     const updatedData = { ...currentData, ...newData };
-    writeData(updatedData);
-    this.data = updatedData;
+    await writeData(updatedData);
   }
 }
 

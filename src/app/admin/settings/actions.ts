@@ -2,7 +2,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { siteDataStore } from "@/lib/site-data";
+import { siteDataStore, type SiteData } from "@/lib/site-data";
 
 // Helper to convert file to data URI
 async function fileToDataURI(file: File) {
@@ -10,8 +10,13 @@ async function fileToDataURI(file: File) {
     return `data:${file.type};base64,${buffer.toString("base64")}`;
 }
 
+export async function getSiteData(): Promise<SiteData> {
+    return siteDataStore.get();
+}
+
 export async function updateSiteData(formData: FormData) {
-    const newValues: { logo?: string; favicon?: string } = {};
+    const currentData = await getSiteData();
+    const newValues: Partial<SiteData> = {};
 
     const logoFile = formData.get("logo") as File | null;
     const faviconFile = formData.get("favicon") as File | null;
@@ -25,7 +30,7 @@ export async function updateSiteData(formData: FormData) {
     }
     
     if (Object.keys(newValues).length > 0) {
-        siteDataStore.set(newValues);
+        await siteDataStore.set({ ...currentData, ...newValues });
     }
 
     revalidatePath("/", "layout");
