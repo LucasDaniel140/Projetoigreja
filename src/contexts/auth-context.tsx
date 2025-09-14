@@ -2,9 +2,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { supabase } from '@/lib/supabase/client';
-import type { AuthChangeEvent, Session, User } from '@supabase/supabase-js';
-import { addUser } from '@/app/admin/users/actions';
+import type { User } from '@supabase/supabase-js';
 
 // Define o tipo para o valor do contexto de autenticação
 interface AuthContextType {
@@ -28,57 +26,40 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Tenta obter a sessão do usuário ao carregar o componente
-    const getSession = async () => {
-        if (!supabase) {
-            setLoading(false);
-            return;
+    // Tenta obter o usuário do localStorage ao carregar
+    try {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
         }
-        const { data: { session } } = await supabase.auth.getSession();
-        setUser(session?.user ?? null);
-        setLoading(false);
+    } catch (error) {
+        console.error("Failed to parse user from localStorage", error);
+        localStorage.removeItem('user');
     }
-    getSession();
-
-    if (!supabase) return;
-
-    // Ouve mudanças no estado de autenticação (login, logout, etc.)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event: AuthChangeEvent, session: Session | null) => {
-        setUser(session?.user ?? null);
-        setLoading(false);
-      }
-    );
-
-    // Limpa a inscrição ao desmontar o componente
-    return () => {
-      subscription?.unsubscribe();
-    };
+    setLoading(false);
   }, []);
 
   // Função para realizar o login
   const login = async (email: string, password: string) => {
-    if (!supabase) throw new Error("Supabase client not initialized");
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
+    if (email === 'adminvp' && password === 'adminvp') {
+      const userData = { id: 'local-admin', email: 'adminvp', roles: ['admin'] };
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData as User);
+    } else {
+      throw new Error('Credenciais inválidas.');
+    }
   };
 
   // Função para realizar o logout
   const logout = async () => {
-    if (!supabase) throw new Error("Supabase client not initialized");
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+    localStorage.removeItem('user');
+    setUser(null);
   };
 
-  // Função para registrar um novo usuário
+  // A função de registro não faz mais nada, mas é mantida para não quebrar o formulário
   const signUp = async (name: string, email: string, password: string) => {
-     if (!supabase) throw new Error("Supabase client not initialized");
-     // Usamos a server action `addUser` que já criamos.
-     // Ela cuida tanto do `auth.signUp` quanto da inserção na tabela `users`.
-     // A função `addUser` já lança um erro se algo der errado.
-     await addUser({ name, email, password, role: 'member' });
+    throw new Error('A criação de novos usuários não é permitida.');
   };
-
 
   // Monta o valor a ser fornecido pelo contexto
   const value = {

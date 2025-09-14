@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Badge } from "@/components/ui/badge";
@@ -18,7 +19,7 @@ const studies = [
         <p>Romanos 122 é um discipulado individual pensado para quem decidiu seguir Jesus e deseja se batizar.</p>
         <p>Um tempo de ensino simples e profundo, onde aprendemos os fundamentos da fé cristã e o que significa ser um verdadeiro discípulo.</p>
         <Button asChild>
-          <Link href="#" target="_blank">
+          <Link href="https://wa.me/5577998164190" target="_blank">
             <MessageSquare className="mr-2 h-4 w-4" />
             Falar com Responsável
           </Link>
@@ -107,7 +108,7 @@ export default function EstudosPage() {
                                 <CardTitle className="font-headline text-xl">{study.title}</CardTitle>
                             </div>
                             <CardFooter className="p-0 pl-4">
-                                {study.paid && <Badge variant="secondary">Pago</Badge>}
+                                {study.paid ? <Badge variant="destructive">Pago</Badge> : <Badge variant="outline">Free</Badge>}
                             </CardFooter>
                         </CardHeader>
                     </AccordionTrigger>

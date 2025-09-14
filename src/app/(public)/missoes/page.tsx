@@ -5,7 +5,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Users, Home, Construction, BookOpen, HandHeart } from 'lucide-react';
+import { Users, Home, Construction, BookOpen, HandHeart, UtensilsCrossed } from 'lucide-react';
 import Link from 'next/link';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
@@ -118,7 +118,7 @@ export default function MissoesPage() {
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="flex flex-col items-center">
               <div className="p-4 bg-primary/10 rounded-full">
-                 <Image src="https://i.imgur.com/GzQ5Z2k.png" alt="Alimentação" width={32} height={32} />
+                 <UtensilsCrossed className="h-8 w-8 text-primary" />
               </div>
               <h3 className="mt-4 font-bold text-lg font-headline">Alimentação</h3>
               <p className="text-muted-foreground text-sm mt-1">Refeições nutritivas para famílias necessitadas</p>

@@ -1,19 +1,26 @@
+
 import type { Metadata } from 'next';
 import { cn } from "@/lib/utils";
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Inter, Oswald } from 'next/font/google';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
 import Script from 'next/script';
+import { siteDataStore } from '@/lib/site-data';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const oswald = Oswald({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-headline' });
 
-export const metadata: Metadata = {
-  title: 'Igreja Vivendo a Palavra',
-  description: 'Conectando corações, transformando vidas.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const siteData = await siteDataStore.get();
+ 
+  return {
+    title: 'Igreja Vivendo a Palavra',
+    description: 'Conectando corações, transformando vidas.',
+    icons: {
+        icon: siteData.favicon || '/favicon.ico',
+    },
+  }
+}
 
 export default function RootLayout({
   children,
