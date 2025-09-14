@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
 import { SiteLogo } from "./SiteLogo";
+import { Button } from "./ui/button";
 
 const navLinks = [
   { href: "/quem-somos", label: "Quem Somos" },
@@ -46,8 +46,8 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "transition-colors hover:text-foreground whitespace-nowrap",
-                        pathname === link.href ? "text-foreground font-bold" : "text-foreground/60"
+                        "transition-colors text-foreground/80 hover:text-foreground whitespace-nowrap",
+                        pathname === link.href ? "text-foreground font-semibold" : "text-foreground/60"
                     )}
                     >
                     {link.label}
@@ -62,9 +62,12 @@ export function Header() {
 
         {/* Mobile Menu */}
         <div className="flex md:hidden items-center justify-between w-full">
-            <Link href="/" className="flex items-center" onClick={handleLinkClick}>
-                <SiteLogo className="h-7 w-auto" />
-            </Link>
+            <div className="w-[44px]"></div>
+            <div className="flex-1 flex justify-center">
+                <Link href="/" className="flex items-center" onClick={handleLinkClick}>
+                    <SiteLogo className="h-7 w-auto" />
+                </Link>
+            </div>
             <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
