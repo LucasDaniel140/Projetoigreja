@@ -16,13 +16,9 @@ const navLinks = [
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
+  { href: "/novo-aqui", label: "É Novo Aqui?" },
   { href: "/visionarios", label: "Visionários" },
 ];
-
-const mainActionLink = { href: "/novo-aqui", label: "É Novo Aqui?" };
-
-const allLinksForMobile = [...navLinks, mainActionLink];
-
 
 export function Header() {
   const pathname = usePathname();
@@ -37,7 +33,7 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2" onClick={handleLinkClick}>
+        <Link href="/" className="flex items-center" onClick={handleLinkClick}>
           <SiteLogo className="h-7 w-auto" />
         </Link>
         
@@ -55,11 +51,6 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Button asChild size="sm" className="rounded-full font-bold">
-            <Link href={mainActionLink.href}>
-              {mainActionLink.label}
-            </Link>
-          </Button>
         </nav>
 
         {/* Mobile Menu */}
@@ -78,7 +69,7 @@ export function Header() {
                 </Link>
               </div>
               <div className="flex flex-col items-start gap-4">
-                {allLinksForMobile.map((link) => (
+                {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
