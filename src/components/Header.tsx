@@ -33,31 +33,25 @@ export function Header() {
       <div className="container flex h-16 items-center">
         
         {/* Desktop Navigation */}
-        <div className="hidden md:grid grid-cols-3 items-center w-full">
-            <div className="flex justify-start">
-                <Link href="/" className="flex items-center">
-                    <SiteLogo className="h-7 w-auto" />
-                </Link>
-            </div>
+        <div className="hidden md:flex items-center justify-between w-full">
+            <Link href="/" className="flex items-center">
+                <SiteLogo className="h-7 w-auto" />
+            </Link>
             
-            <nav className="flex items-center justify-center space-x-6 text-sm font-medium">
+            <nav className="flex items-center space-x-6 text-sm font-medium">
                 {navLinks.map((link) => (
                     <Link
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "transition-colors text-foreground/80 hover:text-foreground whitespace-nowrap",
-                        pathname === link.href ? "text-foreground font-semibold" : "text-foreground/60"
+                        "transition-colors text-foreground/60 hover:text-foreground",
+                        pathname === link.href ? "text-foreground" : ""
                     )}
                     >
                     {link.label}
                     </Link>
                 ))}
             </nav>
-
-            <div className="flex justify-end">
-              {/* This space is intentionally left empty to balance the grid */}
-            </div>
         </div>
 
         {/* Mobile Menu */}
