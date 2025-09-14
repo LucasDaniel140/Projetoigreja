@@ -16,6 +16,7 @@ const navLinks = [
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
+  { href: "/novo-aqui", label: "É Novo Aqui?" },
   { href: "/visionarios", label: "Visionários" },
 ];
 
@@ -26,8 +27,6 @@ export function Header() {
   const handleLinkClick = () => {
     setMobileMenuOpen(false);
   };
-
-  const allNavLinks = [...navLinks, { href: "/novo-aqui", label: "É Novo Aqui?" }];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -47,8 +46,8 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     className={cn(
-                        "transition-colors hover:text-primary whitespace-nowrap",
-                        pathname === link.href ? "text-primary font-bold" : "text-foreground/60"
+                        "transition-colors hover:text-foreground whitespace-nowrap",
+                        pathname === link.href ? "text-foreground font-bold" : "text-foreground/60"
                     )}
                     >
                     {link.label}
@@ -57,9 +56,7 @@ export function Header() {
             </nav>
             
             <div className="flex justify-end">
-                <Link href="/novo-aqui">
-                    <Button>É Novo Aqui?</Button>
-                </Link>
+                {/* This column is intentionally left empty to keep the nav centered */}
             </div>
         </div>
 
@@ -82,14 +79,14 @@ export function Header() {
                     </Link>
                 </div>
                 <div className="flex flex-col items-start gap-4">
-                    {allNavLinks.map((link) => (
+                    {navLinks.map((link) => (
                     <Link
                         key={link.href}
                         href={link.href}
                         onClick={handleLinkClick}
                         className={cn(
                         "text-lg",
-                        pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
+                        pathname === link.href ? "font-bold text-foreground" : "text-muted-foreground"
                         )}
                     >
                         {link.label}
