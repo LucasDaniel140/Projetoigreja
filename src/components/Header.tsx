@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -16,7 +15,6 @@ const navLinks = [
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
-  { href: "/novo-aqui", label: "É Novo Aqui?" },
   { href: "/visionarios", label: "Visionários" },
 ];
 
@@ -54,38 +52,45 @@ export function Header() {
           ))}
         </nav>
 
-        {/* Mobile Menu */}
-        <div className="flex justify-end md:hidden">
+        {/* Action Button & Mobile Menu Trigger */}
+        <div className="flex justify-end items-center">
+          <div className="hidden md:block">
+             <Button asChild size="sm">
+                <Link href="/novo-aqui">É Novo Aqui?</Link>
+             </Button>
+          </div>
+          <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-            <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle Menu</span>
-                </Button>
-            </SheetTrigger>
-            <SheetContent side="left" className="bg-background">
-                <div className="mb-6">
-                    <Link href="/" className="flex items-center" onClick={handleLinkClick}>
-                        <SiteLogo className="h-7 w-auto" />
-                    </Link>
-                </div>
-                <div className="flex flex-col space-y-4 mt-6">
-                {[{ href: "/", label: "Início" }, ...navLinks].map((link) => (
-                    <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={handleLinkClick}
-                    className={cn(
-                        "text-lg",
-                        pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
-                    )}
-                    >
-                    {link.label}
-                    </Link>
-                ))}
-                </div>
-            </SheetContent>
+              <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Toggle Menu</span>
+                  </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="bg-background">
+                  <div className="mb-6">
+                      <Link href="/" className="flex items-center" onClick={handleLinkClick}>
+                          <SiteLogo className="h-7 w-auto" />
+                      </Link>
+                  </div>
+                  <div className="flex flex-col space-y-4 mt-6">
+                  {[{ href: "/", label: "Início" }, ...navLinks, { href: "/novo-aqui", label: "É Novo Aqui?" }].map((link) => (
+                      <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={handleLinkClick}
+                      className={cn(
+                          "text-lg",
+                          pathname === link.href ? "font-bold text-primary" : "text-muted-foreground"
+                      )}
+                      >
+                      {link.label}
+                      </Link>
+                  ))}
+                  </div>
+              </SheetContent>
             </Sheet>
+          </div>
         </div>
       </div>
     </header>
