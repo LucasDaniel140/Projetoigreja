@@ -14,7 +14,6 @@ const navLinks = [
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
-  { href: "/novo-aqui", label: "É Novo Aqui?" },
   { href: "/visionarios", label: "Visionários" },
 ];
 
@@ -28,16 +27,14 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container grid h-16 grid-cols-3 items-center">
-        {/* Logo */}
-        <div className="flex justify-start">
+      <div className="container flex h-16 items-center">
+        <div className="flex-none">
           <Link href="/" className="flex items-center">
             <SiteLogo className="h-7 w-auto" />
           </Link>
         </div>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex justify-center items-center space-x-6 text-sm font-medium">
+        <nav className="hidden md:flex flex-1 justify-center items-center space-x-6 text-sm font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -52,9 +49,13 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Action Button & Mobile Menu Trigger */}
-        <div className="flex justify-end items-center">
-          <div className="md:hidden">
+        <div className="hidden md:flex flex-none justify-end">
+             <Button asChild>
+                <Link href="/novo-aqui">É Novo Aqui?</Link>
+            </Button>
+        </div>
+
+        <div className="flex-1 flex justify-end md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -69,7 +70,7 @@ export function Navbar() {
                       </Link>
                   </div>
                   <div className="flex flex-col space-y-4 mt-6">
-                  {[{ href: "/", label: "Início" }, ...navLinks].map((link) => (
+                  {[{ href: "/", label: "Início" }, ...navLinks, { href: "/novo-aqui", label: "É Novo Aqui?" }].map((link) => (
                       <Link
                       key={link.href}
                       href={link.href}
@@ -85,7 +86,6 @@ export function Navbar() {
                   </div>
               </SheetContent>
             </Sheet>
-          </div>
         </div>
       </div>
     </header>
