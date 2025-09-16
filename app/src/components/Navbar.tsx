@@ -77,7 +77,7 @@ export function Navbar() {
             <div className="hidden md:flex items-center">
                  <Button asChild className="rounded-full px-6">
                     <Link href={contactWhatsappLink} target="_blank">
-                        CONTATO IA SECRETARIA
+                        Contato
                     </Link>
                 </Button>
             </div>
@@ -122,7 +122,7 @@ export function Navbar() {
                             <div className="pt-4">
                                 <Button asChild className="w-full text-lg py-6 rounded-lg">
                                     <Link href={contactWhatsappLink} target="_blank" onClick={handleLinkClick}>
-                                        CONTATO IA SECRETARIA
+                                        Contato
                                     </Link>
                                 </Button>
                             </div>
