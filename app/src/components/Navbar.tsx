@@ -40,38 +40,10 @@ export function Navbar() {
     setMobileMenuOpen(false);
   };
 
+  const contactWhatsappLink = "https://wa.me/5577999707313";
+
   return (
     <header className="sticky top-0 z-50 w-full bg-black text-white shadow-md">
-      {/* Top Bar */}
-      <div className="bg-black border-b border-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex h-12 items-center justify-between">
-                {/* Social Links */}
-                <div className="flex items-center space-x-4">
-                    <TooltipProvider>
-                        {socialLinks.map(social => (
-                             <Tooltip key={social.name}>
-                                <TooltipTrigger asChild>
-                                <Link href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>
-                                    <Image src={social.icon} alt={social.name} width={20} height={20} className="hover:opacity-80 transition-opacity" />
-                                </Link>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                <p>{social.name}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        ))}
-                    </TooltipProvider>
-                </div>
-
-                {/* Donate Button */}
-                <Button size="sm" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
-                    <Link href="https://wa.me/5577998164190" target="_blank">Fazer Doação</Link>
-                </Button>
-            </div>
-        </div>
-      </div>
-
       {/* Main Navigation */}
       <div className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +76,7 @@ export function Navbar() {
             {/* Contact Button */}
             <div className="hidden md:flex items-center">
                  <Button asChild className="rounded-full px-6">
-                    <Link href="https://wa.me/5577998164190" target="_blank">
+                    <Link href={contactWhatsappLink} target="_blank">
                         CONTATO IA SECRETARIA
                     </Link>
                 </Button>
@@ -149,7 +121,7 @@ export function Navbar() {
                             ))}
                             <div className="pt-4">
                                 <Button asChild className="w-full text-lg py-6 rounded-lg">
-                                    <Link href="https://wa.me/5577998164190" target="_blank" onClick={handleLinkClick}>
+                                    <Link href={contactWhatsappLink} target="_blank" onClick={handleLinkClick}>
                                         CONTATO IA SECRETARIA
                                     </Link>
                                 </Button>
