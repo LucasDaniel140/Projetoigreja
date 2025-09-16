@@ -44,36 +44,6 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-black text-white shadow-md">
-      {/* Top Bar */}
-      <div className="bg-black border-b border-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex h-12 items-center justify-between">
-                {/* Social Links */}
-                <div className="flex items-center space-x-4">
-                    <TooltipProvider>
-                        {socialLinks.map(social => (
-                             <Tooltip key={social.name}>
-                                <TooltipTrigger asChild>
-                                <Link href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>
-                                    <Image src={social.icon} alt={social.name} width={20} height={20} className="hover:opacity-80 transition-opacity" />
-                                </Link>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                <p>{social.name}</p>
-                                </TooltipContent>
-                            </Tooltip>
-                        ))}
-                    </TooltipProvider>
-                </div>
-
-                {/* Donate Button */}
-                <Button size="sm" asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
-                    <Link href={contactWhatsappLink} target="_blank">Fazer Doação</Link>
-                </Button>
-            </div>
-        </div>
-      </div>
-
       {/* Main Navigation */}
       <div className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
