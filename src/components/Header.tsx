@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -29,16 +30,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container relative flex h-16 items-center">
-        {/* Logo - Positioned for both mobile and desktop */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-4 md:translate-x-0">
-            <Link href="/" className="flex items-center">
-                <SiteLogo className="h-7 w-auto" />
-            </Link>
+      <div className="container grid h-16 grid-cols-3 items-center">
+        {/* Logo */}
+        <div className="flex justify-start">
+          <Link href="/" className="flex items-center">
+            <SiteLogo className="h-7 w-auto" />
+          </Link>
         </div>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 items-center space-x-6 text-sm font-medium">
+        <nav className="hidden md:flex justify-center items-center space-x-6 text-sm font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -54,7 +55,7 @@ export function Header() {
         </nav>
 
         {/* Mobile Menu */}
-        <div className="md:hidden absolute right-4 top-1/2 -translate-y-1/2">
+        <div className="flex justify-end md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
