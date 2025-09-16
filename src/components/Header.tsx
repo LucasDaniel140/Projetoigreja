@@ -7,7 +7,6 @@ import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import Image from "next/image";
 import { useState } from "react";
 import { SiteLogo } from "./SiteLogo";
 
@@ -30,9 +29,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container relative flex h-16 items-center justify-between">
-        {/* Logo */}
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 md:left-6">
+      <div className="container relative flex h-16 items-center">
+        {/* Logo - Positioned for both mobile and desktop */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-4 md:translate-x-0">
             <Link href="/" className="flex items-center">
                 <SiteLogo className="h-7 w-auto" />
             </Link>
