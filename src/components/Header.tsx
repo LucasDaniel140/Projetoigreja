@@ -15,6 +15,7 @@ const navLinks = [
   { href: "/missoes", label: "Missões" },
   { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
+  { href: "/novo-aqui", label: "É Novo Aqui?" },
   { href: "/visionarios", label: "Visionários" },
 ];
 
@@ -54,11 +55,6 @@ export function Header() {
 
         {/* Action Button & Mobile Menu Trigger */}
         <div className="flex justify-end items-center">
-          <div className="hidden md:block">
-             <Button asChild size="sm">
-                <Link href="/novo-aqui">É Novo Aqui?</Link>
-             </Button>
-          </div>
           <div className="md:hidden">
             <Sheet open={isMobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
@@ -74,7 +70,7 @@ export function Header() {
                       </Link>
                   </div>
                   <div className="flex flex-col space-y-4 mt-6">
-                  {[{ href: "/", label: "Início" }, ...navLinks, { href: "/novo-aqui", label: "É Novo Aqui?" }].map((link) => (
+                  {[{ href: "/", label: "Início" }, ...navLinks].map((link) => (
                       <Link
                       key={link.href}
                       href={link.href}
