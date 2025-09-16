@@ -16,7 +16,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { MessageSquare } from "lucide-react";
 
 const navLinks = [
   { href: "/quem-somos", label: "Quem Somos" },
@@ -106,8 +105,7 @@ export function Navbar() {
             <div className="hidden md:flex items-center">
                  <Button asChild className="rounded-full px-6">
                     <Link href="https://wa.me/5577998164190" target="_blank">
-                        <MessageSquare className="mr-2 h-4 w-4" />
-                        Contato
+                        CONTATO IA SECRETARIA
                     </Link>
                 </Button>
             </div>
@@ -152,8 +150,7 @@ export function Navbar() {
                             <div className="pt-4">
                                 <Button asChild className="w-full text-lg py-6 rounded-lg">
                                     <Link href="https://wa.me/5577998164190" target="_blank" onClick={handleLinkClick}>
-                                        <MessageSquare className="mr-2 h-5 w-5" />
-                                        Contato
+                                        CONTATO IA SECRETARIA
                                     </Link>
                                 </Button>
                             </div>
