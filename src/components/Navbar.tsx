@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -16,6 +16,7 @@ const navLinks = [
   { href: "/acoes-sociais", label: "Reação" },
   { href: "/estudos", label: "Estudos" },
   { href: "/visionarios", label: "Visionários" },
+  { href: "/novo-aqui", label: "É Novo Aqui?" },
 ];
 
 export function Navbar() {
@@ -55,7 +56,10 @@ export function Navbar() {
         {/* Desktop Action Button */}
         <div className="hidden md:flex items-center">
              <Button asChild className="rounded-full px-6">
-                <Link href="/novo-aqui">É Novo Aqui?</Link>
+                <Link href="https://wa.me/5577999567768" target="_blank">
+                    <MessageSquare className="mr-2 h-4 w-4" />
+                    Contato
+                </Link>
             </Button>
         </div>
 
@@ -82,7 +86,7 @@ export function Navbar() {
                         </SheetTrigger>
                     </div>
                     <div className="flex flex-col space-y-2 p-6">
-                        {[{ href: "/", label: "Início" }, ...navLinks, {href: "/novo-aqui", label: "É Novo Aqui?"}].map((link) => (
+                        {[{ href: "/", label: "Início" }, ...navLinks].map((link) => (
                             <Link
                                 key={link.href}
                                 href={link.href}
@@ -97,6 +101,14 @@ export function Navbar() {
                                 {link.label}
                             </Link>
                         ))}
+                        <div className="pt-4">
+                            <Button asChild className="w-full text-lg py-6 rounded-lg">
+                                <Link href="https://wa.me/5577999567768" target="_blank" onClick={handleLinkClick}>
+                                    <MessageSquare className="mr-2 h-5 w-5" />
+                                    Contato
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
                 </SheetContent>
             </Sheet>
@@ -105,4 +117,3 @@ export function Navbar() {
     </header>
   );
 }
-
