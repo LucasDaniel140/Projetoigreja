@@ -248,7 +248,7 @@ export default function NovoAquiPage() {
         <div className="container mx-auto px-4 md:px-6 text-center max-w-3xl">
             <h2 className="text-3xl font-bold font-headline">Pronto para dar o próximo passo?</h2>
             <Button size="lg" className="mt-6" asChild>
-                <Link href="https://wa.me/5577998128008" target="_blank">
+                <Link href="https://wa.me/5577999707313" target="_blank">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Fale conosco
                 </Link>
