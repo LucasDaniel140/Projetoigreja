@@ -54,6 +54,7 @@ export function AnimatedWelcome() {
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        // This runs only on the client, after the component mounts.
         setIsMounted(true);
     }, []);
 
@@ -108,11 +109,12 @@ export function AnimatedWelcome() {
         };
     }, [isMounted]);
 
+  // Render a static placeholder on the server and initial client render
   if (!isMounted) {
     return (
         <div className="text-center" style={{ position: 'relative', height: '90px' }}>
              <div className="absolute inset-0 flex items-center justify-center">
-                <h1 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap opacity-0">
+                <h1 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
                     Bem-vindo<sup style={{ display: 'inline-block', verticalAlign: 'super', fontSize: '0.5em' }}>(a)</sup>
                 </h1>
             </div>
@@ -120,6 +122,7 @@ export function AnimatedWelcome() {
     );
   }
 
+  // Render the full animated component only on the client after mounting
   return (
     <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px' }}>
       <div className="absolute inset-0 flex items-center justify-center">
