@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import anime from 'animejs';
 
 const WelcomeText = ({ text, isVisible, className, children }: { text?: string; isVisible: boolean; className?: string, children?: React.ReactNode }) => {
@@ -51,18 +51,21 @@ const AnimatedText = ({ text, children, isVisible, className }: { text?: string;
 export function AnimatedWelcome() {
     const timeline = useRef<anime.AnimeTimelineInstance | null>(null);
     const welcomeContainerRef = useRef<HTMLDivElement>(null);
-    const [isReady, setIsReady] = React.useState(false);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted) return;
+
         const welcomeEl = welcomeContainerRef.current?.querySelector('.welcome-el');
         const homeEl = welcomeContainerRef.current?.querySelector('.home-el');
 
         if (welcomeEl && homeEl) {
             timeline.current = anime.timeline({ 
                 loop: true,
-                begin: () => {
-                    if(!isReady) setIsReady(true);
-                }
             })
             .add({
                 targets: welcomeEl.querySelectorAll('.letter, sup'),
@@ -103,10 +106,22 @@ export function AnimatedWelcome() {
         return () => {
             timeline.current?.pause();
         };
-    }, [isReady]);
+    }, [isMounted]);
+
+  if (!isMounted) {
+    return (
+        <div className="text-center" style={{ position: 'relative', height: '90px' }}>
+             <div className="absolute inset-0 flex items-center justify-center">
+                <h1 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
+                    Bem-vindo<sup style={{ display: 'inline-block', verticalAlign: 'super', fontSize: '0.5em' }}>(a)</sup>
+                </h1>
+            </div>
+        </div>
+    );
+  }
 
   return (
-    <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px', opacity: isReady ? 1 : 0, transition: 'opacity 0.3s ease-in' }}>
+    <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px' }}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="welcome-el">
           <AnimatedText isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">

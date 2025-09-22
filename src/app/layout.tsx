@@ -32,7 +32,7 @@ export default function RootLayout({
       <head>
          <Script src="https://js.stripe.com/v3/buy-button.js" strategy="lazyOnload" />
       </head>
-      <body className={cn("min-h-screen bg-background font-body antialiased")} suppressHydrationWarning>
+      <body className={cn("min-h-screen bg-background font-body antialiased")}>
         {children}
         <Toaster />
       </body>
