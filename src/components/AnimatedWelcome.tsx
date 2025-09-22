@@ -8,7 +8,7 @@ const WelcomeText = ({ text, isVisible, className, children }: { text?: string; 
     const textRef = useRef<HTMLHeadingElement>(null);
 
     useEffect(() => {
-        if (textRef.current) {
+        if (textRef.current && (text || children)) {
             const textNodes = Array.from(textRef.current.childNodes).filter(node => node.nodeType === Node.TEXT_NODE);
             textNodes.forEach(node => {
                 if (node.textContent) {
@@ -22,7 +22,7 @@ const WelcomeText = ({ text, isVisible, className, children }: { text?: string; 
                 }
             });
         }
-    }, [text, children]);
+    }, [text, children, isVisible]);
 
     return (
         <h1
@@ -112,7 +112,7 @@ export function AnimatedWelcome() {
     return (
         <div className="text-center" style={{ position: 'relative', height: '90px' }}>
              <div className="absolute inset-0 flex items-center justify-center">
-                <h1 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
+                <h1 className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap opacity-0">
                     Bem-vindo<sup style={{ display: 'inline-block', verticalAlign: 'super', fontSize: '0.5em' }}>(a)</sup>
                 </h1>
             </div>
@@ -124,14 +124,14 @@ export function AnimatedWelcome() {
     <div ref={welcomeContainerRef} className="text-center" style={{ position: 'relative', height: '90px' }}>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="welcome-el">
-          <AnimatedText isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
+          <AnimatedText isVisible={isMounted} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap">
             Bem-vindo<sup style={{ display: 'inline-block', verticalAlign: 'super', fontSize: '0.5em' }}>(a)</sup>
           </AnimatedText>
         </div>
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="home-el">
-            <AnimatedText text="esta é a sua casa" isVisible={true} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
+            <AnimatedText text="esta é a sua casa" isVisible={isMounted} className="font-headline text-5xl md:text-7xl font-bold uppercase tracking-tighter text-primary whitespace-nowrap" />
         </div>
       </div>
     </div>
