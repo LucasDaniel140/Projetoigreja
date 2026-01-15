@@ -23,6 +23,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={cn("dark", inter.variable, oswald.variable)}>
       <head>
+         <script
+           async
+           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4388781987411579"
+           crossOrigin="anonymous"
+         ></script>
          <Script src="https://js.stripe.com/v3/buy-button.js" strategy="lazyOnload" />
       </head>
       <body className={cn("min-h-screen bg-background font-body antialiased")} suppressHydrationWarning>
